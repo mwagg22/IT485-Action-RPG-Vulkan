@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dd/d32/simple__json__object_8h" kind="file" language="C++">
+    <compoundname>simple_json_object.h</compoundname>
+    <includes refid="de/d40/simple__json__value_8h" local="yes">simple_json_value.h</includes>
+    <includedby refid="d1/d00/simple__json__object_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_object.c</includedby>
+    <includedby refid="d1/d6a/simple__json__parse_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_parse.c</includedby>
+    <includedby refid="d1/d15/simple__json_8h" local="yes">/home/djkehoe/git/simple_json/include/simple_json.h</includedby>
+    <incdepgraph>
+      <node id="205">
+        <label>simple_json_string.h</label>
+        <link refid="d4/dd1/simple__json__string_8h"/>
+      </node>
+      <node id="203">
+        <label>simple_json_value.h</label>
+        <link refid="de/d40/simple__json__value_8h"/>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>simple_json_list.h</label>
+        <link refid="d1/d2e/simple__json__list_8h"/>
+      </node>
+      <node id="202">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_object.h</label>
+        <link refid="simple_json_object.h"/>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="208">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_parse.c</label>
+        <link refid="d1/d6a/simple__json__parse_8c"/>
+      </node>
+      <node id="210">
+        <label>/home/djkehoe/git/simple_json/src/simple_json.c</label>
+        <link refid="df/d03/simple__json_8c"/>
+      </node>
+      <node id="211">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_array.c</label>
+        <link refid="d4/db4/simple__json__array_8c"/>
+      </node>
+      <node id="207">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_object.c</label>
+        <link refid="d1/d00/simple__json__object_8c"/>
+      </node>
+      <node id="206">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_object.h</label>
+        <link refid="simple_json_object.h"/>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+      </node>
+      <node id="209">
+        <label>/home/djkehoe/git/simple_json/include/simple_json.h</label>
+        <link refid="d1/d15/simple__json_8h"/>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+      </node>
+      <node id="212">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_string.c</label>
+        <link refid="d9/dc8/simple__json__string_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dd/d32/simple__json__object_8h_1a9d320f7ff286eb0bbd66041daa2df54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_object_free</definition>
+        <argsstring>(SJson *object)</argsstring>
+        <name>sj_object_free</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+<para>free a previously allocated json object </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the object to free </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_object.h" line="10" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_object.c" bodystart="100" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d32/simple__json__object_8h_1aa46bc64eb14588bd121eae3e33ca0d94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_object_insert</definition>
+        <argsstring>(SJson *object, char *key, SJson *value)</argsstring>
+        <name>sj_object_insert</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>insert data into a json object </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json object to insert into </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to identify the object value with </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value of the key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>: this is a no-op if object is not an actual JSON object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_object.h" line="12" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_object.c" bodystart="58" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d32/simple__json__object_8h_1aca06194ca7cd567b57416b39dec671c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_object_to_json_string</definition>
+        <argsstring>(SJson *object)</argsstring>
+        <name>sj_object_to_json_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+<para>get the json object back as a formatted json string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the object to convert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error, or a string encapsulated ith {} </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_object.h" line="19" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_object.c" bodystart="143" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SIMPLE_JSON_OBJECT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SIMPLE_JSON_OBJECT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d40/simple__json__value_8h" kindref="compound">simple_json_value.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d32/simple__json__object_8h_1a9d320f7ff286eb0bbd66041daa2df54f" kindref="member">sj_object_free</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d32/simple__json__object_8h_1aa46bc64eb14588bd121eae3e33ca0d94" kindref="member">sj_object_insert</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*value);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="dd/d32/simple__json__object_8h_1aca06194ca7cd567b57416b39dec671c2" kindref="member">sj_object_to_json_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_object.h"/>
+  </compounddef>
+</doxygen>

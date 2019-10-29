@@ -1,0 +1,15 @@
+# Blender MTL File: 'arrow,blend.blend'
+# Material Count: 1
+
+newmtl ham_mat_ham
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.470588 0.470588 0.470588
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\DS DSi - The Legend of Zelda Phantom Hourglass - Hammer Equipped\ham_mat_ham.png
+map_Ka C:\\Users\\momo\\Downloads\\DS DSi - The Legend of Zelda Phantom Hourglass - Hammer Equipped\\ham_mat_ham.png
+map_d C:\\Users\\momo\\Downloads\\DS DSi - The Legend of Zelda Phantom Hourglass - Hammer Equipped\\ham_mat_ham.png

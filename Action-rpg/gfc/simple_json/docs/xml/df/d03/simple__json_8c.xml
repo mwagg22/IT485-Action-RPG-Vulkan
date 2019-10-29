@@ -1,0 +1,1008 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="df/d03/simple__json_8c" kind="file" language="C++">
+    <compoundname>simple_json.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes refid="d1/d15/simple__json_8h" local="yes">simple_json.h</includes>
+    <includes refid="d4/dd1/simple__json__string_8h" local="yes">simple_json_string.h</includes>
+    <includes refid="d4/dce/simple__json__parse_8h" local="yes">simple_json_parse.h</includes>
+    <includes refid="d6/d6f/simple__json__error_8h" local="yes">simple_json_error.h</includes>
+    <incdepgraph>
+      <node id="246">
+        <label>simple_json_array.h</label>
+        <link refid="d0/d5f/simple__json__array_8h"/>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+        <childnode refid="248" relation="include">
+        </childnode>
+      </node>
+      <node id="248">
+        <label>simple_json_string.h</label>
+        <link refid="d4/dd1/simple__json__string_8h"/>
+      </node>
+      <node id="242">
+        <label>stdlib.h</label>
+      </node>
+      <node id="247">
+        <label>simple_json_value.h</label>
+        <link refid="de/d40/simple__json__value_8h"/>
+        <childnode refid="245" relation="include">
+        </childnode>
+        <childnode refid="248" relation="include">
+        </childnode>
+      </node>
+      <node id="251">
+        <label>simple_json_parse.h</label>
+        <link refid="d4/dce/simple__json__parse_8h"/>
+      </node>
+      <node id="240">
+        <label>/home/djkehoe/git/simple_json/src/simple_json.c</label>
+        <link refid="simple_json.c"/>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+      </node>
+      <node id="243">
+        <label>string.h</label>
+      </node>
+      <node id="250">
+        <label>simple_json_error.h</label>
+        <link refid="d6/d6f/simple__json__error_8h"/>
+      </node>
+      <node id="245">
+        <label>simple_json_list.h</label>
+        <link refid="d1/d2e/simple__json__list_8h"/>
+      </node>
+      <node id="249">
+        <label>simple_json_object.h</label>
+        <link refid="dd/d32/simple__json__object_8h"/>
+        <childnode refid="247" relation="include">
+        </childnode>
+      </node>
+      <node id="241">
+        <label>stdio.h</label>
+      </node>
+      <node id="244">
+        <label>simple_json.h</label>
+        <link refid="d1/d15/simple__json_8h"/>
+        <childnode refid="245" relation="include">
+        </childnode>
+        <childnode refid="246" relation="include">
+        </childnode>
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df/d03/simple__json_8c_1af9dd6baff6bddfd106108b2351790690" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_new_str</definition>
+        <argsstring>(char *str)</argsstring>
+        <name>sj_new_str</name>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>make a new json value that is a string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to base the json value on </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a new json that holds a string value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="9" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1af385ce3d673cacde380509e1cc94a1b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_new_int</definition>
+        <argsstring>(int i)</argsstring>
+        <name>sj_new_int</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>make a new json value that is an integer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the integer value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a new json that holds an integer value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="14" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="14" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a21a7c2878d965081a7250a1b2857ad02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_new_float</definition>
+        <argsstring>(float f)</argsstring>
+        <name>sj_new_float</name>
+        <param>
+          <type>float</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>make a new json value that is a float </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the float value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a new json that holds a floating point value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="19" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a945d280a4a804bd62840bef3a36855f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_new_bool</definition>
+        <argsstring>(int b)</argsstring>
+        <name>sj_new_bool</name>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>make a new json value that is a bool </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the boolean value (1 is true, 0 is false) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a new json that holds a bool value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="24" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a02d0d378fb7b08c6d9345d4a1a8ec6af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long get_file_Size</definition>
+        <argsstring>(FILE *file)</argsstring>
+        <name>get_file_Size</name>
+        <param>
+          <type>FILE *</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="29" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="29" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1aec68172c7e7881e136f3dfeff46b9675" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_load</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>sj_load</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>loads and parses a json file </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the file to parse </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or an SJS pointer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="47" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="47" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a17b72c84ece910c9365592ac297fa52b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_new</definition>
+        <argsstring>()</argsstring>
+        <name>sj_new</name>
+        <briefdescription>
+<para>allocate a new empty json object </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>NULL on error or a new json object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="96" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="96" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a0246b1c8e7295c1da2ce775389ee30e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_copy</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_copy</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>make a duplicate of a json structure. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>the duplicate needs to be <ref refid="d1/d15/simple__json_8h_1ad1ef511c3463cdecef2f38796af1e81e" kindref="member">sj_free()</ref>&apos;d separately </para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to be duplicated </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error, or a Duplicate json </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="109" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="109" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1aeb651d73582b498cf77fb178089d5848" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_free</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_free</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>frees a previously loaded json struct </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="116" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="116" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a18a7b87adf4f72a0ac7a5710104ccf45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_save</definition>
+        <argsstring>(SJson *json, char *filename)</argsstring>
+        <name>sj_save</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>write a json value as a formatted json string to file </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the struct to convert and write </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the file to overwrite </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="123" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="123" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a1f6469d89e33cd32b02f59d238fd2a18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_echo</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_echo</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>print the contents of the json file to stdout </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json struct to print </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="140" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="140" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1acefe3625efa1d9a2eb4540f49179f125" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_null_free</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_null_free</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="150" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="150" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1ace951db871c87f7cc400d4b5201092e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_value_to_json_string</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_value_to_json_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>convert the json value into a json string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to convert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or the json string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="156" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="156" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1ae2bbd86c3d893be57167d79cf9fdab89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_null_to_json_string</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_null_to_json_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="163" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="163" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1afdb3e5caa026913f78fcdb20e91e88e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_null_copy</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_null_copy</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="168" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="168" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a827e3349a5de45c6e1d92efb21c867e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_null_new</definition>
+        <argsstring>()</argsstring>
+        <name>sj_null_new</name>
+        <briefdescription>
+<para>make a new json value that is NULL </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>NULL on error (Ironically) or a new json that holds a NULL value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="173" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="173" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a55530b42bc765c47ccd9eea7fca8f8d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* sj_get_string_value</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_get_string_value</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>get the JSON value as a string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json value to get the string from </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL if the provided json was not a string or on error, the string otherwise </para></simplesect>
+<simplesect kind="note"><para>: the returned value should not be altered or freed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="184" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a5608b519dabd9f9bb74cc96e13e0b250" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_get_integer_value</definition>
+        <argsstring>(SJson *json, int *i)</argsstring>
+        <name>sj_get_integer_value</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>get the json value as an integer Can be used to check for existence </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json value to get from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] place to write the output to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the json did not contain an integer or if there was an error, 1 otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="190" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="190" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1af99fe955e69bbb47c8879bd33eab3d65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_get_float_value</definition>
+        <argsstring>(SJson *json, float *f)</argsstring>
+        <name>sj_get_float_value</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>get the json value as a float Can be used to check for existence </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json value to get from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] place to write the output to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the json did not contain a float or if there was an error, 1 otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="196" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="196" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1ad12f90e5a2f56f4fa30a2e60744c5e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_get_bool_value</definition>
+        <argsstring>(SJson *json, short int *b)</argsstring>
+        <name>sj_get_bool_value</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>short int *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>get the json value as a bool Can be used to check for existence </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json value to get from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] place to write the output to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the json did not contain a bool or if there was an error, 1 otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="202" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="202" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a640e8eab628b88d20b751d57bafd7c79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_is_array</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_is_array</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>check if the json is an array </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to check </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if it is, 0 if not </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="208" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="208" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a7f027dcc9770a6dff08cf1c8b70b1fb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_is_object</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_is_object</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>check if the json is an object </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to check </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if it is, 0 if not </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="215" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="215" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a46cd295293db4c66c915a85dbec563d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_is_string</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_is_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>check if the json is a string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to check </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if it is, 0 if not </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="222" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="222" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1aa2edd426ef105912be0fe8255621cbff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_is_number</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_is_number</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>check if the json is a number </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to check </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if it is, 0 if not </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="229" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="229" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1a7d6c8fd8b92e02500135de26d8580cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_is_bool</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_is_bool</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>check if the json is a bool </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to check </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if it is, 0 if not </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="236" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="236" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d03/simple__json_8c_1ac276a512137db7287da63572633bcdb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_is_null</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_is_null</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>check if the json is NULL </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json to check </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if it is, 0 if not </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json.c" line="243" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json.c" bodystart="243" bodyend="248"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d15/simple__json_8h" kindref="compound">simple_json.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/dd1/simple__json__string_8h" kindref="compound">simple_json_string.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/dce/simple__json__parse_8h" kindref="compound">simple_json_parse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d6f/simple__json__error_8h" kindref="compound">simple_json_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="d1/d15/simple__json_8h_1af9dd6baff6bddfd106108b2351790690" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1af9dd6baff6bddfd106108b2351790690" kindref="member">sj_new_str</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1aac7f9dff7a04bf6a7a84dddcd60088ec" kindref="member">sj_string_to_value</ref>(<ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(str));</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="d1/d15/simple__json_8h_1af385ce3d673cacde380509e1cc94a1b1" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1af385ce3d673cacde380509e1cc94a1b1" kindref="member">sj_new_int</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1aac7f9dff7a04bf6a7a84dddcd60088ec" kindref="member">sj_string_to_value</ref>(<ref refid="d9/dc8/simple__json__string_8c_1acb792583fae4d8f63d8571fc3f26c7c3" kindref="member">sj_string_new_integer</ref>(i));</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="d1/d15/simple__json_8h_1a21a7c2878d965081a7250a1b2857ad02" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1a21a7c2878d965081a7250a1b2857ad02" kindref="member">sj_new_float</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>f)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1aac7f9dff7a04bf6a7a84dddcd60088ec" kindref="member">sj_string_to_value</ref>(<ref refid="d9/dc8/simple__json__string_8c_1a8fc2ef9373bab10e48cc9bb482532823" kindref="member">sj_string_new_float</ref>(f));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="d1/d15/simple__json_8h_1a945d280a4a804bd62840bef3a36855f0" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1a945d280a4a804bd62840bef3a36855f0" kindref="member">sj_new_bool</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1aac7f9dff7a04bf6a7a84dddcd60088ec" kindref="member">sj_string_to_value</ref>(<ref refid="d9/dc8/simple__json__string_8c_1a97c69e427be23f8aaa436b0ee0dd41e4" kindref="member">sj_string_new_bool</ref>(b));</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="df/d03/simple__json_8c_1a02d0d378fb7b08c6d9345d4a1a8ec6af" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a02d0d378fb7b08c6d9345d4a1a8ec6af" kindref="member">get_file_Size</ref>(FILE<sp/>*file)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(file<sp/>!=<sp/>NULL){</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>fseek(file,<sp/>0,<sp/>SEEK_END)<sp/>){</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fclose(file);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/>ftell(file);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>rewind(file);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="d1/d15/simple__json_8h_1aec68172c7e7881e136f3dfeff46b9675" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1aec68172c7e7881e136f3dfeff46b9675" kindref="member">sj_load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*file;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>size,read;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>=<sp/>fopen(filename,</highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_load:<sp/>failed<sp/>to<sp/>open<sp/>file&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/><ref refid="df/d03/simple__json_8c_1a02d0d378fb7b08c6d9345d4a1a8ec6af" kindref="member">get_file_Size</ref>(file);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_load:<sp/>error<sp/>with<sp/>file<sp/>size&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(file);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;loaded<sp/>file<sp/>%s<sp/>with<sp/>a<sp/>size<sp/>of<sp/>%li<sp/>characters\n&quot;</highlight><highlight class="normal">,filename,size);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*(size<sp/>+<sp/>1));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_load:<sp/>failed<sp/>to<sp/>allocate<sp/>character<sp/>buffer<sp/>for<sp/>json<sp/>file&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(file);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(buffer,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*(size+1));</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((read<sp/>=<sp/>fread(buffer,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">),<sp/>size,<sp/>file))<sp/>!=<sp/>size)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;expected<sp/>to<sp/>read<sp/>%li<sp/>characters,<sp/>but<sp/>read<sp/>%li<sp/>instead\n&quot;</highlight><highlight class="normal">,size,read);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;read<sp/>%li<sp/>characters<sp/>of<sp/>%li<sp/>available&quot;</highlight><highlight class="normal">,read,size);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;file<sp/>contents:\n%s\n&quot;</highlight><highlight class="normal">,buffer);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>fclose(file);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>json<sp/>=<sp/><ref refid="d1/d6a/simple__json__parse_8c_1a7f8b9027661ac8ba4c2a8834b06f5570" kindref="member">sj_parse_buffer</ref>(buffer,read);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>free(buffer);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="de/d40/simple__json__value_8h_1a17b72c84ece910c9365592ac297fa52b" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1a17b72c84ece910c9365592ac297fa52b" kindref="member">sj_new</ref>()</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>json<sp/>=<sp/>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref>));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_new:<sp/>failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>new<sp/>json<sp/>object&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(json,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref>));</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="d1/d15/simple__json_8h_1a0246b1c8e7295c1da2ce775389ee30e3" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1a0246b1c8e7295c1da2ce775389ee30e3" kindref="member">sj_copy</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json-&gt;<ref refid="d9/dca/structSJson__S_1a3910fed04a197e779815cad2b0535f62" kindref="member">copy</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a3910fed04a197e779815cad2b0535f62" kindref="member">copy</ref>(json);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="de/d40/simple__json__value_8h_1ad1ef511c3463cdecef2f38796af1e81e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1aeb651d73582b498cf77fb178089d5848" kindref="member">sj_free</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref>)json-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref>(json);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="d1/d15/simple__json_8h_1a18a7b87adf4f72a0ac7a5710104ccf45" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a18a7b87adf4f72a0ac7a5710104ccf45" kindref="member">sj_save</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*file;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!json)<sp/>||<sp/>(!json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref>))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>=<sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref>(json);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>=<sp/>fopen(filename,</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1a353b46786c4eab028ec911ed8cafed2d" kindref="member">sj_string_free</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>fputs(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,file);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>fclose(file);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="d1/d15/simple__json_8h_1a1f6469d89e33cd32b02f59d238fd2a18" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a1f6469d89e33cd32b02f59d238fd2a18" kindref="member">sj_echo</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*output;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!json)<sp/>||<sp/>(!json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref>))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>output<sp/>=<sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref>(json);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!output)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,output-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1a353b46786c4eab028ec911ed8cafed2d" kindref="member">sj_string_free</ref>(output);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="df/d03/simple__json_8c_1acefe3625efa1d9a2eb4540f49179f125" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1acefe3625efa1d9a2eb4540f49179f125" kindref="member">sj_null_free</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>free(json);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="de/d40/simple__json__value_8h_1ace951db871c87f7cc400d4b5201092e5" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="df/d03/simple__json_8c_1ace951db871c87f7cc400d4b5201092e5" kindref="member">sj_value_to_json_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref>(json);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="df/d03/simple__json_8c_1ae2bbd86c3d893be57167d79cf9fdab89" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="df/d03/simple__json_8c_1ae2bbd86c3d893be57167d79cf9fdab89" kindref="member">sj_null_to_json_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="stringliteral">&quot;null&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="df/d03/simple__json_8c_1afdb3e5caa026913f78fcdb20e91e88e6" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1afdb3e5caa026913f78fcdb20e91e88e6" kindref="member">sj_null_copy</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a827e3349a5de45c6e1d92efb21c867e2" kindref="member">sj_null_new</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="d1/d15/simple__json_8h_1a827e3349a5de45c6e1d92efb21c867e2" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="df/d03/simple__json_8c_1a827e3349a5de45c6e1d92efb21c867e2" kindref="member">sj_null_new</ref>()</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>json<sp/>=<sp/><ref refid="df/d03/simple__json_8c_1a17b72c84ece910c9365592ac297fa52b" kindref="member">sj_new</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84ba15e4a16e37d6b567b38c63c8925704a0" kindref="member">SJVT_NULL</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref><sp/>=<sp/><ref refid="df/d03/simple__json_8c_1acefe3625efa1d9a2eb4540f49179f125" kindref="member">sj_null_free</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref><sp/>=<sp/><ref refid="df/d03/simple__json_8c_1ae2bbd86c3d893be57167d79cf9fdab89" kindref="member">sj_null_to_json_string</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="d1/d15/simple__json_8h_1a55530b42bc765c47ccd9eea7fca8f8d1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="df/d03/simple__json_8c_1a55530b42bc765c47ccd9eea7fca8f8d1" kindref="member">sj_get_string_value</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!json)||(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="d1/d15/simple__json_8h_1a5608b519dabd9f9bb74cc96e13e0b250" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a5608b519dabd9f9bb74cc96e13e0b250" kindref="member">sj_get_integer_value</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*i)</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!json)||(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1acb68e4dd658ed579266be01ca6e2cfc4" kindref="member">sj_string_as_integer</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>,i);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="d1/d15/simple__json_8h_1af99fe955e69bbb47c8879bd33eab3d65" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1af99fe955e69bbb47c8879bd33eab3d65" kindref="member">sj_get_float_value</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json,</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*f)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!json)||(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a2e0ed36958f2d1c5ef648d777f584a30" kindref="member">sj_string_as_float</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>,f);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="d1/d15/simple__json_8h_1ad12f90e5a2f56f4fa30a2e60744c5e56" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1ad12f90e5a2f56f4fa30a2e60744c5e56" kindref="member">sj_get_bool_value</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json,</highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*b)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!json)||(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a772abb082e3d8763757881e15d537000" kindref="member">sj_string_as_bool</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>,b);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="d1/d15/simple__json_8h_1a640e8eab628b88d20b751d57bafd7c79" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a640e8eab628b88d20b751d57bafd7c79" kindref="member">sj_is_array</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84ba679f450d8380d92ebbf906dd772a11ed" kindref="member">SJVT_Object</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="d1/d15/simple__json_8h_1a7f027dcc9770a6dff08cf1c8b70b1fb0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a7f027dcc9770a6dff08cf1c8b70b1fb0" kindref="member">sj_is_object</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84bae00c76456b1898f61de8309ae6ccd8d4" kindref="member">SJVT_Array</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="d1/d15/simple__json_8h_1a46cd295293db4c66c915a85dbec563d3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a46cd295293db4c66c915a85dbec563d3" kindref="member">sj_is_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="d1/d15/simple__json_8h_1aa2edd426ef105912be0fe8255621cbff" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1aa2edd426ef105912be0fe8255621cbff" kindref="member">sj_is_number</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a2e0ed36958f2d1c5ef648d777f584a30" kindref="member">sj_string_as_float</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>,NULL);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="d1/d15/simple__json_8h_1a7d6c8fd8b92e02500135de26d8580cd8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1a7d6c8fd8b92e02500135de26d8580cd8" kindref="member">sj_is_bool</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a772abb082e3d8763757881e15d537000" kindref="member">sj_string_as_bool</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>,NULL);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="d1/d15/simple__json_8h_1ac276a512137db7287da63572633bcdb3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1ac276a512137db7287da63572633bcdb3" kindref="member">sj_is_null</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84ba15e4a16e37d6b567b38c63c8925704a0" kindref="member">SJVT_NULL</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="comment">/*eol@eof*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/src/simple_json.c"/>
+  </compounddef>
+</doxygen>

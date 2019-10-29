@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d6/d6f/simple__json__error_8h" kind="file" language="C++">
+    <compoundname>simple_json_error.h</compoundname>
+    <includedby refid="df/d03/simple__json_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json.c</includedby>
+    <includedby refid="d4/db4/simple__json__array_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_array.c</includedby>
+    <includedby refid="d8/d02/simple__json__error_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_error.c</includedby>
+    <includedby refid="d4/dc8/simple__json__list_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_list.c</includedby>
+    <includedby refid="d1/d00/simple__json__object_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_object.c</includedby>
+    <includedby refid="d1/d6a/simple__json__parse_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_parse.c</includedby>
+    <includedby refid="d9/dc8/simple__json__string_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_string.c</includedby>
+    <includedby refid="d1/d15/simple__json_8h" local="yes">/home/djkehoe/git/simple_json/include/simple_json.h</includedby>
+    <invincdepgraph>
+      <node id="185">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_list.c</label>
+        <link refid="d4/dc8/simple__json__list_8c"/>
+      </node>
+      <node id="187">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_parse.c</label>
+        <link refid="d1/d6a/simple__json__parse_8c"/>
+      </node>
+      <node id="182">
+        <label>/home/djkehoe/git/simple_json/src/simple_json.c</label>
+        <link refid="df/d03/simple__json_8c"/>
+      </node>
+      <node id="183">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_array.c</label>
+        <link refid="d4/db4/simple__json__array_8c"/>
+      </node>
+      <node id="181">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_error.h</label>
+        <link refid="simple_json_error.h"/>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="186">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_object.c</label>
+        <link refid="d1/d00/simple__json__object_8c"/>
+      </node>
+      <node id="184">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_error.c</label>
+        <link refid="d8/d02/simple__json__error_8c"/>
+      </node>
+      <node id="189">
+        <label>/home/djkehoe/git/simple_json/include/simple_json.h</label>
+        <link refid="d1/d15/simple__json_8h"/>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_string.c</label>
+        <link refid="d9/dc8/simple__json__string_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d6/d6f/simple__json__error_8h_1a3acffbd305ee72dcd4593c0d8af64a4f" prot="public" static="no">
+        <name>MIN</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>(a&lt;=b?a:b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h" line="5" column="9" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_error.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/d6f/simple__json__error_8h_1afa99ec4acc4ecb2dc3c2d05da15d0e3f" prot="public" static="no">
+        <name>MAX</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>(a&gt;=b?a:b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h" line="9" column="9" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_error.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/d6f/simple__json__error_8h_1a65e9886d74aaee76545e83dd09011727" prot="public" static="no">
+        <name>false</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h" line="13" column="9" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_error.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/d6f/simple__json__error_8h_1a41f9c5fb8b08eb5dc3edce4dcb37fee7" prot="public" static="no">
+        <name>true</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h" line="16" column="9" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_error.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d6/d6f/simple__json__error_8h_1a5d74fc3dd2997bd985966f6c31e241de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* sj_get_error</definition>
+        <argsstring>()</argsstring>
+        <name>sj_get_error</name>
+        <briefdescription>
+<para>get the last reported error for simple json </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a character array with the error message </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h" line="22" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_error.c" bodystart="6" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d6f/simple__json__error_8h_1a6cbf23366a99bf9b2d5ec4a39cc05d23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_set_error</definition>
+        <argsstring>(char *error)</argsstring>
+        <name>sj_set_error</name>
+        <param>
+          <type>char *</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>used internally to se the error message </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the error message to set </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h" line="28" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_error.c" bodystart="11" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SIMPLE_JSON_ERROR_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SIMPLE_JSON_ERROR_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="d6/d6f/simple__json__error_8h_1a3acffbd305ee72dcd4593c0d8af64a4f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIN(a,b)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(a&lt;=b?a:b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MAX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="d6/d6f/simple__json__error_8h_1afa99ec4acc4ecb2dc3c2d05da15d0e3f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX(a,b)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(a&gt;=b?a:b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="d6/d6f/simple__json__error_8h_1a65e9886d74aaee76545e83dd09011727" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>false<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="d6/d6f/simple__json__error_8h_1a41f9c5fb8b08eb5dc3edce4dcb37fee7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>true<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d6/d6f/simple__json__error_8h_1a5d74fc3dd2997bd985966f6c31e241de" kindref="member">sj_get_error</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/d6f/simple__json__error_8h_1a6cbf23366a99bf9b2d5ec4a39cc05d23" kindref="member">sj_set_error</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*error);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_error.h"/>
+  </compounddef>
+</doxygen>

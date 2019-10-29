@@ -1,0 +1,24 @@
+# Blender MTL File: 'mage.blend'
+# Material Count: 2
+
+newmtl ew434_meteo01_Comb1_mat
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.250000 0.250000 0.250000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\3DS - Pokemon X Y - Draco Meteor\Draco Meteor\etxm_rock05.png
+
+newmtl ew434_wave01_Comb1_mat
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.250000 0.250000 0.250000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\3DS - Pokemon X Y - Draco Meteor\Draco Meteor\etxm_dmg_wave01 - Copy.png

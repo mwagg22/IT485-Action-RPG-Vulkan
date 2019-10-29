@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d4/dce/simple__json__parse_8h" kind="file" language="C++">
+    <compoundname>simple_json_parse.h</compoundname>
+    <includedby refid="df/d03/simple__json_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json.c</includedby>
+    <invincdepgraph>
+      <node id="214">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_parse.h</label>
+        <link refid="simple_json_parse.h"/>
+        <childnode refid="215" relation="include">
+        </childnode>
+      </node>
+      <node id="215">
+        <label>/home/djkehoe/git/simple_json/src/simple_json.c</label>
+        <link refid="df/d03/simple__json_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/dce/simple__json__parse_8h_1a7f8b9027661ac8ba4c2a8834b06f5570" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_parse_buffer</definition>
+        <argsstring>(char *string, unsigned long length)</argsstring>
+        <name>sj_parse_buffer</name>
+        <param>
+          <type>char *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>given a string, create a JSON object from it </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the strong to convert. NO OP if this is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount of characters in the string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a JSson object otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_parse.h" line="10" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_parse.c" bodystart="234" bodyend="248"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SIMPLE_JSON_PARSE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SIMPLE_JSON_PARSE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d4/dce/simple__json__parse_8h_1a7f8b9027661ac8ba4c2a8834b06f5570" kindref="member">sj_parse_buffer</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_parse.h"/>
+  </compounddef>
+</doxygen>

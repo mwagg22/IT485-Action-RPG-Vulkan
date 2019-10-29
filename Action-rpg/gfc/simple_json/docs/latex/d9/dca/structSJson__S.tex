@@ -1,0 +1,91 @@
+\hypertarget{structSJson__S}{}\section{S\+Json\+\_\+S Struct Reference}
+\label{structSJson__S}\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+
+
+this is the abstract container structure for all json data This structure may be an object, array, string, null, boolean value, integer or float  
+
+
+
+
+{\ttfamily \#include $<$simple\+\_\+json\+\_\+value.\+h$>$}
+
+
+
+Collaboration diagram for S\+Json\+\_\+S\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d2/d22/structSJson__S__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+S\+J\+Value\+Types \hyperlink{structSJson__S_ad68edc13b2a814f9b920498ba439b8ba}{sjtype}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\hyperlink{structSJList}{SJList} $\ast$ \hyperlink{structSJson__S_aa8c595b7789550a64b08950b0ad88e1e}{array}\\
+\>\hyperlink{structSJString}{SJString} $\ast$ \hyperlink{structSJson__S_ab50f7c395b214eb050ff59e3a9bbeb4a}{string}\\
+\} \hyperlink{structSJson__S_a34c41be372d7bbe614b312cef2051b99}{v}\\
+
+\end{tabbing}\item 
+\hyperlink{structSJString}{S\+J\+String} $\ast$($\ast$ \hyperlink{structSJson__S_afd320740fab795e7063e89157a23c511}{get\+\_\+string} )(struct \hyperlink{structSJson__S}{S\+Json\+\_\+S} $\ast$json)
+\item 
+void($\ast$ \hyperlink{structSJson__S_a8bd24b6b85325a01b8bae6c5899583f2}{json\+\_\+free} )(struct \hyperlink{structSJson__S}{S\+Json\+\_\+S} $\ast$json)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+this is the abstract container structure for all json data This structure may be an object, array, string, null, boolean value, integer or float 
+
+Definition at line 19 of file simple\+\_\+json\+\_\+value.\+h.
+
+
+
+\subsection{Field Documentation}
+\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}!array@{array}}
+\index{array@{array}!S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+\subsubsection[{\texorpdfstring{array}{array}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+J\+List}$\ast$ S\+Json\+\_\+\+S\+::array}\hypertarget{structSJson__S_aa8c595b7789550a64b08950b0ad88e1e}{}\label{structSJson__S_aa8c595b7789550a64b08950b0ad88e1e}
+an array or values or an array of pairs 
+
+Definition at line 24 of file simple\+\_\+json\+\_\+value.\+h.
+
+\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}!get\+\_\+string@{get\+\_\+string}}
+\index{get\+\_\+string@{get\+\_\+string}!S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+\subsubsection[{\texorpdfstring{get\+\_\+string}{get_string}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+J\+String}$\ast$($\ast$ S\+Json\+\_\+\+S\+::get\+\_\+string) (struct {\bf S\+Json\+\_\+S} $\ast$json)}\hypertarget{structSJson__S_afd320740fab795e7063e89157a23c511}{}\label{structSJson__S_afd320740fab795e7063e89157a23c511}
+pointer to the function to convert this into json string 
+
+Definition at line 27 of file simple\+\_\+json\+\_\+value.\+h.
+
+\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}!json\+\_\+free@{json\+\_\+free}}
+\index{json\+\_\+free@{json\+\_\+free}!S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+\subsubsection[{\texorpdfstring{json\+\_\+free}{json_free}}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ S\+Json\+\_\+\+S\+::json\+\_\+free) (struct {\bf S\+Json\+\_\+S} $\ast$json)}\hypertarget{structSJson__S_a8bd24b6b85325a01b8bae6c5899583f2}{}\label{structSJson__S_a8bd24b6b85325a01b8bae6c5899583f2}
+pointer to the function to free this json 
+
+Definition at line 28 of file simple\+\_\+json\+\_\+value.\+h.
+
+\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}!sjtype@{sjtype}}
+\index{sjtype@{sjtype}!S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+\subsubsection[{\texorpdfstring{sjtype}{sjtype}}]{\setlength{\rightskip}{0pt plus 5cm}S\+J\+Value\+Types S\+Json\+\_\+\+S\+::sjtype}\hypertarget{structSJson__S_ad68edc13b2a814f9b920498ba439b8ba}{}\label{structSJson__S_ad68edc13b2a814f9b920498ba439b8ba}
+internal tracking of the type. DO N\+OT T\+O\+U\+CH 
+
+Definition at line 21 of file simple\+\_\+json\+\_\+value.\+h.
+
+\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}!string@{string}}
+\index{string@{string}!S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+\subsubsection[{\texorpdfstring{string}{string}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+J\+String}$\ast$ S\+Json\+\_\+\+S\+::string}\hypertarget{structSJson__S_ab50f7c395b214eb050ff59e3a9bbeb4a}{}\label{structSJson__S_ab50f7c395b214eb050ff59e3a9bbeb4a}
+the string if this is a string type 
+
+Definition at line 25 of file simple\+\_\+json\+\_\+value.\+h.
+
+\index{S\+Json\+\_\+S@{S\+Json\+\_\+S}!v@{v}}
+\index{v@{v}!S\+Json\+\_\+S@{S\+Json\+\_\+S}}
+\subsubsection[{\texorpdfstring{v}{v}}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \}  S\+Json\+\_\+\+S\+::v}\hypertarget{structSJson__S_a34c41be372d7bbe614b312cef2051b99}{}\label{structSJson__S_a34c41be372d7bbe614b312cef2051b99}
+union of possible values 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/djkehoe/git/simple\+\_\+json/include/simple\+\_\+json\+\_\+value.\+h\end{DoxyCompactItemize}

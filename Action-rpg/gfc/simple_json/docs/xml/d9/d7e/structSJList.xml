@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d9/d7e/structSJList" kind="struct" language="C++" prot="public">
+    <compoundname>SJList</compoundname>
+    <includes refid="d1/d2e/simple__json__list_8h" local="no">simple_json_list.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d9/d7e/structSJList_1a43fc72ebe9774607d3c503917b911c7c" prot="public" static="no" mutable="no">
+        <type><ref refid="d0/d8b/structSJListElementData" kindref="compound">SJListElementData</ref> *</type>
+        <definition>SJListElementData* SJList::elements</definition>
+        <argsstring></argsstring>
+        <name>elements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a pointer to the array of the data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_list.h" line="18" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_list.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d7e/structSJList_1a1e3944d88b5e2aac09698498f376559b" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int SJList::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how much memory has been allocated </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_list.h" line="19" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_list.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/d7e/structSJList_1a706017d74f3cde16157127d8e8025116" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int SJList::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how many elements are in use </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_list.h" line="20" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_list.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>this is a simple list structure intended to hold an arbitrary number of elements list will automatically grow as space is needed to accomodate more elements </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="23">
+        <label>SJList</label>
+        <link refid="d9/d7e/structSJList"/>
+        <childnode refid="24" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="24">
+        <label>SJListElementData</label>
+        <link refid="d0/d8b/structSJListElementData"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_list.h" line="17" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_list.h" bodystart="16" bodyend="21"/>
+    <listofallmembers>
+      <member refid="d9/d7e/structSJList_1a706017d74f3cde16157127d8e8025116" prot="public" virt="non-virtual"><scope>SJList</scope><name>count</name></member>
+      <member refid="d9/d7e/structSJList_1a43fc72ebe9774607d3c503917b911c7c" prot="public" virt="non-virtual"><scope>SJList</scope><name>elements</name></member>
+      <member refid="d9/d7e/structSJList_1a1e3944d88b5e2aac09698498f376559b" prot="public" virt="non-virtual"><scope>SJList</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

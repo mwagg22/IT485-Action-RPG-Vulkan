@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dd/d6d/structSJPair" kind="struct" language="C++" prot="public">
+    <compoundname>SJPair</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dd/d6d/structSJPair_1a23681f167b9eac4d55be408c2007ae6c" prot="public" static="no" mutable="no">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* SJPair::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the identifying key </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_object.c" line="26" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_object.c" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d6d/structSJPair_1aeee74c0e0e05940043b8aa96d1be43a4" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* SJPair::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the value the key references </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_object.c" line="27" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_object.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>an object is a list of key/value pairs </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="30">
+        <label>SJList</label>
+        <link refid="d9/d7e/structSJList"/>
+        <childnode refid="31" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>SJPair</label>
+        <link refid="dd/d6d/structSJPair"/>
+        <childnode refid="29" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+        <childnode refid="32" relation="usage">
+          <edgelabel>key</edgelabel>
+        </childnode>
+      </node>
+      <node id="31">
+        <label>SJListElementData</label>
+        <link refid="d0/d8b/structSJListElementData"/>
+      </node>
+      <node id="32">
+        <label>SJString</label>
+        <link refid="d4/d1f/structSJString"/>
+      </node>
+      <node id="29">
+        <label>SJson_S</label>
+        <link refid="d9/dca/structSJson__S"/>
+        <childnode refid="29" relation="usage">
+          <edgelabel>copy</edgelabel>
+        </childnode>
+        <childnode refid="30" relation="usage">
+          <edgelabel>array</edgelabel>
+        </childnode>
+        <childnode refid="32" relation="usage">
+          <edgelabel>get_string</edgelabel>
+          <edgelabel>string</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/djkehoe/git/simple_json/src/simple_json_object.c" line="25" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_object.c" bodystart="24" bodyend="28"/>
+    <listofallmembers>
+      <member refid="dd/d6d/structSJPair_1a23681f167b9eac4d55be408c2007ae6c" prot="public" virt="non-virtual"><scope>SJPair</scope><name>key</name></member>
+      <member refid="dd/d6d/structSJPair_1aeee74c0e0e05940043b8aa96d1be43a4" prot="public" virt="non-virtual"><scope>SJPair</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

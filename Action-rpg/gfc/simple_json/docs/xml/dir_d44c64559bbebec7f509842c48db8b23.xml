@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_d44c64559bbebec7f509842c48db8b23" kind="dir">
+    <compoundname>/home/djkehoe/git/simple_json/include</compoundname>
+    <innerfile refid="d1/d15/simple__json_8h">simple_json.h</innerfile>
+    <innerfile refid="d0/d5f/simple__json__array_8h">simple_json_array.h</innerfile>
+    <innerfile refid="d6/d6f/simple__json__error_8h">simple_json_error.h</innerfile>
+    <innerfile refid="d1/d2e/simple__json__list_8h">simple_json_list.h</innerfile>
+    <innerfile refid="dd/d32/simple__json__object_8h">simple_json_object.h</innerfile>
+    <innerfile refid="d4/dce/simple__json__parse_8h">simple_json_parse.h</innerfile>
+    <innerfile refid="d4/dd1/simple__json__string_8h">simple_json_string.h</innerfile>
+    <innerfile refid="de/d40/simple__json__value_8h">simple_json_value.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/djkehoe/git/simple_json/include/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,598 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d4/dd1/simple__json__string_8h" kind="file" language="C++">
+    <compoundname>simple_json_string.h</compoundname>
+    <includedby refid="df/d03/simple__json_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json.c</includedby>
+    <includedby refid="d8/d02/simple__json__error_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_error.c</includedby>
+    <includedby refid="d1/d00/simple__json__object_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_object.c</includedby>
+    <includedby refid="d1/d6a/simple__json__parse_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_parse.c</includedby>
+    <includedby refid="d9/dc8/simple__json__string_8c" local="yes">/home/djkehoe/git/simple_json/src/simple_json_string.c</includedby>
+    <includedby refid="de/d40/simple__json__value_8h" local="yes">/home/djkehoe/git/simple_json/include/simple_json_value.h</includedby>
+    <includedby refid="d0/d5f/simple__json__array_8h" local="yes">/home/djkehoe/git/simple_json/include/simple_json_array.h</includedby>
+    <includedby refid="d1/d15/simple__json_8h" local="yes">/home/djkehoe/git/simple_json/include/simple_json.h</includedby>
+    <invincdepgraph>
+      <node id="224">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_array.h</label>
+        <link refid="d0/d5f/simple__json__array_8h"/>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+      </node>
+      <node id="217">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_string.h</label>
+        <link refid="simple_json_string.h"/>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="219" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+      </node>
+      <node id="221">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_parse.c</label>
+        <link refid="d1/d6a/simple__json__parse_8c"/>
+      </node>
+      <node id="223">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_value.h</label>
+        <link refid="de/d40/simple__json__value_8h"/>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="218">
+        <label>/home/djkehoe/git/simple_json/src/simple_json.c</label>
+        <link refid="df/d03/simple__json_8c"/>
+      </node>
+      <node id="225">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_array.c</label>
+        <link refid="d4/db4/simple__json__array_8c"/>
+      </node>
+      <node id="220">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_object.c</label>
+        <link refid="d1/d00/simple__json__object_8c"/>
+      </node>
+      <node id="219">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_error.c</label>
+        <link refid="d8/d02/simple__json__error_8c"/>
+      </node>
+      <node id="227">
+        <label>/home/djkehoe/git/simple_json/include/simple_json_object.h</label>
+        <link refid="dd/d32/simple__json__object_8h"/>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+      </node>
+      <node id="226">
+        <label>/home/djkehoe/git/simple_json/include/simple_json.h</label>
+        <link refid="d1/d15/simple__json_8h"/>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+      </node>
+      <node id="222">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_string.c</label>
+        <link refid="d9/dc8/simple__json__string_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d4/d1f/structSJString" prot="public">SJString</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a5507567114ed0256e77d45c558b6d7cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new</definition>
+        <argsstring>()</argsstring>
+        <name>sj_string_new</name>
+        <briefdescription>
+<para>make a new empty string </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>NULL on error or a new string that must be freed with sj_string_free </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="18" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="8" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a19fb85f2c3fecae2deb8978d8aba4724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_text</definition>
+        <argsstring>(char *s)</argsstring>
+        <name>sj_string_new_text</name>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>make a new string with the characters from array s </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to populate the string with </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a new string that must be freed with sj_string_free </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="25" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="26" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1acb792583fae4d8f63d8571fc3f26c7c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_integer</definition>
+        <argsstring>(int i)</argsstring>
+        <name>sj_string_new_integer</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="27" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="50" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a61eed10e8492e1c2581d570e7bb6a526" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_float</definition>
+        <argsstring>(float i)</argsstring>
+        <name>sj_string_new_float</name>
+        <param>
+          <type>float</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="29" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a97c69e427be23f8aaa436b0ee0dd41e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_bool</definition>
+        <argsstring>(int i)</argsstring>
+        <name>sj_string_new_bool</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="31" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="64" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a353b46786c4eab028ec911ed8cafed2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_free</definition>
+        <argsstring>(SJString *string)</argsstring>
+        <name>sj_string_free</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>free an <ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to free </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="37" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="70" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a7b567767503b42cee4fab510889c6d10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_cmp</definition>
+        <argsstring>(SJString *string, char *s)</argsstring>
+        <name>sj_string_cmp</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>performs a strcmp on the string with the provided character array </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to compare with </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>&lt;0 id string has a lower value than s, &gt;0 if s has a lower value than string, 0 if they are equivalant </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="45" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="80" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1af5785dd7f372915bb596702f0d7c1908" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_set</definition>
+        <argsstring>(SJString *string, char *s)</argsstring>
+        <name>sj_string_set</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>set the value of string to s </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to change </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to change it to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="52" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="95" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a32986f36aea43504fe174a784df28f8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_set_limit</definition>
+        <argsstring>(SJString *string, char *s, unsigned long length)</argsstring>
+        <name>sj_string_set_limit</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>set the value of string to s but only length of s </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to change </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to change it to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the limit on characters to copy from s </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="60" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="123" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a98eb51563c6501a48e8385ac7638c244" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_concat</definition>
+        <argsstring>(SJString *string1, SJString *string2)</argsstring>
+        <name>sj_string_concat</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string1</declname>
+        </param>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string2</declname>
+        </param>
+        <briefdescription>
+<para>append the contents of string2 to string1 </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>this string will be modified by this operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>this string will NOT be modified by this operation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="67" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="190" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1ad594e541b3295d09556a22184c8be97d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_append</definition>
+        <argsstring>(SJString *string, char *buffer)</argsstring>
+        <name>sj_string_append</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+<para>append the contents of buffer to the string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to be added to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a NULL terminated character buffer. This will not be modified </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="74" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="213" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a92598a33ebf9c9c6ee36109b9eac0a7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* sj_string_get_text</definition>
+        <argsstring>(SJString *string)</argsstring>
+        <name>sj_string_get_text</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>get the text back from the string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to get </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or the character array containing the string text </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="81" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1acb68e4dd658ed579266be01ca6e2cfc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_as_integer</definition>
+        <argsstring>(SJString *string, int *output)</argsstring>
+        <name>sj_string_as_integer</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>get the integer value if the string is a numer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use as an integer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] where to store the integer value. This is untouched if the string was not an integer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the string was not an integer or 1 if it was </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="89" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="252" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a2e0ed36958f2d1c5ef648d777f584a30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_as_float</definition>
+        <argsstring>(SJString *string, float *output)</argsstring>
+        <name>sj_string_as_float</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>get the float value if the string is a numer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use as a float </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] where to store the float value. This is untouched if the string was not a float </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the string was not an float or 1 if it was </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="97" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="269" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dd1/simple__json__string_8h_1a772abb082e3d8763757881e15d537000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_as_bool</definition>
+        <argsstring>(SJString *string, short int *output)</argsstring>
+        <name>sj_string_as_bool</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>short int *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>get the bool value if the string is a bool </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use as a bool </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] where to store the boolean value. This is untouched if the string was not a bool </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the string was not an bool or 1 if it was </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="105" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="286" bodyend="307"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SIMPLE_JSON_STRING_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SIMPLE_JSON_STRING_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="d4/d1f/structSJString" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10" refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>;<sp/></highlight></codeline>
+<codeline lineno="11" refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/dd1/simple__json__string_8h_1a5507567114ed0256e77d45c558b6d7cb" kindref="member">sj_string_new</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/dd1/simple__json__string_8h_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/dd1/simple__json__string_8h_1acb792583fae4d8f63d8571fc3f26c7c3" kindref="member">sj_string_new_integer</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/dd1/simple__json__string_8h_1a61eed10e8492e1c2581d570e7bb6a526" kindref="member">sj_string_new_float</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/dd1/simple__json__string_8h_1a97c69e427be23f8aaa436b0ee0dd41e4" kindref="member">sj_string_new_bool</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1a353b46786c4eab028ec911ed8cafed2d" kindref="member">sj_string_free</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1a7b567767503b42cee4fab510889c6d10" kindref="member">sj_string_cmp</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1af5785dd7f372915bb596702f0d7c1908" kindref="member">sj_string_set</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1a32986f36aea43504fe174a784df28f8a" kindref="member">sj_string_set_limit</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s,</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1a98eb51563c6501a48e8385ac7638c244" kindref="member">sj_string_concat</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*string1,<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*string2);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1ad594e541b3295d09556a22184c8be97d" kindref="member">sj_string_append</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d4/dd1/simple__json__string_8h_1a92598a33ebf9c9c6ee36109b9eac0a7a" kindref="member">sj_string_get_text</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1acb68e4dd658ed579266be01ca6e2cfc4" kindref="member">sj_string_as_integer</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*output);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1a2e0ed36958f2d1c5ef648d777f584a30" kindref="member">sj_string_as_float</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/dd1/simple__json__string_8h_1a772abb082e3d8763757881e15d537000" kindref="member">sj_string_as_bool</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*output);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h"/>
+  </compounddef>
+</doxygen>

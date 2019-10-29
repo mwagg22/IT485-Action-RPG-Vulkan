@@ -1,0 +1,952 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d9/dc8/simple__json__string_8c" kind="file" language="C++">
+    <compoundname>simple_json_string.c</compoundname>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="d1/d15/simple__json_8h" local="yes">simple_json.h</includes>
+    <includes refid="d4/dd1/simple__json__string_8h" local="yes">simple_json_string.h</includes>
+    <includes refid="d6/d6f/simple__json__error_8h" local="yes">simple_json_error.h</includes>
+    <incdepgraph>
+      <node id="306">
+        <label>simple_json_array.h</label>
+        <link refid="d0/d5f/simple__json__array_8h"/>
+        <childnode refid="307" relation="include">
+        </childnode>
+        <childnode refid="305" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+      </node>
+      <node id="308">
+        <label>simple_json_string.h</label>
+        <link refid="d4/dd1/simple__json__string_8h"/>
+      </node>
+      <node id="302">
+        <label>stdlib.h</label>
+      </node>
+      <node id="307">
+        <label>simple_json_value.h</label>
+        <link refid="de/d40/simple__json__value_8h"/>
+        <childnode refid="305" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+      </node>
+      <node id="301">
+        <label>string.h</label>
+      </node>
+      <node id="310">
+        <label>simple_json_error.h</label>
+        <link refid="d6/d6f/simple__json__error_8h"/>
+      </node>
+      <node id="305">
+        <label>simple_json_list.h</label>
+        <link refid="d1/d2e/simple__json__list_8h"/>
+      </node>
+      <node id="309">
+        <label>simple_json_object.h</label>
+        <link refid="dd/d32/simple__json__object_8h"/>
+        <childnode refid="307" relation="include">
+        </childnode>
+      </node>
+      <node id="303">
+        <label>stdio.h</label>
+      </node>
+      <node id="304">
+        <label>simple_json.h</label>
+        <link refid="d1/d15/simple__json_8h"/>
+        <childnode refid="305" relation="include">
+        </childnode>
+        <childnode refid="306" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+        <childnode refid="309" relation="include">
+        </childnode>
+        <childnode refid="310" relation="include">
+        </childnode>
+      </node>
+      <node id="300">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_string.c</label>
+        <link refid="simple_json_string.c"/>
+        <childnode refid="301" relation="include">
+        </childnode>
+        <childnode refid="302" relation="include">
+        </childnode>
+        <childnode refid="303" relation="include">
+        </childnode>
+        <childnode refid="304" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+        <childnode refid="310" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a5507567114ed0256e77d45c558b6d7cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new</definition>
+        <argsstring>()</argsstring>
+        <name>sj_string_new</name>
+        <briefdescription>
+<para>make a new empty string </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>NULL on error or a new string that must be freed with sj_string_free </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="8" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="8" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_text</definition>
+        <argsstring>(char *s)</argsstring>
+        <name>sj_string_new_text</name>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>make a new string with the characters from array s </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to populate the string with </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or a new string that must be freed with sj_string_free </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="26" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="26" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1acb792583fae4d8f63d8571fc3f26c7c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_integer</definition>
+        <argsstring>(int i)</argsstring>
+        <name>sj_string_new_integer</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="50" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="50" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a8fc2ef9373bab10e48cc9bb482532823" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_float</definition>
+        <argsstring>(float f)</argsstring>
+        <name>sj_string_new_float</name>
+        <param>
+          <type>float</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="57" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a97c69e427be23f8aaa436b0ee0dd41e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_new_bool</definition>
+        <argsstring>(int i)</argsstring>
+        <name>sj_string_new_bool</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="64" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="64" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a353b46786c4eab028ec911ed8cafed2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_free</definition>
+        <argsstring>(SJString *string)</argsstring>
+        <name>sj_string_free</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>free an <ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to free </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="70" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="70" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a7b567767503b42cee4fab510889c6d10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_cmp</definition>
+        <argsstring>(SJString *string, char *s)</argsstring>
+        <name>sj_string_cmp</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>performs a strcmp on the string with the provided character array </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to compare with </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>&lt;0 id string has a lower value than s, &gt;0 if s has a lower value than string, 0 if they are equivalant </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="80" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="80" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1af5785dd7f372915bb596702f0d7c1908" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_set</definition>
+        <argsstring>(SJString *string, char *s)</argsstring>
+        <name>sj_string_set</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>set the value of string to s </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to change </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to change it to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="95" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="95" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a83d5367b844a08fc03ad69ef22c9114d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_set_limit</definition>
+        <argsstring>(SJString *string, char *s, unsigned long l)</argsstring>
+        <name>sj_string_set_limit</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>length</declname>
+          <defname>l</defname>
+        </param>
+        <briefdescription>
+<para>set the value of string to s but only length of s </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to change </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the character array to change it to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the limit on characters to copy from s </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="123" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="123" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1af2cdb17da5a9e1f666af79a3e3a01201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_value_free</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_string_value_free</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="150" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="150" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1afa8f9113feeaaf8787975d50b0b8e998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* sj_string_value_get_string</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_string_value_get_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="157" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="157" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a5e215e58a920cb76850b314d679f6371" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_string_copy</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_string_copy</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="163" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="163" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1aac7f9dff7a04bf6a7a84dddcd60088ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_string_to_value</definition>
+        <argsstring>(SJString *string)</argsstring>
+        <name>sj_string_to_value</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>make a jason value object out of a string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to convert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>the original string is put into the SJson object and is no longer owned by you do not free it! </para></simplesect>
+<simplesect kind="return"><para>NULL on error or the newly allocated and set SJson object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="170" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="170" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a92598a33ebf9c9c6ee36109b9eac0a7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* sj_string_get_text</definition>
+        <argsstring>(SJString *string)</argsstring>
+        <name>sj_string_get_text</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>get the text back from the string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to get </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or the character array containing the string text </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="184" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a98eb51563c6501a48e8385ac7638c244" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_concat</definition>
+        <argsstring>(SJString *string1, SJString *string2)</argsstring>
+        <name>sj_string_concat</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string1</declname>
+        </param>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string2</declname>
+        </param>
+        <briefdescription>
+<para>append the contents of string2 to string1 </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>this string will be modified by this operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>this string will NOT be modified by this operation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="190" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="190" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1ad594e541b3295d09556a22184c8be97d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_string_append</definition>
+        <argsstring>(SJString *string, char *buffer)</argsstring>
+        <name>sj_string_append</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+<para>append the contents of buffer to the string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to be added to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a NULL terminated character buffer. This will not be modified </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="213" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="213" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a399e36877442aa864de7732de1aec2c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_string_to_json_string</definition>
+        <argsstring>(SJson *string)</argsstring>
+        <name>sj_string_to_json_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>get the contents of the string back formatted and escaped for json </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json string to conver </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error or the converted string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="236" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="236" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1acb68e4dd658ed579266be01ca6e2cfc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_as_integer</definition>
+        <argsstring>(SJString *string, int *output)</argsstring>
+        <name>sj_string_as_integer</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>get the integer value if the string is a numer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use as an integer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] where to store the integer value. This is untouched if the string was not an integer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the string was not an integer or 1 if it was </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="252" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="252" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a2e0ed36958f2d1c5ef648d777f584a30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_as_float</definition>
+        <argsstring>(SJString *string, float *output)</argsstring>
+        <name>sj_string_as_float</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>get the float value if the string is a numer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use as a float </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] where to store the float value. This is untouched if the string was not a float </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the string was not an float or 1 if it was </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="269" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="269" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/dc8/simple__json__string_8c_1a772abb082e3d8763757881e15d537000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_string_as_bool</definition>
+        <argsstring>(SJString *string, short int *output)</argsstring>
+        <name>sj_string_as_bool</name>
+        <param>
+          <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>short int *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>get the bool value if the string is a bool </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use as a bool </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[optional] where to store the boolean value. This is untouched if the string was not a bool </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if the string was not an bool or 1 if it was </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c" line="286" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_string.c" bodystart="286" bodyend="307"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d15/simple__json_8h" kindref="compound">simple_json.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/dd1/simple__json__string_8h" kindref="compound">simple_json_string.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d6f/simple__json__error_8h" kindref="compound">simple_json_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="d4/dd1/simple__json__string_8h_1a5507567114ed0256e77d45c558b6d7cb" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a5507567114ed0256e77d45c558b6d7cb" kindref="member">sj_string_new</ref>()</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>=<sp/>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref>));</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>a<sp/>string&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref>));</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="d4/dd1/simple__json__string_8h_1a19fb85f2c3fecae2deb8978d8aba4724" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_new_text:<sp/>no<sp/>string<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a5507567114ed0256e77d45c558b6d7cb" kindref="member">sj_string_new</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>=<sp/><ref refid="d9/dc8/simple__json__string_8c_1a5507567114ed0256e77d45c558b6d7cb" kindref="member">sj_string_new</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>l<sp/>=<sp/>strlen(s)+1;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;text<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*l);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1a353b46786c4eab028ec911ed8cafed2d" kindref="member">sj_string_free</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>string!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>strncpy(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,s,l);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;size<sp/>=<sp/>l;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="d4/dd1/simple__json__string_8h_1acb792583fae4d8f63d8571fc3f26c7c3" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1acb792583fae4d8f63d8571fc3f26c7c3" kindref="member">sj_string_new_integer</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[128];</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(buffer,</highlight><highlight class="stringliteral">&quot;%i&quot;</highlight><highlight class="normal">,i);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(buffer);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="d4/dd1/simple__json__string_8h_1a61eed10e8492e1c2581d570e7bb6a526" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a8fc2ef9373bab10e48cc9bb482532823" kindref="member">sj_string_new_float</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>f)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[128];</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(buffer,</highlight><highlight class="stringliteral">&quot;%f&quot;</highlight><highlight class="normal">,f);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(buffer);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="d4/dd1/simple__json__string_8h_1a97c69e427be23f8aaa436b0ee0dd41e4" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a97c69e427be23f8aaa436b0ee0dd41e4" kindref="member">sj_string_new_bool</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="d4/dd1/simple__json__string_8h_1a353b46786c4eab028ec911ed8cafed2d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a353b46786c4eab028ec911ed8cafed2d" kindref="member">sj_string_free</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref><sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>free(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="d4/dd1/simple__json__string_8h_1a7b567767503b42cee4fab510889c6d10" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a7b567767503b42cee4fab510889c6d10" kindref="member">sj_string_cmp</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_cmp:<sp/>no<sp/>string<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_cmp:<sp/>no<sp/>character<sp/>array<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>strncmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,s,string-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="d4/dd1/simple__json__string_8h_1af5785dd7f372915bb596702f0d7c1908" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1af5785dd7f372915bb596702f0d7c1908" kindref="member">sj_string_set</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_set:<sp/>no<sp/>string<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_set:<sp/>no<sp/>character<sp/>array<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>l<sp/>=<sp/>strlen(s);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l<sp/>&gt;=<sp/>string-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref>)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)free(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;text<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*l);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_set:<sp/>failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>resized<sp/>string&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;size<sp/>=<sp/>l;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>strncpy(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,s,string-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="d4/dd1/simple__json__string_8h_1a32986f36aea43504fe174a784df28f8a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a83d5367b844a08fc03ad69ef22c9114d" kindref="member">sj_string_set_limit</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s,</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>l)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_set:<sp/>no<sp/>string<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_set:<sp/>no<sp/>character<sp/>array<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l<sp/>&gt;=<sp/>string-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref>)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)free(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;text<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*l);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_set:<sp/>failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>resized<sp/>string&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;size<sp/>=<sp/>l;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>strncpy(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,s,l);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;text[l]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="d9/dc8/simple__json__string_8c_1af2cdb17da5a9e1f666af79a3e3a01201" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1af2cdb17da5a9e1f666af79a3e3a01201" kindref="member">sj_string_value_free</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1a353b46786c4eab028ec911ed8cafed2d" kindref="member">sj_string_free</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>free(json);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="d9/dc8/simple__json__string_8c_1afa8f9113feeaaf8787975d50b0b8e998" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1afa8f9113feeaaf8787975d50b0b8e998" kindref="member">sj_string_value_get_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="d9/dc8/simple__json__string_8c_1a5e215e58a920cb76850b314d679f6371" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a5e215e58a920cb76850b314d679f6371" kindref="member">sj_string_copy</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="df/d03/simple__json_8c_1af9dd6baff6bddfd106108b2351790690" kindref="member">sj_new_str</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="de/d40/simple__json__value_8h_1aac7f9dff7a04bf6a7a84dddcd60088ec" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1aac7f9dff7a04bf6a7a84dddcd60088ec" kindref="member">sj_string_to_value</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>json<sp/>=<sp/><ref refid="df/d03/simple__json_8c_1a17b72c84ece910c9365592ac297fa52b" kindref="member">sj_new</ref>();</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref><sp/>=<sp/><ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref><sp/>=<sp/><ref refid="d9/dc8/simple__json__string_8c_1af2cdb17da5a9e1f666af79a3e3a01201" kindref="member">sj_string_value_free</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref><sp/>=<sp/><ref refid="d9/dc8/simple__json__string_8c_1a399e36877442aa864de7732de1aec2c4" kindref="member">sj_string_to_json_string</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>json-&gt;<ref refid="d9/dca/structSJson__S_1a3910fed04a197e779815cad2b0535f62" kindref="member">copy</ref><sp/>=<sp/><ref refid="d9/dc8/simple__json__string_8c_1a5e215e58a920cb76850b314d679f6371" kindref="member">sj_string_copy</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="d4/dd1/simple__json__string_8h_1a92598a33ebf9c9c6ee36109b9eac0a7a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a92598a33ebf9c9c6ee36109b9eac0a7a" kindref="member">sj_string_get_text</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;text;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="d4/dd1/simple__json__string_8h_1a98eb51563c6501a48e8385ac7638c244" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a98eb51563c6501a48e8385ac7638c244" kindref="member">sj_string_concat</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*string1,<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*string2)</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*newtext;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!string1)<sp/>||<sp/>(!string2))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight><highlight class="comment">//<sp/>no<sp/>op</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/>string1-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref><sp/>+<sp/>string2-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>0)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>newtext=(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*size);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!newtext)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_concat:failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>new<sp/>string\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(newtext,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*size);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(newtext,size,</highlight><highlight class="stringliteral">&quot;%s%s&quot;</highlight><highlight class="normal">,string1-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,string2-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string1-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(string1-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>string1-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref><sp/>=<sp/>newtext;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>string1-&gt;<ref refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" kindref="member">size</ref><sp/>=<sp/>size;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="d4/dd1/simple__json__string_8h_1ad594e541b3295d09556a22184c8be97d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1ad594e541b3295d09556a22184c8be97d" kindref="member">sj_string_append</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*newtext;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)<sp/>||<sp/>(!buffer))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight><highlight class="comment">//<sp/>no<sp/>op</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;size<sp/>+<sp/>strlen(buffer);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>0)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>newtext=(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*size);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!newtext)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_append:failed<sp/>to<sp/>allocate<sp/>space<sp/>for<sp/>new<sp/>string\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(newtext,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)*size);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(newtext,size,</highlight><highlight class="stringliteral">&quot;%s%s&quot;</highlight><highlight class="normal">,string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,buffer);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;text<sp/>=<sp/>newtext;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">-&gt;size<sp/>=<sp/>size;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="de/d40/simple__json__value_8h_1a399e36877442aa864de7732de1aec2c4" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dc8/simple__json__string_8c_1a399e36877442aa864de7732de1aec2c4" kindref="member">sj_string_to_json_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*json;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_string_to_json_string:<sp/>input<sp/>string<sp/>not<sp/>a<sp/>string<sp/>type&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>json<sp/>=<sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="stringliteral">&quot;\&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1a98eb51563c6501a48e8385ac7638c244" kindref="member">sj_string_concat</ref>(json,string-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1ad594e541b3295d09556a22184c8be97d" kindref="member">sj_string_append</ref>(json,</highlight><highlight class="stringliteral">&quot;\&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>json;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="d4/dd1/simple__json__string_8h_1acb68e4dd658ed579266be01ca6e2cfc4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1acb68e4dd658ed579266be01ca6e2cfc4" kindref="member">sj_string_as_integer</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*output)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/>atoi(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!value)</highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>zero,<sp/>make<sp/>sure<sp/>the<sp/>string<sp/>itself<sp/>is<sp/>not<sp/>just<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>[0]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output)</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*output<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="d4/dd1/simple__json__string_8h_1a2e0ed36958f2d1c5ef648d777f584a30" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a2e0ed36958f2d1c5ef648d777f584a30" kindref="member">sj_string_as_float</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output)</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/>atoi(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/>0.0)</highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>zero,<sp/>make<sp/>sure<sp/>the<sp/>string<sp/>itself<sp/>is<sp/>not<sp/>just<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>[0]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*output<sp/>=<sp/>(float)value;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="d4/dd1/simple__json__string_8h_1a772abb082e3d8763757881e15d537000" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/dc8/simple__json__string_8c_1a772abb082e3d8763757881e15d537000" kindref="member">sj_string_as_bool</ref>(<ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*output)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal">)==0)<sp/>||</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;TRUE&quot;</highlight><highlight class="normal">)==0)<sp/>||</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;True&quot;</highlight><highlight class="normal">)==0)<sp/>||</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;1\0&quot;</highlight><highlight class="normal">)==0))</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output)*output<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">)==0)<sp/>||</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;FALSE&quot;</highlight><highlight class="normal">)==0)<sp/>||</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;False&quot;</highlight><highlight class="normal">)==0)<sp/>||</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strcmp(string-&gt;<ref refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" kindref="member">text</ref>,</highlight><highlight class="stringliteral">&quot;0\0&quot;</highlight><highlight class="normal">)==0))</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(output)*output<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="comment">/*eol@eof*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/src/simple_json_string.c"/>
+  </compounddef>
+</doxygen>

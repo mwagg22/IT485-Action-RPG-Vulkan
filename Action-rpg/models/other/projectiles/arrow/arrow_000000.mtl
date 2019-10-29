@@ -1,0 +1,15 @@
+# Blender MTL File: 'projectiles.blend'
+# Material Count: 1
+
+newmtl arrow_mat
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.470588 0.470588 0.470588
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd arrow_mat.png
+map_Ka arrow_mat.png
+map_d arrow_mat.png

@@ -1,0 +1,444 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d4/db4/simple__json__array_8c" kind="file" language="C++">
+    <compoundname>simple_json_array.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="d1/d15/simple__json_8h" local="yes">simple_json.h</includes>
+    <includes refid="d1/d2e/simple__json__list_8h" local="yes">simple_json_list.h</includes>
+    <includes refid="d0/d5f/simple__json__array_8h" local="yes">simple_json_array.h</includes>
+    <includes refid="d6/d6f/simple__json__error_8h" local="yes">simple_json_error.h</includes>
+    <incdepgraph>
+      <node id="259">
+        <label>simple_json_array.h</label>
+        <link refid="d0/d5f/simple__json__array_8h"/>
+        <childnode refid="260" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="261" relation="include">
+        </childnode>
+      </node>
+      <node id="261">
+        <label>simple_json_string.h</label>
+        <link refid="d4/dd1/simple__json__string_8h"/>
+      </node>
+      <node id="256">
+        <label>stdlib.h</label>
+      </node>
+      <node id="260">
+        <label>simple_json_value.h</label>
+        <link refid="de/d40/simple__json__value_8h"/>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="261" relation="include">
+        </childnode>
+      </node>
+      <node id="253">
+        <label>/home/djkehoe/git/simple_json/src/simple_json_array.c</label>
+        <link refid="simple_json_array.c"/>
+        <childnode refid="254" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="263" relation="include">
+        </childnode>
+      </node>
+      <node id="255">
+        <label>string.h</label>
+      </node>
+      <node id="263">
+        <label>simple_json_error.h</label>
+        <link refid="d6/d6f/simple__json__error_8h"/>
+      </node>
+      <node id="258">
+        <label>simple_json_list.h</label>
+        <link refid="d1/d2e/simple__json__list_8h"/>
+      </node>
+      <node id="262">
+        <label>simple_json_object.h</label>
+        <link refid="dd/d32/simple__json__object_8h"/>
+        <childnode refid="260" relation="include">
+        </childnode>
+      </node>
+      <node id="254">
+        <label>stdio.h</label>
+      </node>
+      <node id="257">
+        <label>simple_json.h</label>
+        <link refid="d1/d15/simple__json_8h"/>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="261" relation="include">
+        </childnode>
+        <childnode refid="262" relation="include">
+        </childnode>
+        <childnode refid="263" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_array_check</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_array_check</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="9" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="9" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1acb688f784a82ed0c3bbc2a0c12f080d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_array_copy</definition>
+        <argsstring>(SJson *json)</argsstring>
+        <name>sj_array_copy</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="20" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="20" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1a260c8407db429ec48b0fcc342fd35416" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_array_new</definition>
+        <argsstring>()</argsstring>
+        <name>sj_array_new</name>
+        <briefdescription>
+<para>allocate a new empty json array </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>NULL on memory allocation error, an empty SJson array otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="38" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="38" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1a97f6a40db68a7746dfda2c292f01f500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_array_free</definition>
+        <argsstring>(SJson *array)</argsstring>
+        <name>sj_array_free</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="51" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="51" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1ad11a3339ca2b1882b5589149d594e007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sj_array_get_count</definition>
+        <argsstring>(SJson *array)</argsstring>
+        <name>sj_array_get_count</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+<para>get the number of elements in the json array </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json array </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 if there is an error, the count otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="66" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1a629448a3bf8473e0b3b5f698245524d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sj_array_append</definition>
+        <argsstring>(SJson *array, SJson *value)</argsstring>
+        <name>sj_array_append</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>append to a JSON array a new value </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the JSON array to append to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to add to the string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>: this is a no-op if array is not an actual JSON array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="72" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="72" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1a20ad06b79ca3a69a5384a188d461eec7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+        <definition>SJson* sj_array_get_nth</definition>
+        <argsstring>(SJson *array, int n)</argsstring>
+        <name>sj_array_get_nth</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>retrieve the nth element in the json array </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array to search through </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the element to get </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error (check <ref refid="d8/d02/simple__json__error_8c_1a5d74fc3dd2997bd985966f6c31e241de" kindref="member">sj_get_error()</ref>) or the SJson value otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="79" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="79" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1aa859c399a33ade6938aff698dd7f3f8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_array_get_nth_as_string</definition>
+        <argsstring>(SJson *array, int n)</argsstring>
+        <name>sj_array_get_nth_as_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>retrieve the nth element in the json array assumed to be a string </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array to search through </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the element to get </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL on error (check <ref refid="d8/d02/simple__json__error_8c_1a5d74fc3dd2997bd985966f6c31e241de" kindref="member">sj_get_error()</ref>) or the <ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> value otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="85" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="85" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/db4/simple__json__array_8c_1a4817507a839db8dd1524a3b6e15e4a5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* sj_array_to_json_string</definition>
+        <argsstring>(SJson *array)</argsstring>
+        <name>sj_array_to_json_string</name>
+        <param>
+          <type><ref refid="de/d40/simple__json__value_8h_1a3aa063084e242f19976eb9578480d4e2" kindref="member">SJson</ref> *</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+<para>get the contents of the array as a formatted json string for output </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the json array to convert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a formatted json character array &quot;[*,*,....]&quot; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c" line="95" column="1" bodyfile="/home/djkehoe/git/simple_json/src/simple_json_array.c" bodystart="95" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d15/simple__json_8h" kindref="compound">simple_json.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d2e/simple__json__list_8h" kindref="compound">simple_json_list.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d0/d5f/simple__json__array_8h" kindref="compound">simple_json_array.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d6f/simple__json__error_8h" kindref="compound">simple_json_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(json-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84bae00c76456b1898f61de8309ae6ccd8d4" kindref="member">SJVT_Array</ref>)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d02/simple__json__error_8c_1ae0819d6f58f423e5d26ea66df15de81c" kindref="member">sj_set_error</ref>(</highlight><highlight class="stringliteral">&quot;sj_array:<sp/>expected<sp/>type<sp/>ARRAY&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="d4/db4/simple__json__array_8c_1acb688f784a82ed0c3bbc2a0c12f080d3" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d4/db4/simple__json__array_8c_1acb688f784a82ed0c3bbc2a0c12f080d3" kindref="member">sj_array_copy</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*json)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*item;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,count;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!json)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>array<sp/>=<sp/><ref refid="d4/db4/simple__json__array_8c_1a260c8407db429ec48b0fcc342fd35416" kindref="member">sj_array_new</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!array)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>count<sp/>=<sp/><ref refid="d4/dc8/simple__json__list_8c_1a20c3361477b5a57bd46579d961277c23" kindref="member">sj_list_get_count</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>count;<sp/>i++)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item<sp/>=<sp/>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*)<ref refid="d4/dc8/simple__json__list_8c_1a38cb6cd4286019d518ab87691e2693bc" kindref="member">sj_list_get_nth</ref>(json-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,i);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!item)</highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/db4/simple__json__array_8c_1a629448a3bf8473e0b3b5f698245524d5" kindref="member">sj_array_append</ref>(array,<ref refid="df/d03/simple__json_8c_1a0246b1c8e7295c1da2ce775389ee30e3" kindref="member">sj_copy</ref>(item));</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="d0/d5f/simple__json__array_8h_1a260c8407db429ec48b0fcc342fd35416" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d4/db4/simple__json__array_8c_1a260c8407db429ec48b0fcc342fd35416" kindref="member">sj_array_new</ref>()</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>array<sp/>=<sp/><ref refid="df/d03/simple__json_8c_1a17b72c84ece910c9365592ac297fa52b" kindref="member">sj_new</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!array)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>array-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84bae00c76456b1898f61de8309ae6ccd8d4" kindref="member">SJVT_Array</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>array-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref><sp/>=<sp/><ref refid="d4/db4/simple__json__array_8c_1a97f6a40db68a7746dfda2c292f01f500" kindref="member">sj_array_free</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>array-&gt;<ref refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" kindref="member">get_string</ref><sp/>=<sp/><ref refid="d4/db4/simple__json__array_8c_1a4817507a839db8dd1524a3b6e15e4a5c" kindref="member">sj_array_to_json_string</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>array-&gt;<ref refid="d9/dca/structSJson__S_1a3910fed04a197e779815cad2b0535f62" kindref="member">copy</ref><sp/>=<sp/><ref refid="d4/db4/simple__json__array_8c_1acb688f784a82ed0c3bbc2a0c12f080d3" kindref="member">sj_array_copy</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref><sp/>=<sp/><ref refid="d4/dc8/simple__json__list_8c_1a78de0f56ef6afe7c22f0ebd4933607de" kindref="member">sj_list_new</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="d0/d5f/simple__json__array_8h_1a97f6a40db68a7746dfda2c292f01f500" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/db4/simple__json__array_8c_1a97f6a40db68a7746dfda2c292f01f500" kindref="member">sj_array_free</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,count;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*item;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(array))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>count<sp/>=<sp/><ref refid="d4/dc8/simple__json__list_8c_1a20c3361477b5a57bd46579d961277c23" kindref="member">sj_list_get_count</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>count;<sp/>i++)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item<sp/>=<sp/>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*)<ref refid="d4/dc8/simple__json__list_8c_1a38cb6cd4286019d518ab87691e2693bc" kindref="member">sj_list_get_nth</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,i);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!item)</highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref>)item-&gt;<ref refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" kindref="member">json_free</ref>(item);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/dc8/simple__json__list_8c_1a4498df009cb743e4161f4b5a3fe3e7d8" kindref="member">sj_list_delete</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="d1/d15/simple__json_8h_1ad11a3339ca2b1882b5589149d594e007" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/db4/simple__json__array_8c_1ad11a3339ca2b1882b5589149d594e007" kindref="member">sj_array_get_count</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(array))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d4/dc8/simple__json__list_8c_1a20c3361477b5a57bd46579d961277c23" kindref="member">sj_list_get_count</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="d0/d5f/simple__json__array_8h_1a629448a3bf8473e0b3b5f698245524d5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/db4/simple__json__array_8c_1a629448a3bf8473e0b3b5f698245524d5" kindref="member">sj_array_append</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*value)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(array))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!value)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/dc8/simple__json__list_8c_1a45a595f33a0cf30ff2e205a3571c7507" kindref="member">sj_list_append</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,value);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="d0/d5f/simple__json__array_8h_1a20ad06b79ca3a69a5384a188d461eec7" refkind="member"><highlight class="normal"><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d4/db4/simple__json__array_8c_1a20ad06b79ca3a69a5384a188d461eec7" kindref="member">sj_array_get_nth</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(array))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*)<ref refid="d4/dc8/simple__json__list_8c_1a38cb6cd4286019d518ab87691e2693bc" kindref="member">sj_list_get_nth</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,n);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="d0/d5f/simple__json__array_8h_1aa859c399a33ade6938aff698dd7f3f8d" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/db4/simple__json__array_8c_1aa859c399a33ade6938aff698dd7f3f8d" kindref="member">sj_array_get_nth_as_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*item;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(array))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>item<sp/>=<sp/>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*)<ref refid="d4/dc8/simple__json__list_8c_1a38cb6cd4286019d518ab87691e2693bc" kindref="member">sj_list_get_nth</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,n);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!item)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item-&gt;<ref refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" kindref="member">sjtype</ref><sp/>!=<sp/><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84baeae45031d36ea78eca76b491c49798ad" kindref="member">SJVT_String</ref>)</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>item-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="d0/d5f/simple__json__array_8h_1a4817507a839db8dd1524a3b6e15e4a5c" refkind="member"><highlight class="normal"><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d4/db4/simple__json__array_8c_1a4817507a839db8dd1524a3b6e15e4a5c" kindref="member">sj_array_to_json_string</ref>(<ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref><sp/>*<ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dca/structSJson__S" kindref="compound">SJson</ref><sp/>*value;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>count;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/db4/simple__json__array_8c_1a06bdae2789eec42cb68de2b3f500258d" kindref="member">sj_array_check</ref>(array))</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>=<sp/><ref refid="d9/dc8/simple__json__string_8c_1a19fb85f2c3fecae2deb8978d8aba4724" kindref="member">sj_string_new_text</ref>(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//for<sp/>each</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>count<sp/>=<sp/><ref refid="d4/dc8/simple__json__list_8c_1a20c3361477b5a57bd46579d961277c23" kindref="member">sj_list_get_count</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>count;<sp/>i++)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/><ref refid="d4/dc8/simple__json__list_8c_1a38cb6cd4286019d518ab87691e2693bc" kindref="member">sj_list_get_nth</ref>(array-&gt;<ref refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" kindref="member">v</ref>.<ref refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" kindref="member">array</ref>,i);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!value)</highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1a98eb51563c6501a48e8385ac7638c244" kindref="member">sj_string_concat</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<ref refid="df/d03/simple__json_8c_1ace951db871c87f7cc400d4b5201092e5" kindref="member">sj_value_to_json_string</ref>(value));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>+1<sp/>&lt;<sp/>count)<ref refid="d9/dc8/simple__json__string_8c_1ad594e541b3295d09556a22184c8be97d" kindref="member">sj_string_append</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/dc8/simple__json__string_8c_1ad594e541b3295d09556a22184c8be97d" kindref="member">sj_string_append</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;]&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">/*eol@eof*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/djkehoe/git/simple_json/src/simple_json_array.c"/>
+  </compounddef>
+</doxygen>

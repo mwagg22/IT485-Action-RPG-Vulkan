@@ -1,0 +1,6 @@
+[submodule "simple_json"]
+	path = simple_json
+	url = https://github.com/engineerOfLies/simple_json.git
+[submodule "simple_logger"]
+	path = simple_logger
+	url = https://github.com/engineerOfLies/simple_logger.git

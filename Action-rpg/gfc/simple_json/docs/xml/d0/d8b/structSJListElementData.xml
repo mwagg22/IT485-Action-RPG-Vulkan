@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d0/d8b/structSJListElementData" kind="struct" language="C++" prot="public">
+    <compoundname>SJListElementData</compoundname>
+    <includes refid="d1/d2e/simple__json__list_8h" local="no">simple_json_list.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d0/d8b/structSJListElementData_1ae48c7175a4477eb042b02b70c88485d1" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* SJListElementData::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pointer to the data being accessed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_list.h" line="9" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_list.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>simple datatype abstracting the data held. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_list.h" line="8" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_list.h" bodystart="7" bodyend="10"/>
+    <listofallmembers>
+      <member refid="d0/d8b/structSJListElementData_1ae48c7175a4477eb042b02b70c88485d1" prot="public" virt="non-virtual"><scope>SJListElementData</scope><name>data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

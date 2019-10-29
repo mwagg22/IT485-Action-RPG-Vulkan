@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d4/d1f/structSJString" kind="struct" language="C++" prot="public">
+    <compoundname>SJString</compoundname>
+    <includes refid="d4/dd1/simple__json__string_8h" local="no">simple_json_string.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* SJString::text</definition>
+        <argsstring></argsstring>
+        <name>text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pointer to the character data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="10" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_string.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SJString::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how much data base been allocated </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="11" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_string.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>a basic structure that keeps track of a string and its length Automatically grows to accomodate longer strings </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_string.h" line="9" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_string.h" bodystart="8" bodyend="12"/>
+    <listofallmembers>
+      <member refid="d4/d1f/structSJString_1aadeb1114b35655389566beaab06d43d5" prot="public" virt="non-virtual"><scope>SJString</scope><name>size</name></member>
+      <member refid="d4/d1f/structSJString_1a623eb7be189beccc29815162623ef0ca" prot="public" virt="non-virtual"><scope>SJString</scope><name>text</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

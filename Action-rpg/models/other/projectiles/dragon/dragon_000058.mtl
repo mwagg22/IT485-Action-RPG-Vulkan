@@ -1,0 +1,90 @@
+# Blender MTL File: 'arrow,blend.blend'
+# Material Count: 8
+
+newmtl body_01_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl eye_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl face_01_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl kami_01_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl kuchi_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl nami2_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl nami_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png
+
+newmtl tongue_ma
+Ns -1.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.550000
+d 1.000000
+illum 2
+map_Kd C:\Users\momo\Downloads\Mobile - Yu-Gi-Oh Duel Links - Water Dragon\Water Dragon\Textures\mmd_006481_tex2.png

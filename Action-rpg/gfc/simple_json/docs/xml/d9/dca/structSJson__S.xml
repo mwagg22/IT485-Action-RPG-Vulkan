@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="d9/dca/structSJson__S" kind="struct" language="C++" prot="public">
+    <compoundname>SJson_S</compoundname>
+    <includes refid="de/d40/simple__json__value_8h" local="no">simple_json_value.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d40/simple__json__value_8h_1a975dd883bf3002303e7ceda70d90d84b" kindref="member">SJValueTypes</ref></type>
+        <definition>SJValueTypes SJson_S::sjtype</definition>
+        <argsstring></argsstring>
+        <name>sjtype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>internal tracking of the type. DO NOT TOUCH </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="21" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d7e/structSJList" kindref="compound">SJList</ref> *</type>
+        <definition>SJList* SJson_S::array</definition>
+        <argsstring></argsstring>
+        <name>array</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>an array or values or an array of pairs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="24" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" prot="public" static="no" mutable="no">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *</type>
+        <definition>SJString* SJson_S::string</definition>
+        <argsstring></argsstring>
+        <name>string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the string if this is a string type </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="25" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" prot="public" static="no" mutable="no">
+        <type>union SJson_S::@0</type>
+        <definition>union SJson_S::@0 SJson_S::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>union of possible values </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="26" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" prot="public" static="no" mutable="no">
+        <type><ref refid="d4/d1f/structSJString" kindref="compound">SJString</ref> *(*</type>
+        <definition>SJString*(* SJson_S::get_string) (struct SJson_S *json)</definition>
+        <argsstring>)(struct SJson_S *json)</argsstring>
+        <name>get_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pointer to the function to convert this into json string </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="27" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* SJson_S::json_free) (struct SJson_S *json)</definition>
+        <argsstring>)(struct SJson_S *json)</argsstring>
+        <name>json_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pointer to the function to free this json </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="28" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d9/dca/structSJson__S_1a3910fed04a197e779815cad2b0535f62" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d9/dca/structSJson__S" kindref="compound">SJson_S</ref> *(*</type>
+        <definition>struct SJson_S*(* SJson_S::copy) (struct SJson_S *json)</definition>
+        <argsstring>)(struct SJson_S *json)</argsstring>
+        <name>copy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pointer to the function to copy this json </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="28" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>this is the abstract container structure for all json data This structure may be an object, array, string, null, boolean value, integer or float </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="35">
+        <label>SJList</label>
+        <link refid="d9/d7e/structSJList"/>
+        <childnode refid="36" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="36">
+        <label>SJListElementData</label>
+        <link refid="d0/d8b/structSJListElementData"/>
+      </node>
+      <node id="37">
+        <label>SJString</label>
+        <link refid="d4/d1f/structSJString"/>
+      </node>
+      <node id="34">
+        <label>SJson_S</label>
+        <link refid="d9/dca/structSJson__S"/>
+        <childnode refid="34" relation="usage">
+          <edgelabel>copy</edgelabel>
+        </childnode>
+        <childnode refid="35" relation="usage">
+          <edgelabel>array</edgelabel>
+        </childnode>
+        <childnode refid="37" relation="usage">
+          <edgelabel>get_string</edgelabel>
+          <edgelabel>string</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/djkehoe/git/simple_json/include/simple_json_value.h" line="20" column="1" bodyfile="/home/djkehoe/git/simple_json/include/simple_json_value.h" bodystart="19" bodyend="30"/>
+    <listofallmembers>
+      <member refid="d9/dca/structSJson__S_1aa8c595b7789550a64b08950b0ad88e1e" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>array</name></member>
+      <member refid="d9/dca/structSJson__S_1a3910fed04a197e779815cad2b0535f62" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>copy</name></member>
+      <member refid="d9/dca/structSJson__S_1afd320740fab795e7063e89157a23c511" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>get_string</name></member>
+      <member refid="d9/dca/structSJson__S_1a8bd24b6b85325a01b8bae6c5899583f2" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>json_free</name></member>
+      <member refid="d9/dca/structSJson__S_1ad68edc13b2a814f9b920498ba439b8ba" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>sjtype</name></member>
+      <member refid="d9/dca/structSJson__S_1ab50f7c395b214eb050ff59e3a9bbeb4a" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>string</name></member>
+      <member refid="d9/dca/structSJson__S_1a34c41be372d7bbe614b312cef2051b99" prot="public" virt="non-virtual"><scope>SJson_S</scope><name>v</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
