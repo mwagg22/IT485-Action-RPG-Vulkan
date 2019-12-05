@@ -58,14 +58,16 @@ Pipeline *gf3d_pipeline_graphics_load(VkDevice device,char *vertFile,char *fragF
  * @returns NULL on error (see logs) or a pointer to a pipeline
  */
 Pipeline *gf3d_pipeline_basic_model_create(VkDevice device,char *vertFile,char *fragFile,VkExtent2D extent,Uint32 descriptorCount);
-
+Pipeline *gf3d_pipeline_basic_ui_create(VkDevice device, char *vertFile, char *fragFile, VkExtent2D extent, Uint32 descriptorCount);
 /**
  * @brief get a descriptor set to be used for the pipeline.  Provide the swap chain rendering frame.
  * @param pipe the pipeline to get a descriptSet for
  * @param frame the swap chain rendering frame to get a descriptor set for.
  */
 VkDescriptorSet * gf3d_pipeline_get_descriptor_set(Pipeline *pipe, Uint32 frame);
-
+void gf3d_pipeline_ui_create_basic_model_descriptor_pool(Pipeline *pipe);
+void gf3d_pipeline_ui_create_basic_model_descriptor_set_layout(Pipeline *pipe);
+void gf3d_pipeline_ui_create_descriptor_sets(Pipeline *pipe);
 /**
  * @brief reset the descriptor Set cursor for the given swap chain frame
  * @param pipe the pipeline to reset

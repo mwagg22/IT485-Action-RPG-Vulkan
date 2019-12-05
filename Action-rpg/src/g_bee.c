@@ -7,6 +7,7 @@
 #include "g_bee.h"
 
 Entity *other;
+glob_model_pool *pool;
 Vector3D bboxmin, bboxmax;
 float framechange;
 void bee_think(Entity *self){
@@ -121,27 +122,27 @@ void bee_attack(Entity *self){
 void update_bee_model(Entity *self){
 	self->frame = 0;
 	if (self->state == ES_Idle){
-		self->model = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 42);
+		self->model = self->mods.idle;
 		//self->can_attack = true;
 		self->can_block = true;
 	}
 	if (self->state == ES_Running){
-		self->model = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 42);
+		self->model = self->mods.run;
 	}
 	if (self->state == ES_Blocking){
-		self->model = gf3d_model_load_animated("//enemy//bee//block//bee_block", "//enemy//bee", 0, 29);
+		self->model = self->mods.block;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Hit){
-		self->model = gf3d_model_load_animated("//enemy//bee//hit//bee_hit", "//enemy//bee", 0, 29);
+		self->model = self->mods.hit;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Attacking){
 		if (self->attacknum == 0){
 			//slog("attack1");
 			self->can_attack = false;
-		self->model = gf3d_model_load_animated("//enemy//bee//attack//bee_attack", "//enemy//bee", 0, 16);
-		create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "sword_s1", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			self->model = self->mods.attack1;
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		self->attacknum=0;
 		}
 	}
@@ -213,7 +214,7 @@ void bee_displacement(Entity *self, Vector3D disp){
 		//slog("up after x:%f y:%f z:%f frame:%f", self->up.x, self->up.y, self->up.z, framechange);
 	}
 }
-void init_bee_ent(Entity *self,int ctr,Entity *ents){
+void init_bee_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	set_position(self, self->EntMatx);
 	self->state = ES_Idle;
 	self->dr = Up;
@@ -236,10 +237,18 @@ void init_bee_ent(Entity *self,int ctr,Entity *ents){
 	self->rotated = 0.0f;
 	self->type = ES_Enemy;
 	self->in_action = false;
+	other = ents;
+	pool = pools;
+	self->mods.idle = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 42);
+
+	self->mods.run = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 42);
+
+	self->mods.hit = gf3d_model_load_animated("//enemy//bee//hit//bee_hit", "//enemy//bee", 0, 29);
+
+	self->mods.attack1 = gf3d_model_load_animated("//enemy//bee//attack//bee_attack", "//enemy//bee", 0, 16);
 	self->update_model(self);
 	//self->model->mesh[0]->minv.x = 3;
-	gf3d_set_boundbox(self, self->model->mesh[0]->minv,self->model->mesh[0]->maxv);
-	other = ents;
+	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
 }
 
 /*eol@eof*/

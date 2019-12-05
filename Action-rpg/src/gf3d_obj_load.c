@@ -167,7 +167,8 @@ void gf3d_obj_load_get_data_from_file(ObjData *obj, FILE* file)
   char buf[128];
   float x,y,z;
   int f[3][3];
-  Vector3D minv,maxv;
+  Vector3D minv=vector3d(0,0,0);
+  Vector3D  maxv = vector3d(0, 0, 0);
   if (file == NULL)
     return;
   

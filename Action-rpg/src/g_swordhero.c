@@ -4,10 +4,12 @@
 #include "simple_logger.h"
 #include "g_control.h"
 #include "g_entity.h"
+#include "g_floor.h"
 #include "g_swordhero.h"
 #include "gfc_vector.h"
 #include "gfc_matrix.h"
 Entity *other;
+glob_model_pool *pool;
 int attacknum=0;
 int specialnum = 0;
 Vector3D bboxmin, bboxmax;
@@ -193,29 +195,29 @@ void update_sword_model(Entity *self){
 	self->frame = 0;
 	if (self->state == ES_Idle){
 		 0;
-		self->model = gf3d_model_load_animated("//player//sword//sword_idle//sword_s1_idle", "sword_s1", 0, 29);
+		 self->model = self->mods.idle;//gf3d_model_load_animated("//player//sword//sword_idle//sword_s1_idle", "sword_s1", 0, 29);
 		self->can_attack = true;
 		self->can_block = true;
 	}
 	if (self->state == ES_Running){
 		 1;
-		self->model = gf3d_model_load_animated("//player//sword//sword_run//sword_s1_run", "sword_s1", 0, 29);
+		 self->model = self->mods.run;//gf3d_model_load_animated("//player//sword//sword_run//sword_s1_run", "sword_s1", 0, 29);
 	}
 	if (self->state == ES_Blocking){
 		 2;
-		self->model = gf3d_model_load_animated("//player//sword//sword_block//sword_block", "sword_s1", 0, 29);
+		 self->model = self->mods.block;// gf3d_model_load_animated("//player//sword//sword_block//sword_block", "sword_s1", 0, 29);
 		self->can_attack = false;
 	}
 	if (self->state == ES_Hit){
 		 3;
-		self->model = gf3d_model_load_animated("//player//sword//hit//sword_hit1", "sword_s1", 0, 30);
+		 self->model = self->mods.hit;//gf3d_model_load_animated("//player//sword//hit//sword_hit1", "sword_s1", 0, 30);
 		self->can_attack = false;
 	}
 	if (self->state == ES_Attacking){
 		if (self->attacknum == 0){
 			 4;
 			//slog("attack1");
-		self->model = gf3d_model_load_animated("//player//sword//sword_attack1//sword_s1_a1", "sword_s1", 0, 29);
+			 self->model = self->mods.attack1;//gf3d_model_load_animated("//player//sword//sword_attack1//sword_s1_a1", "sword_s1", 0, 29);
 		//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMax, self->up);
 		self->attacknum=1;
 		}
@@ -223,35 +225,35 @@ void update_sword_model(Entity *self){
 		else if(self->attacknum==1){
 			 5;
 			//slog("attack2");
-		self->model = gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
+			 self->model = self->mods.attack2;//gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
 		//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMax, self->up);
 		self->attacknum=2;
 		}
 		else if(self->attacknum==2){
 			 6;
 			//slog("attack3");
-		self->model = gf3d_model_load_animated("//player//sword//sword_attack3//sword_s1_a3", "sword_s1", 0, 29);
+			 self->model = self->mods.attack3;// gf3d_model_load_animated("//player//sword//sword_attack3//sword_s1_a3", "sword_s1", 0, 29);
 		//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMax, self->up);
 		self->attacknum = 0;
 		}
 		else if (self->attacknum == 3){
 			 7;
 			//slog("attack3");
-			self->model = gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
+			 self->model = self->mods.attack4;// gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
 			//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMax, self->up);
 			self->attacknum = 4;
 		}
 		else if (self->attacknum == 4){
 			 8;
 			//slog("attack3");
-			self->model = gf3d_model_load_animated("//player//sword//sword_u2//sword_u2", "sword_s1", 0, 29);
+			 self->model = self->mods.attack5;// gf3d_model_load_animated("//player//sword//sword_u2//sword_u2", "sword_s1", 0, 29);
 			//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMax, self->up);
 			self->attacknum = 5;
 		}
 		else if (self->attacknum == 5){
 			 9;
 			//slog("attack3");
-			self->model = gf3d_model_load_animated("//player//sword//sword_d1//sword_d1", "sword_s1", 0, 29);
+			 self->model = self->mods.attack6;//gf3d_model_load_animated("//player//sword//sword_d1//sword_d1", "sword_s1", 0, 29);
 			//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMax, self->up);
 			//self->attacknum = 5;
 		}
@@ -261,7 +263,7 @@ void update_sword_model(Entity *self){
 		if (self->specialnum == 0){
 			 10;
 			//slog("sp1");
-			self->model = gf3d_model_load_animated("//player//sword//sword_attack1//sword_s1_a1", "sword_s1", 0, 29);
+			 self->model = self->mods.special1;//gf3d_model_load_animated("//player//sword//sword_attack1//sword_s1_a1", "sword_s1", 0, 29);
 			//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 			//specialnum = 0;
 		}
@@ -269,14 +271,14 @@ void update_sword_model(Entity *self){
 		else if (self->specialnum == 1){
 			 11;
 			//slog("sp2");
-			self->model = gf3d_model_load_animated("//player//sword//s2//sp2", "stahn", 0, 80);
+			 self->model = self->mods.special2;// gf3d_model_load_animated("//player//sword//s2//sp2", "stahn", 0, 80);
 			//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 			//specialnum = 0;
 		}
 		else if (self->specialnum == 2){
 			 12;
 			//slog("sp3");
-			self->model = gf3d_model_load_animated("//player//sword//s3//sp1", "stahn", 0, 24);
+			 self->model = self->mods.special3;// gf3d_model_load_animated("//player//sword//s3//sp1", "stahn", 0, 24);
 			//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 			//specialnum = 0;
 		}
@@ -310,6 +312,7 @@ void sword_displacement(Entity *self, Vector3D disp){
 	}
 }
 void update_sword_ent(Entity *self){
+	self->EntMatx[3][2]=return_terrain_height(&other[6], -self->position.x, self->position.y);
 	if (self->attacknum>5)self->attacknum = 0;
 	set_position(self, self->EntMatx);
 	if (self->controling == 0){
@@ -318,22 +321,22 @@ void update_sword_ent(Entity *self){
 	self->frame = self->frame + 0.9;
 	if (self->state == ES_Attacking){
 		if (self->attacknum == 0 && round(self->frame)==13){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 		if (self->attacknum == 1 && round(self->frame) == 14){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 		if (self->attacknum == 2 && round(self->frame) == 14){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 		if (self->attacknum == 3 && round(self->frame) == 14){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 		if (self->attacknum == 4 && round(self->frame) == 17){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 		if (self->attacknum == 5 && round(self->frame) == 17){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 	}
 	if(self->frame>=20&&self->state==ES_Attacking){
@@ -351,34 +354,33 @@ void update_sword_ent(Entity *self){
 	}
 	 if (self->specialnum == 1){
 		 if (round(self->frame) == 15){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 28){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 34){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 40){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 46){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 51){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 57){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 		 if (round(self->frame) == 66){
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 	 }
 	 if (self->specialnum == 2){
 		 if (round(self->frame) == 15){
-			 create_projectile_e(self, NULL, "//other//projectiles//flames//flames", "flames", 0, 7, 5.0, 20, 0, 1, vector3d(0, 0, 0));
-			 create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "shadow", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			 create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		 }
 	 }
 	}
@@ -444,7 +446,7 @@ void sword_block(Entity *self){
 
 
 }
-void init_sword_ent(Entity *self, int ctr, Entity *ents){
+void init_sword_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	self->state = ES_Idle;
 	self->dr = Up;
 	self->attack=sword_attack;
@@ -467,11 +469,38 @@ void init_sword_ent(Entity *self, int ctr, Entity *ents){
 	self->rotated = 0.0f;
 	self->specialnum = 0;
 	self->type = ES_Player;
-	self->update_model(self);
-	self->model->mesh[0]->minv.x += 3;
-	gf3d_set_boundbox(self, self->model->mesh[0]->minv,self->model->mesh[0]->maxv);
+
 	gf3d_set_hitbox(self, vector3d(-5, -5, 0), vector3d(5, 5, 10));
 	other = ents;
+	pool = pools;
+	self->mods.idle = gf3d_model_load_animated("//player//sword//sword_idle//sword_s1_idle", "sword_s1", 0, 29);
+
+	self->mods.run = gf3d_model_load_animated("//player//sword//sword_run//sword_s1_run", "sword_s1", 0, 29);
+
+	self->mods.block = gf3d_model_load_animated("//player//sword//sword_block//sword_block", "sword_s1", 0, 29);
+
+	self->mods.hit = gf3d_model_load_animated("//player//sword//hit//sword_hit1", "sword_s1", 0, 30);
+
+	self->mods.attack1 = gf3d_model_load_animated("//player//sword//sword_attack1//sword_s1_a1", "sword_s1", 0, 29);
+
+	self->mods.attack2 = gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
+
+	self->mods.attack3 = gf3d_model_load_animated("//player//sword//sword_attack3//sword_s1_a3", "sword_s1", 0, 29);
+
+	self->mods.attack4 = gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
+
+	self->mods.attack5 = gf3d_model_load_animated("//player//sword//sword_u2//sword_u2", "sword_s1", 0, 29);
+
+	self->mods.attack6 = gf3d_model_load_animated("//player//sword//sword_d1//sword_d1", "sword_s1", 0, 29);
+
+	self->mods.special1 = gf3d_model_load_animated("//player//sword//sword_attack1//sword_s1_a1", "sword_s1", 0, 29);
+
+	self->mods.special2 = gf3d_model_load_animated("//player//sword//s2//sp2", "stahn", 0, 80);
+
+	self->mods.special3 = gf3d_model_load_animated("//player//sword//s3//sp1", "stahn", 0, 24);
+	self->update_model(self);
+	self->model->mesh[0]->minv.x += 3;
+	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
 	//other = ents;
 }
 
@@ -528,6 +557,17 @@ void sword_get_inputs(Entity *self, const Uint8 *keys, float delta){
 	}
 	while (SDL_PollEvent(&event))
 	{
+		//if (event.type == SDL_MOUSEWHEEL)
+			//	{
+			//	if (event.wheel.y > 0) // scroll up
+			//	{
+			//		wheel -= 2.0;
+			//	}
+			//	else if (event.wheel.y < 0) // scroll down
+			//	{
+			//		wheel += 2.0;
+			//	}
+			//}
 		switch (event.type){
 			//player event
 		case SDL_KEYUP:
@@ -575,7 +615,7 @@ void sword_get_inputs(Entity *self, const Uint8 *keys, float delta){
 								 upz = e.z;
 							 }}
 				break;
-			case SDLK_g: displacement(self, vector3d(15,0,0)); break;
+			//case SDLK_g: break;
 			case SDLK_UP: up_trigger = true; break;
 			case SDLK_DOWN: down_trigger = true; break;
 			default:
@@ -590,8 +630,7 @@ void sword_get_inputs(Entity *self, const Uint8 *keys, float delta){
 
 void create_projectile(Entity *self, float speed, float dmg){
 	Entity projEnt = *gf3d_entity_new();
-	Model *proj = gf3d_model_new();
-	proj = gf3d_model_load_animated("//other//projectiles//wave//wave", "wave", 0, 1);	
+	Model *proj = pool->wave;
 	projEnt.model = proj;
 	projEnt.up.x = upx; //self->up.x;
 	projEnt.up.y = upy;//self->up.y;
@@ -610,6 +649,7 @@ void create_projectile(Entity *self, float speed, float dmg){
 	projEnt.ProjectileData.destroyOncollision = true;
 	gfc_matrix_identity(projEnt.EntMatx);
 	gfc_matrix_copy(projEnt.EntMatx, mtxcopy_s);
+	//gfc_scale_matrix(projEnt.EntMatx, 20, 20, 1);
 	//gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
 	//ents[3] = &projEnt;	
 	gf3d_set_boundbox(&projEnt, projEnt.model->mesh[0]->minv, projEnt.model->mesh[0]->maxv);

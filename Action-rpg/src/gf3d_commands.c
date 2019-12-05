@@ -185,7 +185,23 @@ VkCommandBuffer gf3d_command_rendering_begin(Uint32 index)
     
     return commandBuffer;
 }
+VkCommandBuffer gf3d_command_rendering_begin_2d(Uint32 index)
+{
+	VkCommandBuffer commandBuffer;
+	Pipeline *pipe;
+	pipe = gf3d_vgraphics_get_graphics_pipeline_2d();
 
+	commandBuffer = gf3d_command_begin_single_time(gf3d_vgraphics_get_graphics_command_pool());
+
+	gf3d_command_configure_render_pass(
+		commandBuffer,
+		pipe->renderPass,
+		gf3d_swapchain_get_frame_buffer_by_index(index),
+		pipe->pipeline,
+		pipe->pipelineLayout);
+
+	return commandBuffer;
+}
 void gf3d_command_rendering_end(VkCommandBuffer commandBuffer)
 {
     gf3d_command_configure_render_pass_end(commandBuffer);
@@ -194,22 +210,22 @@ void gf3d_command_rendering_end(VkCommandBuffer commandBuffer)
 
 void gf3d_command_configure_render_pass(VkCommandBuffer commandBuffer, VkRenderPass renderPass,VkFramebuffer framebuffer,VkPipeline graphicsPipeline,VkPipelineLayout pipelineLayout)
 {
-    VkClearValue clearValues[2] = {0};
-    VkRenderPassBeginInfo renderPassInfo = {0};
+	VkClearValue clearValues[2] = { 0 };
+	VkRenderPassBeginInfo renderPassInfo = { 0 };
+
+	clearValues[0].color.float32[3] = 1.0;
+	clearValues[1].depthStencil.depth = 1.0f;
+
+	renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+	renderPassInfo.renderPass = renderPass;
+	renderPassInfo.framebuffer = framebuffer;
+	renderPassInfo.renderArea.offset.x = 0;
+	renderPassInfo.renderArea.offset.y = 0;
+	renderPassInfo.renderArea.extent = gf3d_swapchain_get_extent();
+	renderPassInfo.clearValueCount = 2;
+	renderPassInfo.pClearValues = clearValues;
     
-    clearValues[0].color.float32[3] = 1.0;
-    clearValues[1].depthStencil.depth = 1.0f;
-    
-    renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-    renderPassInfo.renderPass = renderPass;
-    renderPassInfo.framebuffer = framebuffer;
-    renderPassInfo.renderArea.offset.x = 0;
-    renderPassInfo.renderArea.offset.y = 0;
-    renderPassInfo.renderArea.extent = gf3d_swapchain_get_extent();
-    renderPassInfo.clearValueCount = 2;
-    renderPassInfo.pClearValues = clearValues;
-    
-    vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
+	vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
     vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
 }
 

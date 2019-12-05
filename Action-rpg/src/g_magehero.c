@@ -5,7 +5,9 @@
 #include "g_control.h"
 #include "g_entity.h"
 #include "g_magehero.h"
+#include "g_floor.h"
 Entity *other;
+glob_model_pool *pool;
 int attacknum_m=0;
 Vector3D bboxmin, bboxmax;
 bool up_trigger_m = false;
@@ -189,37 +191,37 @@ void mage_special(Entity *self){
 void update_mage_model(Entity *self){
 	self->frame = 0;
 	if (self->state == ES_Idle){
-		self->model = gf3d_model_load_animated("//player//mage//idle//mage_idle", "mage_s1", 0, 69);
+		self->model = self->mods.idle;
 		self->can_attack = true;
 		self->can_block = true;
 	}
 	if (self->state == ES_Running){
-		self->model = gf3d_model_load_animated("//player//mage//run//mage_run", "mage_s1", 0, 16);
+		self->model = self->mods.run;
 	}
 	if (self->state == ES_Blocking){
-		self->model = gf3d_model_load_animated("//player//mage//block//mage_block", "mage_s1", 0, 55);
+		self->model = self->mods.block;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Hit){
-		self->model = gf3d_model_load_animated("//player//mage//hit//mage_hit", "mage_s1", 0, 31);
+		self->model = self->mods.hit;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Attacking){
 		if (attacknum_m == 0){
 			//slog("attack1");
-		self->model = gf3d_model_load_animated("//player//mage//attack1//mage_attack1", "mage_s1", 0, 38);
+			self->model = self->mods.attack1;
 		//create_hitbox(self, vector3d(-5,-5, 0), vector3d(5, 0, 3), vector3d(0, 0, 0));
 		attacknum_m=0;
 		}
 		else if (attacknum_m == 3){
 			//slog("attack3");
-			self->model = gf3d_model_load_animated("//player//mage//summon//summon", "mage_s1", 0, 68);
+			self->model = self->mods.attack2;
 			//create_hitbox(self, vector3d(0, -5, 0), vector3d(5, 5, 3), vector3d(0, 0, 0));
 			attacknum_m = 3;
 		}
 		else if (attacknum_m == 5){
 			//slog("attack3");
-			self->model = gf3d_model_load_animated("//player//mage//blast//mage_blast", "mage_s1", 0, 87);
+			self->model = self->mods.attack3;
 			//create_hitbox(self, vector3d(0, -5, 0), vector3d(5, 5, 3), vector3d(0, 0, 0));
 			attacknum_m = 5;
 		}
@@ -228,34 +230,34 @@ void update_mage_model(Entity *self){
 		if (self->cast == 0){
 			if (self->specialnum == 0){
 				slog("sp1");
-				self->model = gf3d_model_load_animated("//player//mage//charge//charge", "mage_s1", 0, 42);
+				self->model = self->mods.special1;
 				//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 				//specialnum = 0;
 			}
 
 			else if (self->specialnum == 1){
 				slog("sp2");
-				self->model = gf3d_model_load_animated("//player//mage//charge//charge", "mage_s1", 0, 42);
+				self->model = self->mods.special1;
 				//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 				//specialnum = 0;
 			}
 			else if (self->specialnum == 2){
 				slog("sp3");
-				self->model = gf3d_model_load_animated("//player//mage//charge//charge", "mage_s1", 0, 42);
+				self->model = self->mods.special1;
 				//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 				//specialnum = 0;
 			}
 		}
 		 if (self->cast == 1){
 			 slog("execute");
-			 self->model = gf3d_model_load_animated("//player//mage//cast//cast", "mage_s1", 26, 57);
+			 self->model = self->mods.special2;
 			 if (self->specialnum == 1){
 				 self->target = get_nearest_target(self, other);
-				 create_projectile_e(self, self->target, "//other//projectiles//twister//twister", "shadow", 0, 15, 5.0, 20, 4, 2,vector3d(0,0,0));
+				 create_projectile_e(self, self->target,pool->twister, 5.0, 20, 4, 2, vector3d(0, 0, 0));
 			 }
 			 if (self->specialnum == 2){
 				 self->target = get_nearest_target(self, other);
-				 create_projectile_e(self, self->target, "//other//projectiles//meteor//meteor", "other//effects//magma2", 0, 25, 5.0, 20, 3, 2, vector3d(0, 0, -.9));
+				 create_projectile_e(self, self->target, pool->meteor, 5.0, 20, 3, 2, vector3d(0, 0, -.9));
 			 }
 			 //create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 			 //specialnum = 0;
@@ -290,6 +292,7 @@ void mage_displacement(Entity *self, Vector3D disp){
 	//
 }
 void update_mage_ent(Entity *self){
+	self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	set_position(self, self->EntMatx);
 	gfc_matrix_copy(mtxcopy_m, self->EntMatx);
 	if (self->controling == 0){
@@ -308,11 +311,11 @@ void update_mage_ent(Entity *self){
 		}
 		else if (attacknum_m == 3 && round(self->frame) == 35){
 			//create_mage_projectile(self, 3.0, 1.0);
-			create_projectile_e(self, NULL, "//other//projectiles//rock//rock", "rock", 0, 10, 5.0, 20, false, 2, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->rock, 5.0, 20, false, 2, vector3d(0, 0, 0));
 		}
 		else if (attacknum_m == 5 && round(self->frame) == 39){
 			//create_mage_projectile(self, 3.0, 1.0);
-			create_projectile_e(self, NULL, "//other//projectiles//blastair//blast", "shadow", 0, 20, 5.0, 20, false, 2, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->blastair, 5.0, 20, false, 2, vector3d(0, 0, 0));
 		}
 		
 
@@ -378,7 +381,7 @@ void mage_block(Entity *self){
 
 
 }
-void init_mage_ent(Entity *self,int ctr,Entity *ents){
+void init_mage_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	self->state = ES_Idle;
 	self->dr = Up;
 	self->attack = mage_attack;
@@ -399,11 +402,31 @@ void init_mage_ent(Entity *self,int ctr,Entity *ents){
 	self->movementspeed = 1.0f;
 	self->rotated = 0.0f;
 	self->type = ES_Player;
-	self->model = gf3d_model_load_animated("//player//mage//idle//mage_idle", "mage_s1", 0, 1);
+	other = ents;
+	pool = pools;
+	self->mods.idle = gf3d_model_load_animated("//player//mage//idle//mage_idle", "mage_s1", 0, 69);
+
+	self->mods.run = gf3d_model_load_animated("//player//mage//run//mage_run", "mage_s1", 0, 16);
+
+	self->mods.block = gf3d_model_load_animated("//player//mage//block//mage_block", "mage_s1", 0, 55);
+
+	self->mods.hit = gf3d_model_load_animated("//player//mage//hit//mage_hit", "mage_s1", 0, 31);
+
+	self->mods.attack1 = gf3d_model_load_animated("//player//mage//attack1//mage_attack1", "mage_s1", 0, 38);
+
+	self->mods.attack2 = gf3d_model_load_animated("//player//mage//summon//summon", "mage_s1", 0, 68);
+
+	self->mods.attack3 = gf3d_model_load_animated("//player//mage//blast//mage_blast", "mage_s1", 0, 87);
+
+	self->mods.attack4 = gf3d_model_load_animated("//player//sword//sword_attack2//sword_s1_a2", "sword_s1", 0, 29);
+
+	self->mods.special1 = gf3d_model_load_animated("//player//mage//charge//charge", "mage_s1", 0, 42);
+
+	self->mods.special2 = gf3d_model_load_animated("//player//mage//cast//cast", "mage_s1", 26, 57);
 	self->update_model(self);
 	self->model->mesh[0]->minv.x += 2;
 	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
-	other = ents;
+
 	//other = ents;
 }
 
@@ -524,8 +547,7 @@ void mage_get_inputs(Entity *self, const Uint8 *keys, float delta){
 
 void create_mage_projectile(Entity *self, float speed, float dmg){
 	Entity projEnt = *gf3d_entity_new();
-	Model *proj = gf3d_model_new();
-	proj = gf3d_model_load_animated("//other//projectiles//blueorb//blueorb", "blue_orb", 0, 1);
+	Model *proj = pool->blueorb;
 	projEnt.model = proj;
 	projEnt.up.x = upx_m; //self->up.x;
 	projEnt.up.y = upy_m;//self->up.y;
@@ -557,7 +579,7 @@ void mage_ai_think(Entity *self){
 		self->target = target;
 		if (target){
 			//slog("distance between targets :%f", round(vector3d_magnitude_between(target->position, self->position)));
-			if (vector3d_magnitude_between(target->position, self->position) < attack_range){
+			if (vector3d_magnitude_between(target->position, self->position) < attack_range&&self->state != ES_Special){
 				self->action = movement;
 			}
 			else if (vector3d_magnitude_between(target->position, self->position) >= attack_range){

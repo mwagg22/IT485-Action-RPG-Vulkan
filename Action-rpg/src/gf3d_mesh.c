@@ -187,7 +187,26 @@ void gf3d_mesh_render(Mesh *mesh,VkCommandBuffer commandBuffer, VkDescriptorSet 
     
     vkCmdDrawIndexed(commandBuffer, mesh->faceCount * 3, 1, 0, 0, 0);
 }
+void gf3d_ui_render(Mesh *mesh, VkCommandBuffer commandBuffer, VkDescriptorSet * descriptorSet)
+{
+	VkDeviceSize offsets[] = { 0 };
+	Pipeline *pipe;
+	if (!mesh)
+	{
+		slog("cannot render a NULL mesh");
+		return;
+	}
+	pipe = gf3d_vgraphics_get_graphics_pipeline_2d();
+	//vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+	vkCmdBindVertexBuffers(commandBuffer, 0, 1, &mesh->buffer, offsets);
 
+	vkCmdBindIndexBuffer(commandBuffer, mesh->faceBuffer, 0, VK_INDEX_TYPE_UINT32);
+
+	vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe->pipelineLayout, 0, 1, descriptorSet, 0, NULL);
+	
+	vkCmdDrawIndexed(commandBuffer, mesh->faceCount * 3, 1, 0, 0, 0);
+	//vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, gf3d_vgraphics_get_graphics_pipeline());
+}
 void gf3d_mesh_setup_face_buffers(Mesh *mesh,Face *faces,Uint32 fcount)
 {
     void* data;

@@ -61,6 +61,7 @@ Model * gf3d_model_new();
  * @param modelMat the model matrix (MVP)
  */
 void gf3d_model_draw(Model *model, Uint32 bufferFrame, VkCommandBuffer commandBuffer, Matrix4 modelMat, Uint32 frame);
+void gf3d_ui_draw(Model *model, Uint32 bufferFrame, VkCommandBuffer commandBuffer, Matrix4 modelMat, Uint32 frame);
 void gf3d_model_free(Model *model);
 
 /**
@@ -71,5 +72,5 @@ void gf3d_model_free(Model *model);
  * @param modelMat the matrix to transform the model by
  */
 void gf3d_model_update_basic_model_descriptor_set(Model *model,VkDescriptorSet descriptorSet,Uint32 chainIndex,Matrix4 modelMat);
-
+void gf3d_ui_update_basic_model_descriptor_set(Model *model, VkDescriptorSet descriptorSet, Uint32 chainIndex, Matrix4 modelMat);
 #endif

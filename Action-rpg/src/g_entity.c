@@ -182,7 +182,6 @@ void handle_projectile_collision(Entity *self, Entity *other){
 			}
 			else{
 				self->_inuse = 0;
-				self->model->_inuse = 0;
 				
 			}
 		}
@@ -210,7 +209,6 @@ void handle_projectile_collision(Entity *self, Entity *other){
 			displacement(other, vector3d(self->up.x, self->up.y, 0));
 		}
 		self->_inuse = 0;
-		self->model->_inuse = 0;
 	}
 	if (other->type == ES_Hitbox&&self->type == ES_Player&&other->parent->type == ES_Enemy){
 		//slog("hitbox COLLISION");
@@ -272,17 +270,29 @@ void init_ent(Entity *self,int cont){
 	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
 }
 
+void init_global_model_pool(glob_model_pool *mod_pool){
+	mod_pool->hitbox = gf3d_model_load_animated("//other//projectiles//hitbox//hitbox", "shadow", 0, 2);
+	mod_pool->arrow = gf3d_model_load_animated("//other//projectiles//arrow//arrow", "arrow", 0, 1);
+	mod_pool->dragon = gf3d_model_load_animated("//other//projectiles//dragon//dragon", "dragon", 0, 20);
+	mod_pool->thunder = gf3d_model_load_animated("//other//projectiles//shock//lighning", "lighning", 0, 2);
+	mod_pool->blueorb = gf3d_model_load_animated("//other//projectiles//blueorb//blueorb", "blue_orb", 0, 1);
+	mod_pool->twister = gf3d_model_load_animated("//other//projectiles//twister//twister", "shadow", 0, 15);
+	mod_pool->meteor = gf3d_model_load_animated("//other//projectiles//meteor//meteor", "other//effects//magma2", 0, 25);
+	mod_pool->blastair = gf3d_model_load_animated("//other//projectiles//blastair//blast", "shadow", 0, 20);
+	mod_pool->rock = gf3d_model_load_animated("//other//projectiles//rock//rock", "rock", 0, 10);
+	mod_pool->wave = gf3d_model_load_animated("//other//projectiles//wave//wave", "wave", 0, 1);
+}
 void update_ent(Entity *self){
 	
 	set_position(self, self->EntMatx);
 	self->frame = self->frame + 0.9;
-	if (self->position.x > 100 || self->position.x < -100){
-		self->_inuse = 0;
-		self->model->_inuse = 0;
-	}
-	if (self->position.y > 100 || self->position.y < -100){
-		self->_inuse = 0;
-		self->model->_inuse = 0;
+	if (self->type == ES_Projectile){
+		if (self->position.x > 1000 || self->position.x < -1000){
+			self->_inuse = 0;
+		}
+		if (self->position.y > 1000 || self->position.y < -1000){
+			self->_inuse = 0;
+		}
 	}
 	if (self->ProjectileData.destroyOncollision == 2){
 		if (round(self->position.z) == -1){
@@ -299,11 +309,9 @@ void update_ent(Entity *self){
 	{
 		if (self->type==ES_Effect){
 			self->_inuse = 0;
-			self->model->_inuse = 0;
 		}
 		if (self->type == ES_Hitbox){
 			self->_inuse = 0;
-			self->model->_inuse = 0;
 		}
 		self->frame = 0;
 	}
@@ -406,6 +414,7 @@ void rotate_towards_target(Entity *self, Vector3D disp,Vector3D *weap_up){
 			weap_up->z = disp.z;
 }
 //
+/*
 void create_projectile_e(Entity *self, Entity *other, char *model, char *texture,int startf, int endf,float dmg,float kick,bool type,int bboxframe,Vector3D up){
 	Entity projEnt = *gf3d_entity_new();
 	Model *proj = gf3d_model_new();
@@ -453,6 +462,60 @@ void create_projectile_e(Entity *self, Entity *other, char *model, char *texture
 	projEnt.ProjectileData.effect = 1;
 	projEnt.ProjectileData.destroyOncollision = 2;
 	projEnt.ProjectileData.Projectile = &projEnt;
+	}
+	gf3d_set_boundbox(&projEnt, projEnt.model->mesh[bboxframe]->minv, projEnt.model->mesh[bboxframe]->maxv);
+	//slog("min x%f y:%f z:%f max x:%f y:%f z:%f", projEnt.box.m_vecMin.x, projEnt.box.m_vecMin.y, projEnt.box.m_vecMin.z, projEnt.box.m_vecMax.x, projEnt.box.m_vecMax.y, projEnt.box.m_vecMax.z);
+	//
+	spawn_Entity2(&projEnt);
+	//free(&projEnt);
+}
+*/
+void create_projectile_e(Entity *self, Entity *other, Model *model, float dmg, float kick, bool type, int bboxframe, Vector3D up){
+	Entity projEnt = *gf3d_entity_new();
+	Model *proj = model;
+	projEnt.model = proj;
+	projEnt.up.x = self->up.x;
+	projEnt.up.y = self->up.y;
+	projEnt.up.z = self->up.z;
+	projEnt.movementspeed = 0;
+	projEnt.attackdmg = dmg;
+	projEnt.rotated = self->rotated;
+	projEnt.state = ES_Idle;
+	projEnt.update_ent = update_ent;
+	projEnt.controling = 0;
+	projEnt.parent = self;
+	projEnt.ProjectileData.Hitarray = (Entity*)gfc_allocate_array(sizeof(Entity), 10);
+	//projEnt.get_inputs = get_proj_inputs;
+	projEnt.type = ES_Effect;
+	if (type == 0){
+		projEnt.type = ES_Hitbox;
+		gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
+		projEnt.EntMatx[3][0] += 5 * (projEnt.up.x);
+		projEnt.EntMatx[3][1] -= 5 * (projEnt.up.y);
+	}
+	else if (type == 1){
+		projEnt.type = ES_Hitbox;
+		gfc_matrix_copy(projEnt.EntMatx, other->EntMatx);
+	}
+	else if (type == 4){
+		projEnt.type = ES_Projectile;
+		gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
+	}
+	else if (type == 6){
+		projEnt.type = ES_Effect;
+		gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
+	}
+	else{
+		projEnt.type = ES_Projectile;
+		projEnt.up.x = up.x;
+		projEnt.up.y = up.y;
+		projEnt.up.z = up.z;
+		gfc_matrix_copy(projEnt.EntMatx, other->EntMatx);
+		projEnt.EntMatx[3][2] = 30;
+		projEnt.ProjectileData.parenttype = self->type;
+		projEnt.ProjectileData.effect = 1;
+		projEnt.ProjectileData.destroyOncollision = 2;
+		projEnt.ProjectileData.Projectile = &projEnt;
 	}
 	gf3d_set_boundbox(&projEnt, projEnt.model->mesh[bboxframe]->minv, projEnt.model->mesh[bboxframe]->maxv);
 	//slog("min x%f y:%f z:%f max x:%f y:%f z:%f", projEnt.box.m_vecMin.x, projEnt.box.m_vecMin.y, projEnt.box.m_vecMin.z, projEnt.box.m_vecMax.x, projEnt.box.m_vecMax.y, projEnt.box.m_vecMax.z);

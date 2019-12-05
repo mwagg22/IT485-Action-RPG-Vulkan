@@ -5,8 +5,9 @@
 #include "g_control.h"
 #include "g_entity.h"
 #include "g_goblin.h"
-
+#include "g_floor.h"
 Entity *other;
+glob_model_pool *pool;
 Vector3D bboxmin, bboxmax;
 float framechange;
 void goblin_think(Entity *self){
@@ -121,33 +122,34 @@ void goblin_attack(Entity *self){
 void update_goblin_model(Entity *self){
 	self->frame = 0;
 	if (self->state == ES_Idle){
-		self->model = gf3d_model_load_animated("//enemy//goblin//idle//goblin_idle", "//enemy//goblin", 0, 56);
-		//self->can_attack = true;
+		self->model = self->mods.idle;
+		self->can_attack = true;
 		self->can_block = true;
 	}
 	if (self->state == ES_Running){
-		self->model = gf3d_model_load_animated("//enemy//goblin//run//goblin_run", "//enemy//goblin", 0, 33);
+		self->model = self->mods.run;
 	}
 	if (self->state == ES_Blocking){
-		self->model = gf3d_model_load_animated("//enemy//goblin//block//goblin_block", "//enemy//goblin", 0, 29);
+		self->model = self->mods.block;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Hit){
-		self->model = gf3d_model_load_animated("//enemy//goblin//hit//goblin_hit", "//enemy//goblin", 0, 21);
+		self->model = self->mods.hit;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Attacking){
 		if (self->attacknum == 0){
 			//slog("attack1");
 			self->can_attack = false;
-		self->model = gf3d_model_load_animated("//enemy//goblin//attack//goblin_attack", "//enemy//goblin", 0, 40);
-		create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "sword_s1", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			self->model = self->mods.attack1;
+		create_projectile_e(self, NULL,pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		self->attacknum=0;
 		}
 	}
 }
 
 void update_goblin_ent(Entity *self){
+	self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	set_position(self, self->EntMatx);
 	self->think(self);
 	self->frame = self->frame + 0.9;
@@ -213,7 +215,7 @@ void goblin_displacement(Entity *self, Vector3D disp){
 		//slog("up after x:%f y:%f z:%f frame:%f", self->up.x, self->up.y, self->up.z, framechange);
 	}
 }
-void init_goblin_ent(Entity *self,int ctr,Entity *ents){
+void init_goblin_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	set_position(self, self->EntMatx);
 	self->state = ES_Idle;
 	self->dr = Up;
@@ -236,10 +238,18 @@ void init_goblin_ent(Entity *self,int ctr,Entity *ents){
 	self->rotated = 0.0f;
 	self->type = ES_Enemy;
 	self->in_action = false;
+	other = ents;
+	pool = pools;
+	self->mods.idle = gf3d_model_load_animated("//enemy//goblin//idle//goblin_idle", "//enemy//goblin", 0, 56);
+
+	self->mods.run = gf3d_model_load_animated("//enemy//goblin//run//goblin_run", "//enemy//goblin", 0, 33);
+
+	self->mods.hit = gf3d_model_load_animated("//enemy//goblin//hit//goblin_hit", "//enemy//goblin", 0, 21);
+
+	self->mods.attack1 = gf3d_model_load_animated("//enemy//goblin//attack//goblin_attack", "//enemy//goblin", 0, 40);
 	self->update_model(self);
 	//self->model->mesh[0]->minv.x = 3;
-	gf3d_set_boundbox(self, self->model->mesh[0]->minv,self->model->mesh[0]->maxv);
-	other = ents;
+	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
 }
 
 /*eol@eof*/

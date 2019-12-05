@@ -294,4 +294,100 @@ Texture *gf3d_texture_load(char *filename)
     return tex;
 }
 
+//text
+Texture *gf3d_surf_to_text(SDL_Surface *surface,char* filename)
+{
+	//SDL_Surface * surfaceN=surface;
+	void* data;
+	Texture *tex;
+	VkDeviceSize imageSize;
+	VkBuffer stagingBuffer;
+	VkDeviceMemory stagingBufferMemory;
+	VkImageCreateInfo imageInfo = { 0 };
+	VkMemoryRequirements memRequirements;
+	VkMemoryAllocateInfo allocInfo = { 0 };
+
+	tex = gf3d_texture_get_by_filename(filename);
+	if (tex)
+	{
+		tex->_refcount++;
+		return tex;
+	}
+	if (!surface)
+	{
+		slog("failed to load texture file %s", "Text_box");
+		return NULL;
+	}
+	tex = gf3d_texture_new();
+	if (!tex)
+	{
+		SDL_FreeSurface(surface);
+		return NULL;
+	}
+	gfc_line_cpy(tex->filename, filename);
+
+	imageSize = surface->w * surface->h * 4;
+
+	gf3d_vgraphics_create_buffer(imageSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &stagingBuffer, &stagingBufferMemory);
+
+	SDL_LockSurface(surface);
+	vkMapMemory(gf3d_vgraphics_get_default_logical_device(), stagingBufferMemory, 0, imageSize, 0, &data);
+	memcpy(data, surface->pixels, imageSize);
+	vkUnmapMemory(gf3d_vgraphics_get_default_logical_device(), stagingBufferMemory);
+	SDL_UnlockSurface(surface);
+
+	imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+	imageInfo.imageType = VK_IMAGE_TYPE_2D;
+	imageInfo.extent.width = surface->w;
+	imageInfo.extent.height = surface->h;
+	imageInfo.extent.depth = 1;
+	imageInfo.mipLevels = 1;
+	imageInfo.arrayLayers = 1;
+	imageInfo.format = VK_FORMAT_R8G8B8A8_UNORM;
+	imageInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
+	imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+	imageInfo.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
+	imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+	imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
+	imageInfo.flags = 0; // Optional
+
+	if (vkCreateImage(gf3d_vgraphics_get_default_logical_device(), &imageInfo, NULL, &tex->textureImage) != VK_SUCCESS)
+	{
+		slog("failed to create image!");
+		gf3d_texture_delete(tex);
+		SDL_FreeSurface(surface);
+		return NULL;
+	}
+	vkGetImageMemoryRequirements(gf3d_vgraphics_get_default_logical_device(), tex->textureImage, &memRequirements);
+
+	allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+	allocInfo.allocationSize = memRequirements.size;
+	allocInfo.memoryTypeIndex = gf3d_vgraphics_find_memory_type(memRequirements.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+
+	if (vkAllocateMemory(gf3d_vgraphics_get_default_logical_device(), &allocInfo, NULL, &tex->textureImageMemory) != VK_SUCCESS)
+	{
+		slog("failed to allocate image memory!");
+		gf3d_texture_delete(tex);
+		SDL_FreeSurface(surface);
+		return NULL;
+	}
+
+	vkBindImageMemory(gf3d_vgraphics_get_default_logical_device(), tex->textureImage, tex->textureImageMemory, 0);
+
+	gf3d_swapchain_transition_image_layout(tex->textureImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+
+	gf3d_texture_copy_buffer_to_image(stagingBuffer, tex->textureImage, surface->w, surface->h);
+
+	gf3d_swapchain_transition_image_layout(tex->textureImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+
+	tex->textureImageView = gf3d_vgraphics_create_image_view(tex->textureImage, VK_FORMAT_R8G8B8A8_UNORM);
+
+	gf3d_texture_create_sampler(tex);
+
+	vkDestroyBuffer(gf3d_vgraphics_get_default_logical_device(), stagingBuffer, NULL);
+	vkFreeMemory(gf3d_vgraphics_get_default_logical_device(), stagingBufferMemory, NULL);
+	//SDL_FreeSurface(surface);
+	slog("created texture for textbox: %s", "Text_Box");
+	return tex;
+}
 /*eol@eof*/

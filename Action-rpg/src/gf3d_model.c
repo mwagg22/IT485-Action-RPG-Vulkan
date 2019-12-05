@@ -68,6 +68,7 @@ Model * gf3d_model_new()
 	{
 		if (!gf3d_model.model_list[i]._inuse)
 		{
+			slog("model index:%i", i);
 			gf3d_model_delete(&gf3d_model.model_list[i]);
 			gf3d_model.model_list[i]._inuse = 1;
 			gf3d_model_create_uniform_buffer(&gf3d_model.model_list[i]);
@@ -103,6 +104,7 @@ Model * gf3d_model_load_animated(char * filename, char * texture, Uint32 startFr
 	{
 		snprintf(assetname, GFCLINELEN, "../models/%s_%06i.obj", filename, startFrame + i);
 		model->mesh[i] = gf3d_mesh_load(assetname);
+		//slog("%s", assetname);
 	}
 
 	snprintf(assetname, GFCLINELEN, "../images/%s.png", texture);
@@ -175,9 +177,81 @@ void gf3d_model_draw(Model *model, Uint32 bufferFrame, VkCommandBuffer commandBu
 		return;
 	}
 	gf3d_model_update_basic_model_descriptor_set(model, *descriptorSet, bufferFrame, modelMat);
+	//vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, gf3d_vgraphics_get_graphics_pipeline());
 	gf3d_mesh_render(model->mesh[frame], commandBuffer, descriptorSet);
 }
 
+void gf3d_ui_draw(Model *model, Uint32 bufferFrame, VkCommandBuffer commandBuffer, Matrix4 modelMat, Uint32 frame)
+{
+	Pipeline *pipe2 = gf3d_vgraphics_get_graphics_pipeline_2d();
+	
+	VkDescriptorSet *descriptorSet = NULL;
+	if (!model)
+	{
+		slog("cannot render a NULL model");
+		return;
+	}
+	if (frame >= model->frameCount)
+	{
+		slog("cannot render model frame %i, greater than frameCount", frame);
+		return;
+	}
+	descriptorSet = gf3d_pipeline_get_descriptor_set(pipe2, bufferFrame);
+	if (descriptorSet == NULL)
+	{
+		slog("failed to get a free descriptor Set for model rendering");
+		return;
+	}
+	//vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe2);
+	gf3d_ui_update_basic_model_descriptor_set(model, *descriptorSet, bufferFrame, modelMat);
+	gf3d_ui_render(model->mesh[frame], commandBuffer, descriptorSet);
+	
+}
+void gf3d_ui_update_basic_model_descriptor_set(Model *model, VkDescriptorSet descriptorSet, Uint32 chainIndex, Matrix4 modelMat)
+{
+	VkDescriptorImageInfo imageInfo = { 0 };
+	VkWriteDescriptorSet descriptorWrite[2] = { 0 };
+	VkDescriptorBufferInfo bufferInfo = { 0 };
+
+	if (!model)
+	{
+		slog("no model provided for descriptor set update");
+		return;
+	}
+	if (descriptorSet == VK_NULL_HANDLE)
+	{
+		slog("null handle provided for descriptorSet");
+		return;
+	}
+
+	imageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
+	imageInfo.imageView = model->texture->textureImageView;
+	imageInfo.sampler = model->texture->textureSampler;
+
+	gf3d_model_update_uniform_buffer(model, chainIndex, modelMat);
+	bufferInfo.buffer = model->uniformBuffers[chainIndex];
+	bufferInfo.offset = 0;
+	bufferInfo.range = sizeof(UniformBufferObject);
+
+	descriptorWrite[0].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+	descriptorWrite[0].dstSet = descriptorSet;
+	descriptorWrite[0].dstBinding = 0;
+	descriptorWrite[0].dstArrayElement = 0;
+	descriptorWrite[0].descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+	descriptorWrite[0].descriptorCount = 1;
+	descriptorWrite[0].pBufferInfo = &bufferInfo;
+
+	descriptorWrite[1].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+	descriptorWrite[1].dstSet = descriptorSet;
+	descriptorWrite[1].dstBinding = 1;
+	descriptorWrite[1].dstArrayElement = 0;
+	descriptorWrite[1].descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+	descriptorWrite[1].descriptorCount = 1;
+	descriptorWrite[1].pImageInfo = &imageInfo;
+	descriptorWrite[1].pTexelBufferView = NULL; // Optional
+
+	vkUpdateDescriptorSets(gf3d_model.device, 2, descriptorWrite, 0, NULL);
+}
 void gf3d_model_update_basic_model_descriptor_set(Model *model, VkDescriptorSet descriptorSet, Uint32 chainIndex, Matrix4 modelMat)
 {
 	VkDescriptorImageInfo imageInfo = { 0 };

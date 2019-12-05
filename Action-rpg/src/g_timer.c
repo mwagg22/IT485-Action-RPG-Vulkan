@@ -1,4 +1,5 @@
 #include "g_timer.h"
+//#include "g_includes.h"
 void LTimer_init(LTimer *timer)
 {
 	//Initialize the variables

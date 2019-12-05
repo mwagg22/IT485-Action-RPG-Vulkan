@@ -5,7 +5,9 @@
 #include "g_control.h"
 #include "g_entity.h"
 #include "g_arrowhero.h"
+#include "g_floor.h"
 Entity *other;
+glob_model_pool *pool;
 int attacknum_a=0;
 Vector3D bboxmin, bboxmax;
 bool up_trigger_arrow = false;
@@ -211,45 +213,45 @@ void arrow_displacement(Entity *self, Vector3D disp){
 void update_arrow_model(Entity *self){
 	self->frame = 0;
 	if (self->state == ES_Idle){
-		self->model = gf3d_model_load_animated("//player//bow//idle//bow_idle", "arrow_s1", 0, 30);
+		self->model = self->mods.idle;
 		self->can_attack = true;
 		self->can_block = true;
 		//self->in_action = false;
 	}
 	if (self->state == ES_Running){
-		self->model = gf3d_model_load_animated("//player//bow//run//bow_run", "arrow_s1", 0, 26);
+		self->model = self->mods.run;
 	}
 	if (self->state == ES_Blocking){
-		self->model = gf3d_model_load_animated("//player//bow//block//arrow_block", "arrow_s1", 0, 55);
+		self->model = self->mods.block;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Hit){
-		self->model = gf3d_model_load_animated("//player//bow//hit//arrow_hit", "arrow_s1", 0, 24);
+		self->model = self->mods.hit;
 		self->can_attack = false;
 	}
 	if (self->state == ES_Attacking){
 		if (released == true&&attacknum_a==1){
-			self->model = gf3d_model_load_animated("//player//bow//release//bow_shoot", "arrow_s1", 0, 22);
+			self->model = self->mods.attack1;
 			create_arrow_projectile(self, 3.0, 1.0);
 			released = false;
 			attacknum_a = 0;		
 		}
 		else if (attacknum_a == 0){
 			//slog("attack1");
-		self->model = gf3d_model_load_animated("//player//bow//charge//bow_hold", "arrow_s1", 0, 35);
+			self->model = self->mods.attack2;
 		attacknum_a = 1;
 		//create_hitbox(self, vector3d(-5,-5, 0), vector3d(5, 0, 3), vector3d(0, 0, 0));
 		}
 		else if (attacknum_a == 3){
 			//slog("attack3");
 			roll_a = true;
-			self->model = gf3d_model_load_animated("//player//bow//roll//bow_roll", "arrow_s1", 0, 28);
+			self->model = self->mods.attack3;
 			held = false;
 			attacknum_a = 3;
 		}
 		else if (attacknum_a == 5){
 			//slog("attack3");
-			self->model = gf3d_model_load_animated("//player//bow//kick//bow_kick", "arrow_s1", 0, 32);
+			self->model = self->mods.attack4;
 			//create_hitbox(self, vector3d(0, -5, 0), vector3d(5, 5, 3), vector3d(0, 0, 0));
 			attacknum_a = 5;
 		}
@@ -258,20 +260,20 @@ void update_arrow_model(Entity *self){
 		if (self->cast == 0){
 			if (self->specialnum == 0){
 				slog("sp1");
-				self->model = gf3d_model_load_animated("//player//bow//sp1//sp", "arrow_s1", 0, 59);
+				self->model = self->mods.special1;
 				//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 				//specialnum = 0;
 			}
 
 			else if (self->specialnum == 1){
 				slog("sp2");
-				self->model = gf3d_model_load_animated("//player//bow//sp2//sp", "arrow_s1", 0, 67);
+				self->model = self->mods.special2;
 				//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 				//specialnum = 0;
 			}
 			else if (self->specialnum == 2){
 				slog("sp3");
-				self->model = gf3d_model_load_animated("//player//bow//sp3//sp3", "arrow_s1", 0, 75);
+				self->model = self->mods.special3;
 				//create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 				//specialnum = 0;
 			}
@@ -280,6 +282,7 @@ void update_arrow_model(Entity *self){
 }
 
 void update_arrow_ent(Entity *self){
+	self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	set_position(self, self->EntMatx);
 	gfc_matrix_copy(mtxcopy, self->EntMatx);
 	if (self->controling == 0){
@@ -298,17 +301,18 @@ void update_arrow_ent(Entity *self){
 	}
 	if (self->state == ES_Attacking){
 		if (attacknum_a == 5 && round(self->frame) == 17){
-			create_projectile_e(self, NULL, "//other//projectiles//hitbox//hitbox", "sword_s1", 0, 2, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
 		}
 	}
 	if (self->state == ES_Special){
 		if (self->specialnum == 0 && round(self->frame) == 32){
-			create_projectile_e(self, self->target, "//other//projectiles//dragon//dragon", "dragon", 0, 20, 5.0, 20, 4, 2, vector3d(0, 0, 0));
+			create_projectile_e(self, self->target, pool->dragon, 5.0, 20, 4, 2, vector3d(0, 0, 0));
 		}
 		if (self->specialnum == 1){
 			//create_mage_projectile(self, 3.0, 1.0);
 			if (round(self->frame) == 32){
 				create_arrow_projectile(self, 3.0, 1.0);
+				
 			}
 			if (round(self->frame) == 37){
 				create_arrow_projectile(self, 3.0, 1.0);
@@ -319,7 +323,7 @@ void update_arrow_ent(Entity *self){
 		}
 		if (self->specialnum == 2 && round(self->frame) == 57){
 			self->target=get_nearest_target(self, other);
-			create_projectile_e(self, self->target, "//other//projectiles//shock//lighning", "lighning", 0, 2, 5.0, 20, 1, 0, vector3d(0, 0, -1.9));
+			create_projectile_e(self, self->target, pool->thunder, 5.0, 20, 1, 0, vector3d(0, 0, -1.9));
 		}
 	}
 	if (self->frame >= self->model->frameCount-1){
@@ -392,7 +396,7 @@ void arrow_block(Entity *self){
 
 
 }
-void init_arrow_ent(Entity *self, int ctr, Entity *ents){
+void init_arrow_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	self->state = ES_Idle;
 	self->dr = Up;
 	self->attack=arrow_attack;
@@ -414,11 +418,32 @@ void init_arrow_ent(Entity *self, int ctr, Entity *ents){
 	self->movementspeed = 1.0f;
 	self->rotated = 0.0f;
 	self->type = ES_Player;
-	self->model = gf3d_model_load_animated("//player//bow//idle//bow_idle", "arrow_s1", 0, 1);
+	pool = pools;
+	other = ents;
+	self->mods.idle = self->model = gf3d_model_load_animated("//player//bow//idle//bow_idle", "arrow_s1", 0, 30);
+
+	self->mods.run = gf3d_model_load_animated("//player//bow//run//bow_run", "arrow_s1", 0, 26);
+
+	self->mods.block = gf3d_model_load_animated("//player//bow//block//arrow_block", "arrow_s1", 0, 55);
+
+	self->mods.hit = gf3d_model_load_animated("//player//bow//hit//arrow_hit", "arrow_s1", 0, 24);
+
+	self->mods.attack1 = gf3d_model_load_animated("//player//bow//release//bow_shoot", "arrow_s1", 0, 22);
+
+	self->mods.attack2 = gf3d_model_load_animated("//player//bow//charge//bow_hold", "arrow_s1", 0, 35);
+
+	self->mods.attack3 = gf3d_model_load_animated("//player//bow//roll//bow_roll", "arrow_s1", 0, 28);
+
+	self->mods.attack4 = gf3d_model_load_animated("//player//bow//kick//bow_kick", "arrow_s1", 0, 32);
+
+	self->mods.special1 = gf3d_model_load_animated("//player//bow//sp1//sp", "arrow_s1", 0, 59);
+
+	self->mods.special2 = gf3d_model_load_animated("//player//bow//sp2//sp", "arrow_s1", 0, 67);
+
+	self->mods.special3 = gf3d_model_load_animated("//player//bow//sp3//sp3", "arrow_s1", 0, 75);
 	self->update_model(self);
 	self->model->mesh[0]->minv.x += 1;
 	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
-	other = ents;
 	//other = ents;
 }
 
@@ -542,8 +567,7 @@ void arrow_get_inputs(Entity *self, const Uint8 *keys, float delta){
 
 void create_arrow_projectile(Entity *self, float speed, float dmg){
 	Entity projEnt = *gf3d_entity_new();
-	Model *proj = gf3d_model_new();
-	proj = gf3d_model_load_animated("//other//projectiles//arrow//arrow", "arrow", 0, 1);	
+	Model *proj = pool->arrow;
 	projEnt.model = proj;
 	projEnt.up.x = upx_a;
 	projEnt.up.y = upy_a;
@@ -572,7 +596,7 @@ void arrow_ai_think(Entity *self){
 		Entity *target = get_nearest_target(self, other);
 		if (target){
 			//slog("distance between targets :%f", round(vector3d_magnitude_between(target->position, self->position)));
-			if (vector3d_magnitude_between(target->position, self->position) < attack_range){
+			if (vector3d_magnitude_between(target->position, self->position) < attack_range &&self->state!=ES_Special){
 					self->action = movement;
 			}
 			else if (vector3d_magnitude_between(target->position, self->position) >= attack_range){
