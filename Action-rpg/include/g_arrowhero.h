@@ -12,7 +12,7 @@ void arrow_special(Entity *self);
 void arrow_block(Entity *self);
 void update_arrow_model(Entity *self);
 void update_arrow_ent(Entity *self);
-void init_arrow_ent(Entity *self, int ctr, Entity *ents);
+void init_arrow_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools);
 void arrow_set_position(Entity *self, Matrix4 mat);
 //void arrow_displacement(Entity *self, Vector3D disp);
 void arrow_get_inputs(Entity *self, const Uint8 * keys, float delta);

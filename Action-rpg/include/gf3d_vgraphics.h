@@ -47,16 +47,19 @@ void gf3d_vgraphics_rotate_camera(float degrees);
 
 void update_cam(Entity *target,float rot);
 void gf3d_copy_camera(Matrix4 *dest);
-void gf3d_set_camera(Matrix4 *dest, Entity *target,float rot);
+void gf3d_set_camera(Matrix4 *dest, Entity *target,float rot,float wheel);
 
 VkBuffer gf3d_vgraphics_get_uniform_buffer_by_index(Uint32 index);
 UniformBufferObject gf3d_vgraphics_get_uniform_buffer_object();
 
 Pipeline *gf3d_vgraphics_get_graphics_pipeline();
-
+Pipeline *gf3d_vgraphics_get_graphics_pipeline_2d();
 Command *gf3d_vgraphics_get_graphics_command_pool();
-
+Pipeline *gf3d_vgraphics_get_graphics_pipeline2d();
 VkImageView gf3d_vgraphics_create_image_view(VkImage image, VkFormat format);
 
+SDL_Window *gf3d_vgraphics_get_sdl_window();
 void gf3d_vgraphics_move_camera(Vector3D disp);
+void display_img_to_screen(char* imgFile);
+Vector3D ArbitraryRotate(Vector3D p, double theta, Vector3D r);
 #endif

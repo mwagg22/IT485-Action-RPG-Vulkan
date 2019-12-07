@@ -59,7 +59,7 @@ int main(int argc,char *argv[])
 	Uint32 bufferFrame = 0;
     const Uint8 * keys;
 	VkCommandBuffer commandBuffer, commandBuffer2;
-	gf3d_textbox_manager_init((Uint32)20);
+	gf3d_textbox_manager_init((Uint32)1024);
 	Entity Ent;
 	Entity Ent2;
 	Entity Ent3;
@@ -70,6 +70,7 @@ int main(int argc,char *argv[])
 	Entity Ent8;
 	Entity Ent9;//hud
 	Entity Ent10;
+	Entity Ent11;
 	//LTimer time;
 	long lastFrameTime;
 	float deltaTime;
@@ -108,6 +109,7 @@ int main(int argc,char *argv[])
 	Ent8 = *gf3d_entity_new();
 	Ent9 = *gf3d_entity_new();
 	Ent10 = *gf3d_entity_new();
+	Ent11 = *gf3d_entity_new();
 	gfc_matrix_identity(Ent.EntMatx);
 	gfc_matrix_identity(Ent3.EntMatx);    	
 	gfc_matrix_identity(Ent2.EntMatx);
@@ -118,6 +120,7 @@ int main(int argc,char *argv[])
 	gfc_matrix_identity(Ent8.EntMatx);
 	gfc_matrix_identity(Ent9.EntMatx);
 	gfc_matrix_identity(Ent10.EntMatx);
+	gfc_matrix_identity(Ent11.EntMatx);
 	gfc_matrix_make_translation(
 		Ent.EntMatx,
 		vector3d(-400, -400, 0)
@@ -154,35 +157,28 @@ int main(int argc,char *argv[])
 		Ent9.EntMatx,
 		vector3d(0, 0, 0)
 		);
-	gfc_matrix_make_translation(
-		Ent10.EntMatx,
-		vector3d(-20, -50, 0)
-		);
 	init_sword_ent(&Ent, 1, ents2,pools);
 	//init_arrow_ent(&Ent2, 0, ents2,pools);
 	//init_mage_ent(&Ent3, 0, ents2,pools);
-	//init_goblin_ent(&Ent4, 0, ents2,pools);
+	init_goblin_ent(&Ent4, 1, ents2,pools);
 	//init_bee_ent(&Ent5, 0, ents2,pools);
 	//init_goblin_ent(&Ent6, 0, ents2,pools);
 	init_floor_ent(&Ent7, 0, ents2);
 	init_floor_ent(&Ent8, 1, ents2);
 	init_hud_ent(&Ent9, 0, ents2);
-	//init_floor_ent(&Ent10, 2, ents2);
-	Ent4.Ent_ID = 3;
-	Ent5.Ent_ID = 4;
-	Ent6.Ent_ID = 5;
-	Ent7.Ent_ID = 6;
-	Ent8.Ent_ID = 7;
+	init_floor_ent(&Ent10, 3, ents2);
+	init_floor_ent(&Ent11, 4, ents2);
 	ents2[0] = Ent;
 	//ents2[1] = Ent2;
 	//ents2[2] = Ent3;
-	//ents2[3] = Ent4;
+	ents2[3] = Ent4;
 	//ents2[4] = Ent5;
 	//ents2[5] = Ent6;
 	ents2[6] = Ent7;
 	//ents2[7] = Ent8;
 	//ents2[8] = Ent9;
-	//ents2[10] = Ent10;
+	ents2[10] = Ent10;
+	ents2[11] = Ent11;
 /*	ents_list[0] = &Ent2;
 	ents_list[1] = &Ent3;
 	ents_list[2] = &Ent;*/	
@@ -205,15 +201,9 @@ int main(int argc,char *argv[])
 	//quadt *quad_terrain=return_qtree(quad_terrain);
 	//gf3d_set_camera(gf3d_camera, &ents2[0], rot);
 	//Node *n = malloc(sizeof (Node));
-	//gf3d_camera_set_position(vector3d(ents2[0].position.x, ents2[0].position.y + 40 + wheel, ents2[0].position.z + 15 + wheel));
-
-	//create_textbox("Test text", -400, -400, 10);
-	create_textbox("3333", 14, 14.5, -6, 120, true, &ents2[0]);
-	create_textbox("Y tho", -400, -400, 7, 120, false,NULL);
-
     while(!done)
 	{
-		hud_set_position(&Ent9, ents2[0].EntMatx, &ents2[0],12,18,-7);
+		//hud_set_position(&Ent9, ents2[0].EntMatx, &ents2[0],12,18,-7);
 		//display_img_to_screen("../images/preview.bmp");
 		//slog("Camera position x:%f y:%f z:%f", gf3d_camera[3][0], gf3d_camera[3][1], gf3d_camera[3][2]);
 		//slog("Hud position x:%f y:%f z:%f", ents2[8].EntMatx[3][0], ents2[8].EntMatx[3][1], ents2[8].EntMatx[3][2]);
@@ -285,9 +275,10 @@ int main(int argc,char *argv[])
 					ents2[p].update_ent(&ents2[p]);
 				}
 			}
-			gf3d_ui_draw(Ent9.model, bufferFrame, commandBuffer2, Ent9.EntMatx, (Uint32)Ent9.frame);
+			//gf3d_ui_draw(Ent9.model, bufferFrame, commandBuffer2, Ent9.EntMatx, (Uint32)Ent9.frame);
+			draw_huds(bufferFrame, commandBuffer2);
 			draw_text_boxes(bufferFrame, commandBuffer2);
-			//collision_check(ents2, entity_max);
+			collision_check(ents2, entity_max);
 
             gf3d_command_rendering_end(commandBuffer);
 			gf3d_command_rendering_end(commandBuffer2);

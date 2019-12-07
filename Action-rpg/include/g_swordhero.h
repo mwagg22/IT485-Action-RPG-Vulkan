@@ -12,7 +12,7 @@ void sword_special(Entity *self);
 void sword_block(Entity *self);
 void update_sword_model(Entity *self);
 void update_sword_ent(Entity *self);
-void init_sword_ent(Entity *self,int ctr,Entity *ents);
+void init_sword_ent(Entity *self,int ctr,Entity *ents,glob_model_pool *pools);
 void sword_set_position(Entity *self, Matrix4 mat);
 //void sword_displacement(Entity *self, Vector3D disp);
 void sword_get_inputs(Entity *self, const Uint8 * keys, float delta);

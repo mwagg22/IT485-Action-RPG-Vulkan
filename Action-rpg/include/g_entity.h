@@ -6,7 +6,7 @@
 #include "gf3d_obj_load.h"
 #include "gfc_vector.h"
 #include "gfc_matrix.h"
-
+//#include "g_hud.h"
 typedef enum
 {
     ES_Idle = 0,
@@ -67,6 +67,36 @@ typedef enum{
 	RightDown,
 	LeftDown
 }dir;
+typedef struct model_index
+{
+	Model *idle;
+	Model *run;
+	Model *hit;
+	Model *block;
+	Model *attack1;
+	Model *attack2;
+	Model *attack3;
+	Model *attack4;
+	Model *attack5;
+	Model *attack6;
+	Model *special1;
+	Model *special2;
+	Model *special3;
+	Model *ultimate;
+}model_index;
+typedef struct glob_model_pool
+{
+	Model *hitbox;
+	Model *arrow;
+	Model *dragon;
+	Model *thunder;
+	Model *blueorb;
+	Model *twister;
+	Model *meteor;
+	Model *blastair;
+	Model *rock;
+	Model *wave;
+}glob_model_pool;
 typedef struct Projectiles_s
 {
 	//Entity *self;
@@ -83,6 +113,7 @@ typedef struct Entity_S
     Uint8           _inuse;         /**<flag to keep track if this isntance is in use and should not be reassigned*/
 	int				Ent_ID;			//idx in list of ents
     Model           *model;          /**<the 3d model for this entity*/
+	model_index		mods;			//list of models
 	float			frame;
     Vector3D        position;       /**<position of the entity in 3d space*/
     Vector3D        velocity;       /**<velocity of the entity in 3d space*/
@@ -97,8 +128,7 @@ typedef struct Entity_S
 	Actioninput		action;			//keep track of input
 	Actioninput		prev_action;	//prev action
 	EntityType		type;			//check entity type
-	//Entity		*parent;			//if weapon have parent
-	//WeaponType	weap;				//type of weapon if entity is a weapon
+	struct health_s*		health_bar;
     void (*think)(struct Entity_S* self);   /**<function called on entity think*/
     void (*update_model)(struct Entity_S* self);   /**<function called on entity update*/
     void (*touch)(struct Entity_S* self,struct Entity_S* other);   /**<function called on entity think*/
@@ -111,19 +141,20 @@ typedef struct Entity_S
 	void			(*useItem)(struct Entity_S* self);
 	void (*get_inputs)(struct Entity *self, const Uint8 * keys, float delta);
 	//void			(*get_inputs)(struct Entity_S* self, const Uint8 * keys, float delta);
-    float           health;
-    float           healthmax;
-    float           defense;
-	float           attackdmg;
-	float           mp;
-    float           experience;
-    float           level;
+    int           health;
+    int           healthmax;
+    int           defense;
+	int           attackdmg;
+	int           mp;
+    int           experience;
+    int           level;
     float           movementspeed;
 	float			rotated;
 	int 			controling;	
 	int				specialnum;
 	int attacknum;
 	int cast;//for magic casting
+	bool overworld;
 	bool			can_attack;
 	bool			can_block;
 	bool			can_hpskill;
@@ -168,6 +199,7 @@ void set_position(Entity *self, Matrix4 mat);
 void displacement(Entity *self, Vector3D disp);
 void handle_collision(Entity *self, Entity *other);
 void init_ent(Entity *self, int cont);
+void init_global_model_pool(glob_model_pool *mod_pool);
 void get_inputs(Entity *self, const Uint8 * keys,float delta);
 //void get_inputs(Entity *self, SDL_Event *e);
 void update_model(Entity *self);
@@ -180,5 +212,9 @@ Entity *get_nearest_target(Entity *self,Entity *other);
 void rotate_towards_target(Entity *self, Vector3D disp, Vector3D *weap_up);
 void gf3d_set_hitbox(Entity *self, Vector3D min, Vector3D max);
 //type whether stationary or spawn at target
-void create_projectile_e(Entity *self, Entity *other, char *model, char *texture, int startf, int endf, float dmg, float kick, int type, int bboxframe, Vector3D up);
+void create_projectile_e(Entity *self, Entity *other, Model *model, float dmg, float kick, int type, int bboxframe, Vector3D up);
+//battle sequences
+void init_battle_sequence(Entity *player,int x,int y,int z);
+void end_battle_sequence(Entity *player);
+void spawn_enemy(int num, Vector3D position);
 #endif
