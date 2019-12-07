@@ -8,6 +8,8 @@
 #include "g_swordhero.h"
 #include "gfc_vector.h"
 #include "gfc_matrix.h"
+#include "g_hud.h"
+#include"g_text.h"
 Entity *other;
 glob_model_pool *pool;
 int attacknum=0;
@@ -307,12 +309,14 @@ void sword_displacement(Entity *self, Vector3D disp){
 		upy = disp.y;
 		upz = disp.z;
 		gfc_matrix_copy(mtxcopy_s, self->EntMatx);
-		slog("position x:%f y:%f z:%f", self->position.x, self->position.y, self->position.z);
+		//slog("position x:%f y:%f z:%f", self->position.x, self->position.y, self->position.z);
 		////slog("up after x:%f y:%f z:%f frame:%f", self->up.x, self->up.y, self->up.z, framechange);
 	}
 }
 void update_sword_ent(Entity *self){
-	self->EntMatx[3][2]=return_terrain_height(&other[6], -self->position.x, self->position.y);
+	if (self->overworld == true){
+		self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
+	}
 	if (self->attacknum>5)self->attacknum = 0;
 	set_position(self, self->EntMatx);
 	if (self->controling == 0){
@@ -469,9 +473,17 @@ void init_sword_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools)
 	self->rotated = 0.0f;
 	self->specialnum = 0;
 	self->type = ES_Player;
-
-	gf3d_set_hitbox(self, vector3d(-5, -5, 0), vector3d(5, 5, 10));
+	self->health = 400;
+	self->attackdmg = 12;
+	self->overworld = 1;
 	other = ents;
+	self->show = 1;
+	//text_box *b = ;
+	self->health_bar = create_healthbar("//other//ui//face//sword//sword_face", "//other//ui//sword_face", 12, 18, -7, &other[0]);
+	self->health_bar->box = create_textbox("400", 14, 14.5, -6,NULL, true, &other[0]);
+	self->health_bar->mp_box = create_textbox("4000", 14, 14.5, -8, NULL, true, &other[0]);
+	gf3d_set_hitbox(self, vector3d(-5, -5, 0), vector3d(5, 5, 10));
+	
 	pool = pools;
 	self->mods.idle = gf3d_model_load_animated("//player//sword//sword_idle//sword_s1_idle", "sword_s1", 0, 29);
 
@@ -649,6 +661,7 @@ void create_projectile(Entity *self, float speed, float dmg){
 	projEnt.ProjectileData.destroyOncollision = true;
 	gfc_matrix_identity(projEnt.EntMatx);
 	gfc_matrix_copy(projEnt.EntMatx, mtxcopy_s);
+	projEnt.parent = self;
 	//gfc_scale_matrix(projEnt.EntMatx, 20, 20, 1);
 	//gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
 	//ents[3] = &projEnt;	

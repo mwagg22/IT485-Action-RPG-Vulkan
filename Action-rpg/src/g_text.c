@@ -65,7 +65,7 @@ text_box * gf3d_textbox_new()
 	return NULL;
 }
 
-void create_textbox(char * text, float x, float y, float z, int endFrame, bool follow, Entity *target){
+text_box* create_textbox(char * text, float x, float y, float z, int endFrame, bool follow, Entity *target){
 	text_box *textB;
 	SDL_Surface * surface = NULL;
 	textB = gf3d_textbox_new();
@@ -107,6 +107,7 @@ void create_textbox(char * text, float x, float y, float z, int endFrame, bool f
 	gfc_scale_matrix(textB->Matrix, strlen(text)+1 / 4, 1, 1);
 	TTF_CloseFont(font);
 	TTF_Quit();
+	return textB;
 }
 
 void draw_text_boxes(Uint32 bufferFrame, VkCommandBuffer commandBuffer){
@@ -123,8 +124,9 @@ void draw_text_boxes(Uint32 bufferFrame, VkCommandBuffer commandBuffer){
 void update_text_boxes(text_box *box){
 	box->frame++;
 	if (box->endFrame != NULL){
+		box->Matrix[3][2] +=.2;
 		if (box->frame == box->endFrame)
-			;//box->_inuse = 0;
+			box->_inuse = 0;
 	}
 	if (box->follow == true){
 		box->Matrix[3][1] = box->target->EntMatx[3][1] + box->position.x;
@@ -139,7 +141,7 @@ void update_textbox_texture(text_box *box,char* string){
 	SDL_Surface *surface= NULL;
 	TTF_Font * font = TTF_OpenFont("../sans.ttf", 10);
 	SDL_Color color = { 255, 255, 255 };
-	slog("creating for text:%s", string);
+	slog("updating text:%s", string);
 	surface = TTF_RenderText_Blended(font, string, color);
 	box->text_surf = surface;
 	if (surface == NULL)
@@ -147,5 +149,5 @@ void update_textbox_texture(text_box *box,char* string){
 		slog("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
 	}
 	box->model->texture = gf3d_surf_to_text(surface, string);
-	gf3d_texture_delete(tex);
+	tex->_inuse = 0;
 }

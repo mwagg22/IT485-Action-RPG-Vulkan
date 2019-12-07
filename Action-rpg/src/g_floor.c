@@ -41,6 +41,7 @@ void init_floor_ent(Entity *self, int ctr, Entity *ents){
 	self->rotated = 0.0f;
 	self->type = ES_Stage;
 	other = ents;
+	self->show = true;
 	if (ctr == 0){
 		self->model = gf3d_model_load_animated("//other//level//grass//test", "grass", 0, 2);
 		TextLine assetname;
@@ -57,7 +58,12 @@ void init_floor_ent(Entity *self, int ctr, Entity *ents){
 		set_position(self, self->EntMatx);
 		self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	}
-	
+	if (ctr == 3){
+		self->model = gf3d_model_load_animated("//other//level//planes//grass", "//other//level//grass", 0, 2);
+	}
+	if (ctr == 4){
+		self->model = gf3d_model_load_animated("//other//level//skybox//battle//1//grass", "//other//level//bgrass", 0, 2);
+	}
 	//quadt quad_terrain2;
 	// quad_terrain = malloc(sizeof (quadt));
 	//create_quad(quad_terrain, vector2d(0, 0), vector2d(-180, 180));

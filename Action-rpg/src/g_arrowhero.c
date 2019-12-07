@@ -6,6 +6,8 @@
 #include "g_entity.h"
 #include "g_arrowhero.h"
 #include "g_floor.h"
+#include "g_hud.h"
+#include"g_text.h"
 Entity *other;
 glob_model_pool *pool;
 int attacknum_a=0;
@@ -282,7 +284,7 @@ void update_arrow_model(Entity *self){
 }
 
 void update_arrow_ent(Entity *self){
-	self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
+	//self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	set_position(self, self->EntMatx);
 	gfc_matrix_copy(mtxcopy, self->EntMatx);
 	if (self->controling == 0){
@@ -412,11 +414,18 @@ void init_arrow_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools)
 	self->action = none;
 	self->prev_action = none;
 	self->get_inputs = arrow_get_inputs;
+	self->show = 0;
+	self->overworld = 0;
 	self->up = vector3d(0, 1,0);
+	self->health = 400;
+	self->attackdmg = 12;
 	//self->right = vector3d(0, 1, 0);
 	self->controling = ctr;
 	self->movementspeed = 1.0f;
 	self->rotated = 0.0f;
+	self->health_bar = create_healthbar("//other//ui//face//sword//sword_face", "//other//ui//arrow_face", 12, 10, -7, &other[0]);
+	self->health_bar->box = create_textbox("400", 14, 8, -6, NULL, true, &other[0]);
+	self->health_bar->mp_box = create_textbox("4000", 14, 8, -8, NULL, true, &other[0]);
 	self->type = ES_Player;
 	pool = pools;
 	other = ents;
@@ -580,6 +589,7 @@ void create_arrow_projectile(Entity *self, float speed, float dmg){
 	projEnt.controling = 0;
 	//projEnt.get_inputs = get_proj_inputs;
 	projEnt.type = ES_Projectile;
+	projEnt.parent = self;
 	projEnt.ProjectileData.Hitarray = (Entity*)gfc_allocate_array(sizeof(Entity), 10);
 	projEnt.ProjectileData.destroyOncollision = true;
 	gfc_matrix_identity(projEnt.EntMatx);

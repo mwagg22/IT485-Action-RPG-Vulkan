@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-
+#include <math.h>
 #include "simple_logger.h"
 #include "g_control.h"
 #include "g_entity.h"
@@ -15,25 +15,38 @@ void goblin_think(Entity *self){
 	float attack_range = 3.0;
 	Entity *target = get_nearest_target(self,other);
 	if (target){
-		if (vector3d_magnitude_between(target->position, self->position) > attack_range){
-			//self->state = ES_Running;
-			if (self->is_hit == 0){
-				self->action = movement;
-			}
+		if (self->overworld == 1){
+		if ( vector3d_magnitude_between(target->position, self->position) > 30){
+			self->action = none;
 		}
-		else if (vector3d_magnitude_between(target->position, self->position) <= attack_range){
-			//self->state = ES_Attacking;
-			int rdm=(rand() % 11);
-			if (rdm <= 7){
-				self->action = attack;
-				//slog("attack");
-			}
-			else{
-				self->action = none;
-				//slog("idle");
-			}
+		else{
+			self->action = movement;
+		}
 		}
 
+		else{
+			if (vector3d_magnitude_between(target->position, self->position) > attack_range){
+				//self->state = ES_Running;
+				if (self->is_hit == 0){
+					self->action = movement;
+				}
+			}
+			else if (vector3d_magnitude_between(target->position, self->position) <= attack_range){
+				//self->state = ES_Attacking;
+				int rdm = (rand() % 11);
+				if (rdm <= 7){
+					if (self->overworld == 0){
+						self->action = attack;
+						//slog("attack");}
+					}
+				}
+				else{
+					self->action = none;
+					//slog("idle");
+				}
+			}
+
+		}
 	}
 	//EntityState prev_state = self->state;
 	if (self->in_action == false){
@@ -141,18 +154,24 @@ void update_goblin_model(Entity *self){
 		if (self->attacknum == 0){
 			//slog("attack1");
 			self->can_attack = false;
-			self->model = self->mods.attack1;
-		create_projectile_e(self, NULL,pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
+			self->model = self->mods.attack1;		
 		self->attacknum=0;
 		}
 	}
 }
 
 void update_goblin_ent(Entity *self){
-	self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
+	if (self->overworld == 1){
+		self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
+	}
 	set_position(self, self->EntMatx);
 	self->think(self);
 	self->frame = self->frame + 0.9;
+	if (self->state == ES_Attacking){
+		if (round(self->frame) == 3){
+			create_projectile_e(self, NULL, pool->hitbox, 5.0, 20, false, 1, vector3d(0, 0, 0));
+		}
+	}
 	if(self->frame>=26&&self->state==ES_Attacking){	
 		self->can_block = true;
 		//slog("can attack again attacknum:%i",attacknum);
@@ -211,7 +230,7 @@ void goblin_displacement(Entity *self, Vector3D disp){
 			self->up.z = disp.z;
 		}
 		gfc_matrix_translate(self->EntMatx, disp);
-
+		slog("position x:%f y:%f z:%f", self->position.x, self->position.y, self->position.z);
 		//slog("up after x:%f y:%f z:%f frame:%f", self->up.x, self->up.y, self->up.z, framechange);
 	}
 }
@@ -233,10 +252,13 @@ void init_goblin_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools
 	self->prev_action = none;
 	self->up = vector3d(0, 1,0);
 	//self->right = vector3d(0, 1, 0);
-	self->controling = ctr;
+	self->controling = 0;
 	self->movementspeed = .20;
+	self->attackdmg = 5;
 	self->rotated = 0.0f;
+	self->overworld = ctr;
 	self->type = ES_Enemy;
+	self->health = 200;
 	self->in_action = false;
 	other = ents;
 	pool = pools;

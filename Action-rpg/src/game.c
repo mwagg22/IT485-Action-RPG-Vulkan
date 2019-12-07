@@ -27,9 +27,9 @@
 
 #include "g_text.h"
 Entity *ents2;
-Entity *ents2;
+//Entity *ents2;
 glob_model_pool *pools;
-Uint32 entity_max=40;
+Uint32 entity_max=1020;
 int created = 6;
 
 void spawn_Entity2(Entity *entsToAdd){
@@ -42,6 +42,12 @@ void spawn_Entity2(Entity *entsToAdd){
 			return;
 		}
 	}
+}
+Entity *return_game_list(){
+	return ents2;
+}
+glob_model_pool *return_model_pool(){
+	return pools;
 }
 
 int main(int argc,char *argv[])
@@ -71,11 +77,11 @@ int main(int argc,char *argv[])
 	Entity Ent9;//hud
 	Entity Ent10;
 	Entity Ent11;
-	//LTimer time;
+	LTimer timer;
 	long lastFrameTime;
 	float deltaTime;
-	//LTimer_init(&time);
-	//start(&time);
+	LTimer_init(&timer);
+	start(&timer);
 	int countedframes=0;
     for (a = 1; a < argc;a++)
     {
@@ -110,9 +116,9 @@ int main(int argc,char *argv[])
 	Ent9 = *gf3d_entity_new();
 	Ent10 = *gf3d_entity_new();
 	Ent11 = *gf3d_entity_new();
-	gfc_matrix_identity(Ent.EntMatx);
-	gfc_matrix_identity(Ent3.EntMatx);    	
+	gfc_matrix_identity(Ent.EntMatx);  	
 	gfc_matrix_identity(Ent2.EntMatx);
+	gfc_matrix_identity(Ent3.EntMatx);
 	gfc_matrix_identity(Ent4.EntMatx);
 	gfc_matrix_identity(Ent5.EntMatx);
 	gfc_matrix_identity(Ent6.EntMatx);
@@ -124,14 +130,6 @@ int main(int argc,char *argv[])
 	gfc_matrix_make_translation(
 		Ent.EntMatx,
 		vector3d(-400, -400, 0)
-		);
-    gfc_matrix_make_translation(
-		Ent2.EntMatx,
-		vector3d(-340, -400, 0)
-        );
-	gfc_matrix_make_translation(
-		Ent3.EntMatx,
-		vector3d(-360, -400, 0)
 		);
 	gfc_matrix_make_translation(
 		Ent4.EntMatx,
@@ -157,9 +155,17 @@ int main(int argc,char *argv[])
 		Ent9.EntMatx,
 		vector3d(0, 0, 0)
 		);
+	gfc_matrix_make_translation(
+		Ent10.EntMatx,
+		vector3d(0, 0, 100)
+		);
+	gfc_matrix_make_translation(
+		Ent11.EntMatx,
+		vector3d(0, 0, 100)
+		);
 	init_sword_ent(&Ent, 1, ents2,pools);
-	//init_arrow_ent(&Ent2, 0, ents2,pools);
-	//init_mage_ent(&Ent3, 0, ents2,pools);
+	init_arrow_ent(&Ent2, 0, ents2,pools);
+	init_mage_ent(&Ent3, 0, ents2,pools);
 	init_goblin_ent(&Ent4, 1, ents2,pools);
 	//init_bee_ent(&Ent5, 0, ents2,pools);
 	//init_goblin_ent(&Ent6, 0, ents2,pools);
@@ -169,8 +175,8 @@ int main(int argc,char *argv[])
 	init_floor_ent(&Ent10, 3, ents2);
 	init_floor_ent(&Ent11, 4, ents2);
 	ents2[0] = Ent;
-	//ents2[1] = Ent2;
-	//ents2[2] = Ent3;
+	ents2[1] = Ent2;
+	ents2[2] = Ent3;
 	ents2[3] = Ent4;
 	//ents2[4] = Ent5;
 	//ents2[5] = Ent6;
@@ -251,11 +257,12 @@ int main(int argc,char *argv[])
 		//	}
 		//}
 		//slog("Time in millisecs: %f", (SDL_GetTicks() - startTime)/(1000.f));
-		//float avgFPS = countedframes / (getTicks(&time) / 1000.f);
-		//if (avgFPS > 2000000)
-	//	{
-	//		avgFPS = 0;
-		//}
+		/*float avgFPS = countedframes / (getTicks(&timer) / 1000.f);
+		slog("average frames:%f", avgFPS);
+		if (avgFPS > 2000000)
+		{
+			avgFPS = 0;
+		}*/
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
         bufferFrame = gf3d_vgraphics_render_begin();
@@ -265,7 +272,7 @@ int main(int argc,char *argv[])
 			commandBuffer2 = gf3d_command_rendering_begin_2d(bufferFrame);
 			countedframes++;
 			for (int p = 0; p < entity_max; p++){
-				if (ents2[p]._inuse){
+				if (ents2[p]._inuse&&ents2[p].show==true){
 					//slog("index :%i", p);
 					gf3d_model_draw(ents2[p].model, bufferFrame, commandBuffer, ents2[p].EntMatx, (Uint32)ents2[p].frame);
 					if (ents2[p].controling == 1){
@@ -279,7 +286,7 @@ int main(int argc,char *argv[])
 			draw_huds(bufferFrame, commandBuffer2);
 			draw_text_boxes(bufferFrame, commandBuffer2);
 			collision_check(ents2, entity_max);
-
+			update_battle_manager(0,0);
             gf3d_command_rendering_end(commandBuffer);
 			gf3d_command_rendering_end(commandBuffer2);
         gf3d_vgraphics_render_end(bufferFrame);

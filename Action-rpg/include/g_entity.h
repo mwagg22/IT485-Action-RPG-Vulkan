@@ -155,6 +155,7 @@ typedef struct Entity_S
 	int attacknum;
 	int cast;//for magic casting
 	bool overworld;
+	bool show;
 	bool			can_attack;
 	bool			can_block;
 	bool			can_hpskill;
@@ -169,6 +170,15 @@ typedef struct Entity_S
     
 }Entity;
 
+typedef struct Battle_manager_S{
+	int enemycount;
+	int playercount;
+	int exp;
+	bool inbattle;
+	Vector3D lastposition;
+}Battle_manager;
+
+void update_battle_manager(int ecount, int pcount);
 /**
  * @brief initializes the entity subsystem
  * @param entity_max maximum number of simultaneous entities you wish to support
@@ -180,9 +190,12 @@ void gf3d_entity_manager_init(Uint32 entity_max);
  * @return NULL on out of space or a pointer to an entity otherwise
  */
 Entity *gf3d_entity_new();
-
+void hide(Entity* toHide);
+void show(Entity* toShow);
 Entity *gf3d_return_list();
 void spawn_Entity2(Entity *entsToAdd);
+Entity *return_game_list();
+glob_model_pool *return_model_pool();
 /**
  * @brief free an active entity
  * @param self the entity to free
@@ -217,4 +230,6 @@ void create_projectile_e(Entity *self, Entity *other, Model *model, float dmg, f
 void init_battle_sequence(Entity *player,int x,int y,int z);
 void end_battle_sequence(Entity *player);
 void spawn_enemy(int num, Vector3D position);
+void draw_entities(Uint32 bufferFrame, VkCommandBuffer commandBuffer, Matrix4 gf3d_camera, const Uint8 *keys, float deltaTime);
+void free_ent_manager(int i);
 #endif

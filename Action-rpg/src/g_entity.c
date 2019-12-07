@@ -1,10 +1,14 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include <math.h>
 #include "simple_logger.h"
 #include "gfc_vector.h"
 #include "gfc_matrix.h"
 #include "g_entity.h"
+#include "g_text.h"
+#include "g_hud.h"
+#include "g_swordhero.h"
 float framechange;
 //float frame;
 typedef struct
@@ -13,6 +17,7 @@ typedef struct
     Uint32  entity_max;
 }EntityManager;
 
+Battle_manager battle_man = { 0 };
 static EntityManager gf3d_entity_manager = {0};
 SDL_Event event;
 
@@ -47,6 +52,8 @@ Entity *gf3d_entity_new()
         //. found a free entity
         memset(&gf3d_entity_manager.entity_list[i],0,sizeof(Entity));
         gf3d_entity_manager.entity_list[i]._inuse = 1;
+		gf3d_entity_manager.entity_list[i].Ent_ID = (int)i;
+		gf3d_entity_manager.entity_list[i].show = true;
 		slog("Entity arr :%i", i);
 		//slog("Size of ents list:%i", sizeof(gf3d_entity_manager.entity_list) / sizeof(int));
         return &gf3d_entity_manager.entity_list[i];
@@ -54,7 +61,10 @@ Entity *gf3d_entity_new()
     slog("request for entity failed: all full up");
     return NULL;
 }
-
+void free_ent_manager(int i){
+	gf3d_entity_manager.entity_list[i]._inuse = 0;
+	memset(&gf3d_entity_manager.entity_list[i], 0, sizeof(Entity));
+}
 void gf3d_entity_free(Entity *self)
 {
     if (!self)
@@ -136,15 +146,23 @@ void handle_collision(Entity *self, Entity *other){
 		//if (self->position.z >= other->position.z) { displacement(self, vector3d(0, 0, 1)); displacement(other, vector3d(0, 0, 1)); }
 		//else if (self->position.z <= other->position.z) { displacement(self, vector3d(0, 0, -1)); displacement(other, vector3d(0, 0, -1)); }
 	}
-
+	if (self->type == ES_Player&&self->overworld == 1 && other->type == ES_Enemy){
+		//battle sequence start
+		other->_inuse = 0;
+		free_ent_manager(other->Ent_ID);
+		self->overworld = 0;
+		slog("battle time");
+		init_battle_sequence(self,1,0,0);
+	}
 }
 bool check_hitbox_collision(Entity *hitlist, Entity *other){
 	bool found=false;
 	for (int i = 0; i < 10; i++){
-		//slog(":%i,:%i", hitlist[i].Ent_ID, other->Ent_ID);
+
 		if (!hitlist[i]._inuse)continue;
 		if (hitlist[i].Ent_ID == other->Ent_ID)
 		{
+			slog(":%i,:%i", hitlist[i].Ent_ID, other->Ent_ID);
 			found = true;
 		}
 	}
@@ -152,7 +170,7 @@ bool check_hitbox_collision(Entity *hitlist, Entity *other){
 }
 
 void handle_projectile_collision(Entity *self, Entity *other){
-	
+
 	if (self->type == ES_Projectile&&other->type == ES_Enemy || self->type == ES_Hitbox&&other->type == ES_Enemy&&self->parent->type == ES_Player){
 		//self->ProjectileData.Hitarray[0] = *other;
 		bool found = check_hitbox_collision(self->ProjectileData.Hitarray, other);
@@ -163,6 +181,13 @@ void handle_projectile_collision(Entity *self, Entity *other){
 			other->is_hit = true;
 			other->state = ES_Hit;
 			other->update_model(other);
+			
+			int i = (other->health) - (self->parent->attackdmg);
+			other->health -= (self->parent->attackdmg);
+			char str[10];
+			sprintf(str, "%d", i);
+			//slog("damage:%s", str);
+			create_textbox(str, other->position.x, -other->position.y, other->position.z+4, 120, false, NULL);
 			for (int i = 0; i < 10; i++){
 				if (!self->ProjectileData.Hitarray[i]._inuse){
 					//slog("added in:%i", i);
@@ -170,7 +195,7 @@ void handle_projectile_collision(Entity *self, Entity *other){
 					return;
 				}
 			}
-			
+
 			//self->_inuse = 0;
 		}
 		if (self->ProjectileData.destroyOncollision != 0){
@@ -182,7 +207,7 @@ void handle_projectile_collision(Entity *self, Entity *other){
 			}
 			else{
 				self->_inuse = 0;
-				
+				free_ent_manager(self->Ent_ID);
 			}
 		}
 	}
@@ -198,29 +223,57 @@ void handle_projectile_collision(Entity *self, Entity *other){
 		self->update_model(self);
 		//other->_inuse = 0;
 	}
+
+	//enemy
 	if (self->type == ES_Hitbox&&other->type == ES_Player&&self->parent->type == ES_Enemy){
 		//slog("hitbox COLLISION");
-		if (other->state != ES_Blocking){
-			other->is_hit = true;
-			other->state = ES_Hit;
-			other->update_model(other);
-		}
-		else{
-			displacement(other, vector3d(self->up.x, self->up.y, 0));
+		bool found = check_hitbox_collision(self->ProjectileData.Hitarray, other);
+		slog("hitbox COLLISION %i", found);
+		if (!found){
+			if (other->state != ES_Blocking){
+				other->is_hit = true;
+				other->state = ES_Hit;
+				other->update_model(other);
+				//char snum[5];
+				slog("double collision?");
+				//sprintf(snum, "%d", (other->health) - (self->attackdmg));
+				//update_textbox_texture(other->health_bar->box, "20");
+			}
+			else{
+				displacement(other, vector3d(self->up.x, self->up.y, 0));
+			}
 		}
 		self->_inuse = 0;
+		free_ent_manager(self->Ent_ID);
 	}
-	if (other->type == ES_Hitbox&&self->type == ES_Player&&other->parent->type == ES_Enemy){
-		//slog("hitbox COLLISION");
-		if (self->state != ES_Blocking){
-			self->is_hit = true;
-			self->state = ES_Hit;
-			self->update_model(self);
+	 if (other->type == ES_Hitbox&&self->type == ES_Player&&other->parent->type == ES_Enemy){
+		bool found = check_hitbox_collision(other->ProjectileData.Hitarray, self);
+		slog("hitbox COLLISION %i",found);
+		if (!found){
+			if (self->state != ES_Blocking){
+				self->is_hit = true;
+				self->state = ES_Hit;
+				self->update_model(self);
+				slog("recieved damage");
+				int i = (self->health) - (other->parent->attackdmg);
+				self->health -= (other->parent->attackdmg);
+				char str[10];
+				sprintf(str, "%d", i);
+				update_textbox_texture(self->health_bar->box, str);
+				for (int i = 0; i < 10; i++){
+					if (!other->ProjectileData.Hitarray[i]._inuse){
+						//slog("added in:%i", i);
+						other->ProjectileData.Hitarray[i] = *self;
+						return;
+					}
+				}
+				//other->_inuse = 0;
+			}
+			else{
+				displacement(self, vector3d(other->up.x, other->up.y, 0));
+			}
 		}
-		else{
-			displacement(self, vector3d(other->up.x, other->up.y,0));
-		}
-		other->_inuse = 0;
+			//other->_inuse = 0;
 	}
 }
 void handle_hitbox_collision(Entity *self, Entity *other, Vector3D kick){
@@ -289,9 +342,11 @@ void update_ent(Entity *self){
 	if (self->type == ES_Projectile){
 		if (self->position.x > 1000 || self->position.x < -1000){
 			self->_inuse = 0;
+			free_ent_manager(self->Ent_ID);
 		}
 		if (self->position.y > 1000 || self->position.y < -1000){
 			self->_inuse = 0;
+			free_ent_manager(self->Ent_ID);
 		}
 	}
 	if (self->ProjectileData.destroyOncollision == 2){
@@ -309,9 +364,11 @@ void update_ent(Entity *self){
 	{
 		if (self->type==ES_Effect){
 			self->_inuse = 0;
+			free_ent_manager(self->Ent_ID);
 		}
 		if (self->type == ES_Hitbox){
 			self->_inuse = 0;
+			free_ent_manager(self->Ent_ID);
 		}
 		self->frame = 0;
 	}
@@ -523,4 +580,111 @@ void create_projectile_e(Entity *self, Entity *other, Model *model, float dmg, f
 	spawn_Entity2(&projEnt);
 	//free(&projEnt);
 }
+void init_battle_sequence(Entity *player,int x,int y,int z){
+	int ecount = 0;
+	if (x > 0)
+		ecount++;
+	if (y > 0)
+		ecount++;
+	if (z > 0)
+		ecount++;
+	battle_man.enemycount = ecount;
+	battle_man.playercount = 3;
+	battle_man.exp = 20;
+	spawn_enemy(x,vector3d(20,-20,100));
+	spawn_enemy(y, vector3d(20, 0, 100));
+	spawn_enemy(z, vector3d(20, 20, 100));
+	battle_man.inbattle = true;
+	battle_man.lastposition = player->position;
+	player->EntMatx[3][0] = -20;
+	player->EntMatx[3][1] = 20;
+	player->EntMatx[3][2] = 100;
+	//gfc_matrix_translate(
+	//	player->EntMatx,
+	//	vector3d(-20, 0, 100)
+	//	);
+	gfc_matrix_translate(
+		return_game_list()[1].EntMatx,
+		vector3d(-20, 20, 100)
+		);
+	gfc_matrix_translate(
+		&return_game_list()[2].EntMatx,
+		vector3d(-20, -20, 100)
+		);
+	show(&return_game_list()[1]);
+	show(&return_game_list()[2]);
+}
+
+void end_battle_sequence(Entity* player){
+	player->overworld = 1;
+	player->experience += battle_man.exp;
+	gfc_matrix_make_translation(
+		player->EntMatx,
+		battle_man.lastposition
+		);
+	hide(&return_game_list()[1]);
+	hide(&return_game_list()[2]);
+}
+
+void hide(Entity* toHide){
+	toHide->show = false;
+}
+void show(Entity* toShow){
+	toShow->show = true;
+}
+void update_battle_manager(int ecount, int pcount){
+	if (battle_man.inbattle == true){
+		if (ecount < 0){
+			battle_man.inbattle == false;
+			end_battle_sequence(&return_game_list()[0]);
+		}
+		if (pcount < 0){
+			battle_man.inbattle == false;
+		}
+	}
+}
+
+void spawn_enemy(int num,Vector3D position){
+	Entity Ent = *gf3d_entity_new();
+	gfc_matrix_identity(Ent.EntMatx);
+	switch (num){
+	case 1:
+		init_goblin_ent(&Ent, 0, return_game_list(),return_model_pool());
+		gfc_matrix_make_translation(
+			Ent.EntMatx,
+			vector3d(position.x, position.y, position.z)
+			);
+		spawn_Entity2(&Ent);
+		return;
+	case 2:
+		init_bee_ent(&Ent, 0, return_game_list(),return_model_pool());
+		gfc_matrix_make_translation(
+			Ent.EntMatx,
+			vector3d(position.x, position.y, position.z)
+			);
+		spawn_Entity2(&Ent);
+		return;
+	default:
+		Ent._inuse = 0;
+		return;
+	}
+}
+
+//long overdue
+//void draw_entities(Uint32 bufferFrame, VkCommandBuffer commandBuffer, Matrix4 gf3d_camera, const Uint8 *keys,float deltaTime){
+//	Entity *Ent;
+//	for (int p = 0; p < gf3d_entity_manager.entity_max; p++){
+//		Ent = &gf3d_entity_manager.entity_list[p];
+//		if (Ent->_inuse){
+//			//slog("index :%i", p);
+//			gf3d_model_draw(Ent->model, bufferFrame, commandBuffer, Ent->EntMatx, (Uint32)Ent->frame);
+//			if (Ent->controling == 1){
+//				Ent->get_inputs(Ent, keys, deltaTime);
+//				gf3d_set_camera(gf3d_camera, Ent, 0, 0);
+//			}
+//			Ent->update_ent(Ent);
+//		}
+//	}
+//	collision_check(gf3d_entity_manager.entity_list, gf3d_entity_manager.entity_max);
+//}
 /*eol@eof*/

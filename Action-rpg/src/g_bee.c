@@ -235,6 +235,9 @@ void init_bee_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	self->controling = ctr;
 	self->movementspeed = .20;
 	self->rotated = 0.0f;
+	self->health = 200;
+	self->overworld = ctr;
+	self->attackdmg = 5;
 	self->type = ES_Enemy;
 	self->in_action = false;
 	other = ents;
