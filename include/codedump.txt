@@ -1,0 +1,201 @@
+bool AABBCollision(Model *a,Model *b)
+{
+
+	//Check if Box1's max is greater than Box2's min and Box1's min is less than Box2's max
+	return(a->a.m_vecMax.x > b->a.m_vecMin.x &&
+		a->a.m_vecMin.x < b->a.m_vecMax.x &&
+		a->a.m_vecMax.y > b->a.m_vecMin.y &&
+		a->a.m_vecMin.y < b->a.m_vecMax.y &&
+		a->a.m_vecMax.z > b->a.m_vecMin.z &&
+		a->a.m_vecMin.z < b->a.m_vecMax.z);
+
+	//If not, it will return false
+}
+
+typedef struct BoundBox
+{
+	Entity_S *parent;
+	Vector3D m_vecMin;
+	Vector3D m_vecMax;
+}BoundBox;
+
+ 		Position.x=modelMat[3][0]
+		Position.y=modelMat[3][1] 
+		Position.z=modelMat[3][2] 
+
+for(int i=0;i<model->mesh.vertexCount;i++){
+v3d min;
+v3d max;
+
+if (obj.verticles[numvertices].x<min.x)min.x=obj.verticles[numvertices].x;
+if (obj.verticles[numvertices].y<min.y)min.y=obj.verticles[numvertices].y;
+if (obj.verticles[numvertices].z<min.z)min.z=obj.verticles[numvertices].z;
+
+if (obj.verticles[numvertices].x>max.x)max.x=obj.verticles[numvertices].x;
+if (obj.verticles[numvertices].y>max.y)max.y=obj.verticles[numvertices].y;
+if (obj.verticles[numvertices].z>max.z)max.z=obj.verticles[numvertices].z;
+}
+obj->vertices[numvertices].x<min.x;
+           obj->vertices[numvertices].y = y;
+            obj->vertices[numvertices].z = z;
+void get_inputs(Entity *self, const Uint8 *keys){
+	if (self->controling == 1){
+		if (keys[SDL_SCANCODE_RIGHT]){
+			if (self->dr != Right){
+				if (self->dr == Left){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						3.1408,
+						vector3d(0, 0, 1));
+					self->dr = Right;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, 3.1408);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, 3.1408);
+				}
+				else if (self->dr == Up){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						-1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Right;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, -1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, -1.5708);
+				}
+				else{
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Right;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, 1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, 1.5708);
+				}
+			}
+			self->state = ES_Running;
+			update_model(self);
+			displacement(self, vector3d(-1, 0, 0));
+		}
+		if (keys[SDL_SCANCODE_LEFT]){
+			if (self->dr != Left){
+				if (self->dr == Right){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						-3.1408,
+						vector3d(0, 0, 1));
+					self->dr = Left;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, -3.1408);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, -3.1408);
+				}
+				else if (self->dr == Up){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Left;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, 1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, 1.5708);
+				}
+				else{
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						-1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Left;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, -1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, -1.5708);
+				}
+			}
+			self->state = ES_Running;
+			update_model(self);
+			displacement(self, vector3d(1, 0, 0));
+			//gfc_matrix_translate(Ent.EntMatx, vector3d(1, 0, 0));
+		}
+		if (keys[SDL_SCANCODE_UP]){
+			if (self->dr != Up){
+				if (self->dr == Down){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						3.1408,
+						vector3d(0, 0, 1));
+					self->dr = Up;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, 3.1408);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, 3.1408);
+				}
+				else if (self->dr == Left){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						-1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Up;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, -1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, -1.5708);
+				}
+				else{
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Up;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, 1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, 1.5708);
+				}
+			}
+			self->state = ES_Running;
+			update_model(self);
+			displacement(self, vector3d(0, -1, 0));
+			//gfc_matrix_translate(Ent.EntMatx, vector3d(0, -1, 0));
+		}
+		if (keys[SDL_SCANCODE_DOWN]){
+			if (self->dr != Down){
+				if (self->dr == Up){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						-3.1408,
+						vector3d(0, 0, 1));
+					self->dr = Down;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, -3.1408);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, -3.1408);
+				}
+				else if (self->dr == Right){
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						-1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Down;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, -1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, -1.5708);
+				}
+				else{
+					gfc_matrix_rotate(
+						self->EntMatx,
+						self->EntMatx,
+						1.5708,
+						vector3d(0, 0, 1));
+					self->dr = Down;
+					vector3d_set_angle_by_radians(&self->box.m_vecMin, 1.5708);
+					vector3d_set_angle_by_radians(&self->box.m_vecMax, 1.5708);
+				}
+			}
+			self->state = ES_Running;
+			update_model(self);
+			displacement(self, vector3d(0, 1, 0));
+			//gfc_matrix_translate(Ent.EntMatx, vector3d(0, 1, 0));
+		}
+		else if (keys[SDL_SCANCODE_UNKNOWN]){
+			if (self->state != ES_Attacking){
+				self->state = ES_Idle;
+				update_model(self);
+			}
+		}
+	}
+}

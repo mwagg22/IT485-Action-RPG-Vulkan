@@ -1,0 +1,166 @@
+void sword_special(Entity *self){
+	switch (specialnum){
+	case 0:
+		if (self->can_special == true){
+			self->can_block = false;
+			if (up_trigger){
+				specialnum = 2;
+				self->state = ES_Special;
+				self->can_attack = false;
+				self->can_special = false;
+				//update_model(self);
+				self->update_model(self);
+			}
+			else if (down_trigger){
+				specialnum = 1;
+				self->state = ES_Special;
+				self->can_attack = false;
+				self->can_special = false;
+				//update_model(self);
+				self->update_model(self);
+			}
+			else{
+				specialnum = 0;
+				self->state = ES_Special;
+				self->can_attack = false;
+				self->can_special = false;
+				//update_model(self);
+				self->update_model(self);
+			}
+		}
+		break;
+	default:
+		slog("How i get here");
+		break;
+
+	}
+}
+
+	self->box.m_vecMin.x = round(min.x);
+	self->box.m_vecMin.y = round(min.y);
+	self->box.m_vecMin.z = round(min.z);
+	self->box.m_vecMax.x = round(max.x);
+	self->box.m_vecMax.y = round(max.y);
+	self->box.m_vecMax.z = round(max.z);
+
+
+
+
+
+
+
+
+	if (self->type == ES_Projectile&&other->type == ES_Enemy || self->type == ES_Hitbox&&other->type == ES_Enemy&&self->parent->type == ES_Player){
+		//if (self->ProjectileData.effect == 1&&self->ProjectileData.created==false){
+		//	self->ProjectileData.created = true;
+		//	update_ent_model(self);
+		//}
+		
+		slog("hitbox COLLISION");
+		other->is_hit = true;
+		other->state = ES_Hit;
+		other->update_model(other);
+		//self->_inuse = 0;
+	}
+	 if (other->type == ES_Projectile&&self->type == ES_Enemy || other->type == ES_Hitbox&&self->type == ES_Enemy&&other->parent->type == ES_Player){
+		slog("hitbox COLLISION");
+		if (other->ProjectileData.effect == 1 && other->ProjectileData.created == false){
+			other->ProjectileData.created = true;
+			update_ent_model(other);
+		}
+		self->is_hit = true;
+		self->state = ES_Hit;
+		self->update_model(self);
+		//other->_inuse = 0;
+	}
+	 if (self->type == ES_Hitbox&&other->type == ES_Player&&self->parent->type == ES_Enemy){
+		slog("hitbox COLLISION");
+		other->is_hit = true;
+		other->state = ES_Hit;
+		other->update_model(other);
+		self->_inuse = 0;
+	}
+	 if (other->type == ES_Hitbox&&self->type == ES_Player&&other->parent->type == ES_Enemy){
+		slog("hitbox COLLISION");
+		self->is_hit = true;
+		self->state = ES_Hit;
+		self->update_model(self);
+		other->_inuse = 0;
+	}
+///////////////////////
+bool found = false;
+	for (int i = 0; i < 10; i++){
+		if (&self->ProjectileData.Hitarray[i] == &other)
+		{
+			found = true;
+		}
+	}
+	if (found){
+		slog("Found");
+		return; 
+	}
+	else{
+		if (self->type == ES_Projectile&&other->type == ES_Enemy || self->type == ES_Hitbox&&other->type == ES_Enemy&&self->parent->type == ES_Player){
+			//if (self->ProjectileData.effect == 1&&self->ProjectileData.created==false){
+			//	self->ProjectileData.created = true;
+			//	update_ent_model(self);
+			//}	
+			for (int i = 0; i < 10; i++){
+				if (self->ProjectileData.Hitarray[i]._inuse)continue;
+				//if (!other->ProjectileData.Hitarray[i]._inuse)
+				//{
+				slog("added in:%i", i);
+				self->ProjectileData.Hitarray[i] = *other;
+				slog("hitbox COLLISION");
+				//	if (other->ProjectileData.effect == 1 && other->ProjectileData.created == false){
+				//		other->ProjectileData.created = true;
+				//		update_ent_model(other);
+				//}
+				other->is_hit = true;
+				other->state = ES_Hit;
+				other->update_model(other);
+				//other->_inuse = 0;
+				return;
+				//}
+			}
+			return;
+			
+		}
+		else if (other->type == ES_Projectile&&self->type == ES_Enemy || other->type == ES_Hitbox&&self->type == ES_Enemy&&other->parent->type == ES_Player){
+			
+			for (int i = 0; i < 10; i++){
+				if (other->ProjectileData.Hitarray[i]._inuse)continue;
+				//if (!other->ProjectileData.Hitarray[i]._inuse)
+				//{
+					slog("added in:%i",i);
+					other->ProjectileData.Hitarray[i] = *self;
+					slog("hitbox COLLISION");
+				//	if (other->ProjectileData.effect == 1 && other->ProjectileData.created == false){
+				//		other->ProjectileData.created = true;
+				//		update_ent_model(other);
+					//}
+					self->is_hit = true;
+					self->state = ES_Hit;
+					self->update_model(self);
+					//other->_inuse = 0;
+					return;
+				//}
+			}
+			return;
+		}
+		if (self->type == ES_Hitbox&&other->type == ES_Player&&self->parent->type == ES_Enemy){
+			slog("hitbox COLLISION");
+			other->is_hit = true;
+			other->state = ES_Hit;
+			other->update_model(other);
+			self->_inuse = 0;
+		}
+		if (other->type == ES_Hitbox&&self->type == ES_Player&&other->parent->type == ES_Enemy){
+			slog("hitbox COLLISION");
+			self->is_hit = true;
+			self->state = ES_Hit;
+			self->update_model(self);
+			other->_inuse = 0;
+		}
+
+	}
