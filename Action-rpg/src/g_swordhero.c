@@ -309,13 +309,27 @@ void sword_displacement(Entity *self, Vector3D disp){
 		upy = disp.y;
 		upz = disp.z;
 		gfc_matrix_copy(mtxcopy_s, self->EntMatx);
-		//slog("position x:%f y:%f z:%f", self->position.x, self->position.y, self->position.z);
+		slog("position x:%f y:%f z:%f", self->position.x, self->position.y, self->position.z);
 		////slog("up after x:%f y:%f z:%f frame:%f", self->up.x, self->up.y, self->up.z, framechange);
 	}
 }
 void update_sword_ent(Entity *self){
 	if (self->overworld == true){
-		self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
+			self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
+	}
+	if (self->overworld == false){
+		if (self->position.x<-30){
+			self->EntMatx[3][0] = self->EntMatx[3][0] + 1;
+		}
+		if (self->position.x>30){
+			self->EntMatx[3][0] = self->EntMatx[3][0] - 1;
+		}
+		if (self->position.y<-30){
+			self->EntMatx[3][1] = self->EntMatx[3][1] + 1;
+		}
+		if (self->position.y>30){
+			self->EntMatx[3][1] = self->EntMatx[3][1] - 1;
+		}
 	}
 	if (self->attacknum>5)self->attacknum = 0;
 	set_position(self, self->EntMatx);
@@ -481,7 +495,7 @@ void init_sword_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools)
 	//text_box *b = ;
 	self->health_bar = create_healthbar("//other//ui//face//sword//sword_face", "//other//ui//sword_face", 12, 18, -7, &other[0]);
 	self->health_bar->box = create_textbox("400", 14, 14.5, -6,NULL, true, &other[0]);
-	self->health_bar->mp_box = create_textbox("4000", 14, 14.5, -8, NULL, true, &other[0]);
+	self->health_bar->mp_box = create_textbox("3400", 14, 14.5, -8, NULL, true, &other[0]);
 	gf3d_set_hitbox(self, vector3d(-5, -5, 0), vector3d(5, 5, 10));
 	
 	pool = pools;
@@ -672,7 +686,7 @@ void create_projectile(Entity *self, float speed, float dmg){
 void sword_ai_think(Entity *self){
 	if (self->controling != 1){
 		float attack_range = 5.00f;
-		Entity *target = get_nearest_target(self, other);
+		Entity *target = get_nearest_target(self, return_game_list());
 		self->target = target;
 		if (target){
 			////slog("distance between targets :%f", round(vector3d_magnitude_between(target->position, self->position)));

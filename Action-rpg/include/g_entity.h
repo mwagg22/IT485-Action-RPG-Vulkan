@@ -30,7 +30,8 @@ typedef enum
 	ES_Effect = 5,
 	ES_NPC = 6,
 	ES_Enemy = 7,
-	ES_Stage=8
+	ES_Stage=8,
+	ES_Warp=9
 }EntityType;
 typedef enum
 {
@@ -73,6 +74,7 @@ typedef struct model_index
 	Model *run;
 	Model *hit;
 	Model *block;
+	Model *dying;
 	Model *attack1;
 	Model *attack2;
 	Model *attack3;
@@ -96,6 +98,7 @@ typedef struct glob_model_pool
 	Model *blastair;
 	Model *rock;
 	Model *wave;
+	Model *roar;
 }glob_model_pool;
 typedef struct Projectiles_s
 {
@@ -167,7 +170,7 @@ typedef struct Entity_S
 	struct Entity_S *target;//for enemies
 	struct Entity_S *parent;//for projectiles
     void *data;                     /**<additional entity specific data*/
-    
+	Vector3D location;//for warps
 }Entity;
 
 typedef struct Battle_manager_S{
@@ -177,6 +180,7 @@ typedef struct Battle_manager_S{
 	bool inbattle;
 	Vector3D lastposition;
 }Battle_manager;
+
 
 void update_battle_manager(int ecount, int pcount);
 /**
@@ -195,6 +199,8 @@ void show(Entity* toShow);
 Entity *gf3d_return_list();
 void spawn_Entity2(Entity *entsToAdd);
 Entity *return_game_list();
+void hide_all(Entity *list);
+void show_all(Entity *list);
 glob_model_pool *return_model_pool();
 /**
  * @brief free an active entity

@@ -287,6 +287,20 @@ void update_arrow_ent(Entity *self){
 	//self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	set_position(self, self->EntMatx);
 	gfc_matrix_copy(mtxcopy, self->EntMatx);
+	if (self->overworld == false){
+		if (self->position.x<-30){
+			self->EntMatx[3][0] = self->EntMatx[3][0] + 1;
+		}
+		if (self->position.x>30){
+			self->EntMatx[3][0] = self->EntMatx[3][0] - 1;
+		}
+		if (self->position.y<-30){
+			self->EntMatx[3][1] = self->EntMatx[3][1] + 1;
+		}
+		if (self->position.y>30){
+			self->EntMatx[3][1] = self->EntMatx[3][1] - 1;
+		}
+	}
 	if (self->controling == 0){
 		arrow_ai_think(self);
 	}
@@ -308,7 +322,7 @@ void update_arrow_ent(Entity *self){
 	}
 	if (self->state == ES_Special){
 		if (self->specialnum == 0 && round(self->frame) == 32){
-			create_projectile_e(self, self->target, pool->dragon, 5.0, 20, 4, 2, vector3d(0, 0, 0));
+			create_projectile_e(self, self->target, pool->dragon, 5.0, 20, 4, 0, vector3d(0, 0, 0));
 		}
 		if (self->specialnum == 1){
 			//create_mage_projectile(self, 3.0, 1.0);
@@ -424,8 +438,8 @@ void init_arrow_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools)
 	self->movementspeed = 1.0f;
 	self->rotated = 0.0f;
 	self->health_bar = create_healthbar("//other//ui//face//sword//sword_face", "//other//ui//arrow_face", 12, 10, -7, &other[0]);
-	self->health_bar->box = create_textbox("400", 14, 8, -6, NULL, true, &other[0]);
-	self->health_bar->mp_box = create_textbox("4000", 14, 8, -8, NULL, true, &other[0]);
+	self->health_bar->box = create_textbox("300", 14, 7, -6, NULL, true, &other[0]);
+	self->health_bar->mp_box = create_textbox("4000", 14, 7, -8, NULL, true, &other[0]);
 	self->type = ES_Player;
 	pool = pools;
 	other = ents;
@@ -603,7 +617,7 @@ void create_arrow_projectile(Entity *self, float speed, float dmg){
 void arrow_ai_think(Entity *self){	
 	 if(self->controling != 1){		
 		float attack_range = 20.00f;
-		Entity *target = get_nearest_target(self, other);
+		Entity *target = get_nearest_target(self, return_game_list());
 		if (target){
 			//slog("distance between targets :%f", round(vector3d_magnitude_between(target->position, self->position)));
 			if (vector3d_magnitude_between(target->position, self->position) < attack_range &&self->state!=ES_Special){

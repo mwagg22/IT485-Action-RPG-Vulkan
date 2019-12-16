@@ -202,6 +202,7 @@ VkCommandBuffer gf3d_command_rendering_begin_2d(Uint32 index)
 
 	return commandBuffer;
 }
+
 void gf3d_command_rendering_end(VkCommandBuffer commandBuffer)
 {
     gf3d_command_configure_render_pass_end(commandBuffer);

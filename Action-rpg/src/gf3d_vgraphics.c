@@ -108,9 +108,9 @@ void gf3d_vgraphics_init(
     gfc_matrix_identity(gf3d_vgraphics.ubo.proj);
     gfc_matrix_view(
         gf3d_vgraphics.ubo.view,
+		vector3d(0, 40, 2),
         vector3d(0,0,0),
-        vector3d(0,0,0),
-        vector3d(0,0,-1)
+        vector3d(0,0,1)
     );
     gfc_matrix_perspective(
         gf3d_vgraphics.ubo.proj,
@@ -137,13 +137,13 @@ void gf3d_vgraphics_init(
     // swap chain!!!
     gf3d_swapchain_init(gf3d_vgraphics.gpu,gf3d_vgraphics.device,gf3d_vgraphics.surface,renderWidth,renderHeight);
     
-	gf3d_mesh_init(2048);//TODO: pull this from a parameter
+	gf3d_mesh_init(10000);//TODO: pull this from a parameter
 	gf3d_texture_init(1024);
     
     gf3d_pipeline_init(4);// how many different rendering pipelines we need
     gf3d_vgraphics.pipe = gf3d_pipeline_basic_model_create(device,"..//shaders//def-v.spv","..//shaders//deff.spv",gf3d_vgraphics_get_view_extent(),1024);
 	gf3d_vgraphics.pipe_2d = gf3d_pipeline_basic_ui_create(device, "..//shaders//vert.spv", "..//shaders//frag.spv", gf3d_vgraphics_get_view_extent(), 1024);
-	gf3d_model_manager_init(1024, gf3d_swapchain_get_swap_image_count(), device);
+	gf3d_model_manager_init(2048, gf3d_swapchain_get_swap_image_count(), device);
 	gf3d_entity_manager_init(1024);
 	gf3d_hud_manager_init(10);
     gf3d_command_system_init(8,device);
@@ -636,6 +636,7 @@ int gf3d_vgraphics_create_buffer(VkDeviceSize size, VkBufferUsageFlags usage, Vk
     
     if (vkAllocateMemory(gf3d_vgraphics.device, &allocInfo, NULL, bufferMemory) != VK_SUCCESS)
     {
+		slog("Error num: %d", vkAllocateMemory(gf3d_vgraphics.device, &allocInfo, NULL, bufferMemory));
         slog("failed to allocate buffer memory!");
         return 0;
     }

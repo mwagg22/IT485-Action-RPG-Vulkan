@@ -459,7 +459,7 @@ void gf3d_swapchain_transition_image_layout(VkImage image, VkFormat format, VkIm
 
 void gf3d_swapchain_create_depth_image()
 {
-    gf3d_swapchain_create_image(gf3d_swapchain.extent.width, gf3d_swapchain.extent.height, gf3d_pipeline_find_depth_format(), VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &gf3d_swapchain.depthImage, &gf3d_swapchain.depthImageMemory);
+    gf3d_swapchain_create_image(gf3d_swapchain.extent.width, gf3d_swapchain.extent.height, gf3d_pipeline_find_depth_format(), VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT | VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, &gf3d_swapchain.depthImage, &gf3d_swapchain.depthImageMemory);
     gf3d_swapchain.depthImageView = gf3d_swapchain_create_image_view(gf3d_swapchain.depthImage, gf3d_pipeline_find_depth_format(),VK_IMAGE_ASPECT_DEPTH_BIT);
     gf3d_swapchain_transition_image_layout(gf3d_swapchain.depthImage, gf3d_pipeline_find_depth_format(), VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
 }

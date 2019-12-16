@@ -117,6 +117,7 @@ void draw_text_boxes(Uint32 bufferFrame, VkCommandBuffer commandBuffer){
 			b = &gf3d_textbox.textBox_list[p];
 			gf3d_model_draw(b->model, bufferFrame, commandBuffer, b->Matrix, (Uint32)0);
 			update_text_boxes(b);
+			
 		}
 	}
 }
@@ -132,6 +133,15 @@ void update_text_boxes(text_box *box){
 		box->Matrix[3][1] = box->target->EntMatx[3][1] + box->position.x;
 		box->Matrix[3][0] = box->target->EntMatx[3][0] + box->position.y;
 		box->Matrix[3][2] = box->target->EntMatx[3][2] + box->position.z;
+	}
+}
+void update_text_target(Entity* target){
+	text_box *b;
+	for (int p = 0; p < gf3d_textbox.max_textBox; p++){
+		if (gf3d_textbox.textBox_list[p]._inuse){
+			b = &gf3d_textbox.textBox_list[p];
+			b->target = target;
+		}
 	}
 }
 //itoa(int to string)

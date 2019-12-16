@@ -25,6 +25,8 @@ typedef struct quadt_S{
 	bool isLeaf;
 }quadt;
 void init_floor_ent(Entity *self, int ctr, Entity *ents);
+void init_wall_ent(Entity *self, int ctr, Entity *ents);
+void update_skybox(Entity *self, Vector3D position);
 float barryCentric(Vector3D p1, Vector3D p2, Vector3D p3, Vector2D pos);
 float return_terrain_height(Entity* terr,float x, float y);
 void load_terrain_data(char *filename);

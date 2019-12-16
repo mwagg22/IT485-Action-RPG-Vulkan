@@ -4,13 +4,16 @@
 #include "simple_logger.h"
 #include "g_control.h"
 #include "g_entity.h"
-#include "g_goblin.h"
+#include "g_bear.h"
 #include "g_floor.h"
 Entity *other;
 glob_model_pool *pool;
 Vector3D bboxmin, bboxmax;
 float framechange;
-void goblin_think(Entity *self){
+float upx_b = 0;
+float upy_b = 0;
+float upz_b = 0;
+void bear_think(Entity *self){
 	
 	float attack_range = 3.0;
 	Entity *target = get_nearest_target(self,other);
@@ -34,12 +37,17 @@ void goblin_think(Entity *self){
 				}
 				else if (vector3d_magnitude_between(target->position, self->position) <= attack_range){
 					//self->state = ES_Attacking;
-					int rdm = (rand() % 11);
+					int rdm = (rand() % 17);
 					if (rdm <= 7){
 						if (self->overworld == 0){
-							self->action = attack;
+							self->action = special;
 							//slog("attack");}
 						}
+					}
+					else if (rdm >= 8){
+
+						self->action = attack;
+						////slog("attack");
 					}
 					else{
 						self->action = none;
@@ -55,7 +63,9 @@ void goblin_think(Entity *self){
 		switch (self->action){
 		case attack:
 			if (self->can_attack == true){
-				goblin_attack(self);
+				int rmd = (rand() % 2);
+				self->attacknum = rmd;
+				bear_attack(self);
 			}
 			break;
 		case movement:
@@ -81,14 +91,38 @@ void goblin_think(Entity *self){
 			c.y = c.y;
 			c.z = -c.z;
 			vector3d_normalize(&c);
-			if (self->state!=ES_Hit)
-				goblin_displacement(self, vector3d(c.x*self->movementspeed, c.y*self->movementspeed,0));
+			if (self->state != ES_Hit)
+				bear_displacement(self, vector3d(c.x*self->movementspeed, c.y*self->movementspeed,0));
 			break;
 		case block:
 			if (self->can_block == true){
-				goblin_block(self);
+				bear_block(self);
 				self->in_action = true;
 				//self->update_model(self);
+			}
+			break;
+		case special:
+			if (self->can_special == true){
+				//rotate_towards_target(self, target);
+				slog("special");
+				Vector3D d, e;
+				vector3d_sub(d, self->position, target->position);
+				d.x = -d.x;
+				d.y = d.y;
+				d.z = 0;
+				e.x = upx_b;
+				e.y = upy_b;
+				e.z = upz_b;
+				vector3d_normalize(&d);
+				if (self->state == ES_Running){
+					rotate_towards_target(self, d, &e);
+					upx_b = e.x;
+					upy_b = e.y;
+					upz_b = e.z;
+				}
+				self->specialnum = 0;
+				bear_special(self);
+				//turning = false;
 			}
 			break;
 		case none:
@@ -115,7 +149,7 @@ void goblin_think(Entity *self){
 		}
 	}
 }
-void goblin_attack(Entity *self){
+void bear_attack(Entity *self){
 	switch (self->attacknum){
 	case 0:
 		if (self->can_attack == true){
@@ -129,13 +163,38 @@ void goblin_attack(Entity *self){
 				//attacknum++;
 		}
 		break;
+	case 1:
+		if (self->can_attack == true){
+			self->can_block = false;
+			self->in_action = true;
+			//slog("attack num1: %i", self->attacknum);
+			self->can_attack = false;
+			self->state = ES_Attacking;
+			//update_model(self);
+			self->update_model(self);
+			//attacknum++;
+		}
+		break;
 	default:
 		slog("How i get here");
 		break;
 
 	}
 }
-void update_goblin_model(Entity *self){
+void bear_special(Entity *self){
+	if (self->can_special == true){
+		self->can_block = false;
+		if (self->specialnum == 0){
+			self->specialnum = 0;
+			self->state = ES_Special;
+			self->can_attack = false;
+			self->can_special = false;
+			self->update_model(self);
+		}
+	}
+
+}
+void update_bear_model(Entity *self){
 	self->frame = 0;
 	if (self->state == ES_Idle){
 		self->model = self->mods.idle;
@@ -160,6 +219,20 @@ void update_goblin_model(Entity *self){
 			self->model = self->mods.attack1;		
 		self->attacknum=0;
 		}
+		if (self->attacknum == 1){
+			//slog("attack1");
+			self->can_attack = false;
+			self->model = self->mods.attack2;
+			self->attacknum = 1;
+		}
+	}
+	if (self->state == ES_Special){
+		if (self->specialnum == 0){
+			slog("sp1 Bear roar");
+			self->model = self->mods.special1;
+			self->can_attack = false;
+			self->specialnum = 0;
+		}
 	}
 	if (self->state == ES_Dying){
 		self->model = self->mods.dying;
@@ -167,7 +240,7 @@ void update_goblin_model(Entity *self){
 	}
 }
 
-void update_goblin_ent(Entity *self){
+void update_bear_ent(Entity *self){
 	if (self->overworld == 1){
 		self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	}
@@ -190,7 +263,13 @@ void update_goblin_ent(Entity *self){
 		//slog("can attack again attacknum:%i",attacknum);
 
 }
-
+	if (self->state == ES_Special){
+		if (self->specialnum == 0){
+			if (round(self->frame) == 13){
+				create_projectile_e(self, NULL, pool->roar, 5.0, 20, false, 2, vector3d(0, 0, 0));
+			}
+		}
+	}
 	if (self->frame >= self->model->frameCount){
 		if (self->state == ES_Attacking){
 			self->state = ES_Idle;
@@ -222,7 +301,7 @@ void update_goblin_ent(Entity *self){
 	
 }
 
-void goblin_block(Entity *self){
+void bear_block(Entity *self){
 	if (self->can_block == true){
 		self->state = ES_Blocking;
 		self->attacknum = 0;
@@ -232,7 +311,7 @@ void goblin_block(Entity *self){
 
 
 }
-void goblin_displacement(Entity *self, Vector3D disp){
+void bear_displacement(Entity *self, Vector3D disp){
 	//vector3d_normalize(&disp);
 	vector3d_rotate_about_z(&disp, self->rotated);
 	float angle;
@@ -253,15 +332,15 @@ void goblin_displacement(Entity *self, Vector3D disp){
 		//slog("up after x:%f y:%f z:%f frame:%f", self->up.x, self->up.y, self->up.z, framechange);
 	}
 }
-void init_goblin_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
+void init_bear_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	set_position(self, self->EntMatx);
 	self->state = ES_Idle;
 	self->dr = Up;
-	self->attack=goblin_attack;
-	self->block = goblin_block;
-	self->update_model=update_goblin_model;
-	self->update_ent=update_goblin_ent;
-	self->think = goblin_think;
+	self->attack=bear_attack;
+	self->block = bear_block;
+	self->update_model=update_bear_model;
+	self->update_ent=update_bear_ent;
+	self->think = bear_think;
 	self->can_attack = true;
 	self->can_hpskill = true;
 	self->can_special = true;
@@ -277,18 +356,20 @@ void init_goblin_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools
 	self->rotated = 0.0f;
 	self->overworld = ctr;
 	self->type = ES_Enemy;
-	self->health = 200;
+	self->health = 600;
 	self->in_action = false;
 	other = ents;
 	pool = pools;
-	self->mods.idle = gf3d_model_load_animated("//enemy//goblin//idle//goblin_idle", "//enemy//goblin", 0, 56);
+	self->mods.idle = gf3d_model_load_animated("//enemy//bear//idle//bear_idle", "//enemy//bear", 0, 38);
 
-	self->mods.run = gf3d_model_load_animated("//enemy//goblin//run//goblin_run", "//enemy//goblin", 0, 33);
+	self->mods.run = gf3d_model_load_animated("//enemy//bear//run//bear_run", "//enemy//bear", 0, 27);
 
-	self->mods.hit = gf3d_model_load_animated("//enemy//goblin//hit//goblin_hit", "//enemy//goblin", 0, 21);
+	self->mods.hit = gf3d_model_load_animated("//enemy//bear//hit//bear_hit", "//enemy//bear", 0, 40);
 
-	self->mods.attack1 = gf3d_model_load_animated("//enemy//goblin//attack//goblin_attack", "//enemy//goblin", 0, 40);
-	self->mods.dying = gf3d_model_load_animated("//enemy//goblin//dead//dying", "//enemy//goblin", 0, 53);
+	self->mods.attack1 = gf3d_model_load_animated("//enemy//bear//attack1//bear_attack1", "//enemy//bear", 0, 34);
+	self->mods.attack2 = gf3d_model_load_animated("//enemy//bear//attack2//bear_attack2", "//enemy//bear", 0, 35);
+	self->mods.special1 = gf3d_model_load_animated("//enemy//bear//special//bear_special", "//enemy//bear", 0, 40);
+	self->mods.dying = gf3d_model_load_animated("//enemy//bear//dead//bear_dying", "//enemy//bear", 0, 31);
 	self->update_model(self);
 	//self->model->mesh[0]->minv.x = 3;
 	gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);

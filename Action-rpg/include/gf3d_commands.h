@@ -50,5 +50,6 @@ void gf3d_command_rendering_end(VkCommandBuffer commandBuffer);
 void gf3d_command_configure_render_pass_end(VkCommandBuffer commandBuffer);
 
 VkCommandBuffer gf3d_command_rendering_begin_2d(Uint32 index);
+
 #endif
 

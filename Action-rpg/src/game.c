@@ -27,9 +27,10 @@
 
 #include "g_text.h"
 Entity *ents2;
+Menu_item *menuitems;
 //Entity *ents2;
 glob_model_pool *pools;
-Uint32 entity_max=1020;
+Uint32 entity_max=100;
 int created = 6;
 
 void spawn_Entity2(Entity *entsToAdd){
@@ -43,6 +44,23 @@ void spawn_Entity2(Entity *entsToAdd){
 		}
 	}
 }
+
+void hide_all(Entity *list){
+	for (int i = 0; i < entity_max; i++){
+		if (ents2[i]._inuse){
+			hide(&ents2[i]);
+		}
+	}
+}
+
+void show_all(Entity *list){
+	for (int i = 0; i < entity_max; i++){
+		if (ents2[i]._inuse){
+			show(&ents2[i]);
+		}
+	}
+}
+
 Entity *return_game_list(){
 	return ents2;
 }
@@ -55,6 +73,7 @@ int main(int argc,char *argv[])
 	Matrix4 gf3d_camera = {0};
 	ents2 = (Entity*)gfc_allocate_array(sizeof(Entity), entity_max);	
 	pools = (glob_model_pool*)gfc_allocate_array(sizeof(glob_model_pool), 12);
+	menuitems = (Menu_item*)gfc_allocate_array(sizeof(Menu_item), 4);
     int done = 0;
     int a;
 	SDL_Event event;
@@ -77,12 +96,18 @@ int main(int argc,char *argv[])
 	Entity Ent9;//hud
 	Entity Ent10;
 	Entity Ent11;
+	Entity Ent12, Ent13, Ent14;
+	Menu_item Ment1, Ment2, Ment3;
+	cursor curs;
 	LTimer timer;
 	long lastFrameTime;
 	float deltaTime;
 	LTimer_init(&timer);
 	start(&timer);
 	int countedframes=0;
+	bool inMenu = true;
+	Entity background,title;
+	
     for (a = 1; a < argc;a++)
     {
         if (strcmp(argv[a],"-disable_validate") == 0)
@@ -104,6 +129,13 @@ int main(int argc,char *argv[])
 	
     // main game loop
     slog("gf3d main loop begin");
+	init_cursor(&curs);
+	init_menu_item(&Ment1, 0);
+	init_menu_item(&Ment2, 1);
+	init_menu_item(&Ment3, 2);
+	menuitems[0] = Ment1;
+	menuitems[1] = Ment2;
+	menuitems[2] = Ment3;
 	init_global_model_pool(pools);
 	Ent = *gf3d_entity_new();
 	Ent2 = *gf3d_entity_new();
@@ -116,6 +148,9 @@ int main(int argc,char *argv[])
 	Ent9 = *gf3d_entity_new();
 	Ent10 = *gf3d_entity_new();
 	Ent11 = *gf3d_entity_new();
+	Ent12 = *gf3d_entity_new();
+	Ent13 = *gf3d_entity_new();
+	Ent14 = *gf3d_entity_new();
 	gfc_matrix_identity(Ent.EntMatx);  	
 	gfc_matrix_identity(Ent2.EntMatx);
 	gfc_matrix_identity(Ent3.EntMatx);
@@ -127,9 +162,12 @@ int main(int argc,char *argv[])
 	gfc_matrix_identity(Ent9.EntMatx);
 	gfc_matrix_identity(Ent10.EntMatx);
 	gfc_matrix_identity(Ent11.EntMatx);
+	gfc_matrix_identity(Ent12.EntMatx);
+	gfc_matrix_identity(Ent13.EntMatx);
+	gfc_matrix_identity(Ent14.EntMatx);
 	gfc_matrix_make_translation(
 		Ent.EntMatx,
-		vector3d(-400, -400, 0)
+		vector3d(-400, -400, 100)
 		);
 	gfc_matrix_make_translation(
 		Ent4.EntMatx,
@@ -137,7 +175,7 @@ int main(int argc,char *argv[])
 		);
 	gfc_matrix_make_translation(
 		Ent5.EntMatx,
-		vector3d(-350, -300, 0)
+		vector3d(-400, 700, 0)
 		);
 	gfc_matrix_make_translation(
 		Ent6.EntMatx,
@@ -145,15 +183,15 @@ int main(int argc,char *argv[])
 		);
 	gfc_matrix_make_translation(
 		Ent7.EntMatx,
-		vector3d(0, 0, 0)
+		vector3d(0, 0, -1)
 		);
 	gfc_matrix_make_translation(
 		Ent8.EntMatx,
-		vector3d(0, 0, 0)
+		vector3d(0, 0, 100)
 		);
 	gfc_matrix_make_translation(
 		Ent9.EntMatx,
-		vector3d(0, 0, 0)
+		vector3d(-400, -30, 88)
 		);
 	gfc_matrix_make_translation(
 		Ent10.EntMatx,
@@ -163,31 +201,48 @@ int main(int argc,char *argv[])
 		Ent11.EntMatx,
 		vector3d(0, 0, 100)
 		);
+	gfc_matrix_make_translation(
+		Ent12.EntMatx,
+		vector3d(-438, 474, 0)
+		);
+	gfc_matrix_make_translation(
+		Ent13.EntMatx,
+		vector3d(-677, 555, 0)
+		);
+	gfc_matrix_make_translation(
+		Ent14.EntMatx,
+		vector3d(-600, 538, 0)
+		);
 	init_sword_ent(&Ent, 1, ents2,pools);
 	init_arrow_ent(&Ent2, 0, ents2,pools);
 	init_mage_ent(&Ent3, 0, ents2,pools);
 	init_goblin_ent(&Ent4, 1, ents2,pools);
-	//init_bee_ent(&Ent5, 0, ents2,pools);
-	//init_goblin_ent(&Ent6, 0, ents2,pools);
+	init_floor_ent(&Ent5, 6, ents2);
+	//init_floor_ent(&Ent5, 1, ents2,pools);-438.500000 y:-474.500000```-677.500000 y:-555.500000~~-600.500000 y:-538.000000
+	init_goblin_ent(&Ent6, 1, ents2,pools);
 	init_floor_ent(&Ent7, 0, ents2);
-	init_floor_ent(&Ent8, 1, ents2);
-	init_hud_ent(&Ent9, 0, ents2);
+	init_wall_ent(&Ent8, 0, ents2);
+	init_floor_ent(&Ent9, 7, ents2);
 	init_floor_ent(&Ent10, 3, ents2);
 	init_floor_ent(&Ent11, 4, ents2);
+	init_goblin_ent(&Ent12, 1, ents2, pools);
+	init_goblin_ent(&Ent13, 1, ents2, pools);
+	init_goblin_ent(&Ent14, 1, ents2, pools);
+
 	ents2[0] = Ent;
 	ents2[1] = Ent2;
 	ents2[2] = Ent3;
 	ents2[3] = Ent4;
-	//ents2[4] = Ent5;
-	//ents2[5] = Ent6;
+	ents2[4] = Ent5;
+	ents2[5] = Ent6;
 	ents2[6] = Ent7;
-	//ents2[7] = Ent8;
-	//ents2[8] = Ent9;
+	ents2[12] = Ent8;
+	ents2[8] = Ent9;
 	ents2[10] = Ent10;
 	ents2[11] = Ent11;
-/*	ents_list[0] = &Ent2;
-	ents_list[1] = &Ent3;
-	ents_list[2] = &Ent;*/	
+	ents2[13] = Ent12;
+	ents2[14] = Ent13;
+	ents2[15] = Ent14;
 	float rot=0;
 	float wheel = 0;
 	srand(time(0));
@@ -204,18 +259,28 @@ int main(int argc,char *argv[])
 		spawn_Entity2(&N);
 		//slog("position x:%f y:%f z:%f", N.position.x, N.position.y, N.position.z);
 	}
+	hide_all(ents2);
+	//background
+	gfc_matrix_identity(background.EntMatx);
+	background.model = gf3d_model_load_animated("//other//ui//face//sword//sword_face", "//other//ui//menu//titlescreen", 0, 2);
+	gfc_scale_matrix(background.EntMatx, 40, 20, 20);
+	gfc_matrix_rotate(background.EntMatx, background.EntMatx, -1.5708, vector3d(0, 0, 1));
+	background.EntMatx[3][2] = -20;
+	background.EntMatx[3][1] = -2;
+	background.frame = 0;
+	//title
+	gfc_matrix_identity(title.EntMatx);
+	title.model = gf3d_model_load_animated("//other//ui//face//sword//sword_face", "//other//ui//menu//title", 0, 2);
+	gfc_scale_matrix(title.EntMatx, 10, 1, 2);
+	gfc_matrix_rotate(title.EntMatx, title.EntMatx, -1.5708, vector3d(0, 0, 1));
+	title.EntMatx[3][2] = 6;
+	title.frame = 0;
 	//quadt *quad_terrain=return_qtree(quad_terrain);
 	//gf3d_set_camera(gf3d_camera, &ents2[0], rot);
 	//Node *n = malloc(sizeof (Node));
     while(!done)
 	{
-		//hud_set_position(&Ent9, ents2[0].EntMatx, &ents2[0],12,18,-7);
-		//display_img_to_screen("../images/preview.bmp");
-		//slog("Camera position x:%f y:%f z:%f", gf3d_camera[3][0], gf3d_camera[3][1], gf3d_camera[3][2]);
-		//slog("Hud position x:%f y:%f z:%f", ents2[8].EntMatx[3][0], ents2[8].EntMatx[3][1], ents2[8].EntMatx[3][2]);
-		//search(quad_terrain,vector3d(-174 ,137,0.0) );
-		//search_closest_quad(quad_terrain, &ents2[0], n);
-		//display_img_to_screen("../images/preview.bmp");
+		inMenu = curs.show;
 		lastFrameTime = SDL_GetTicks();
         SDL_PumpEvents();   // update SDL's internal event structures
         keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
@@ -225,44 +290,6 @@ int main(int argc,char *argv[])
 		  rot+=0.05;
 		  //Ent.rotated =-rot;
 		}
-		//while (SDL_PollEvent(&event))
-		//{
-		//	float x = (2.0f * (float)event.motion.x) / 1200 - 1.0f;
-		//	float y = (2.0f * (float)event.motion.y) / 700 - 1.0f;
-		//	slog("mouse coord :%f,%f", (float)(2.0f * (float)event.motion.x) / 1200 - 1.0f, (float)(2.0f * (float)event.motion.y) / 700 - 1.0f);
-		//	Vector4D Mousepos = vector4d(-x, -1.0, -y, 1.0);
-		//	Vector3D MouseWorldC;
-		//	Matrix4 MatinvP, MatinvV;
-		//	gfc_matrix_copy(MatinvP, gf3d_vgraphics_get_uniform_buffer_object().proj);
-		//	gfc_matrix_copy(MatinvV, gf3d_vgraphics_get_uniform_buffer_object().view);
-		//	m4_invert(MatinvP, MatinvP);
-		//	m4_invert(MatinvV, MatinvV);
-		//	gfc_matrix_multiply_vector4d(&Mousepos, MatinvP, Mousepos);
-		//	Mousepos.w = 0.0;
-		//	gfc_matrix_multiply_vector4d(&Mousepos, MatinvV, Mousepos);
-		//	MouseWorldC = vector3d(Mousepos.x, Mousepos.y, Mousepos.z);
-		//	vector3d_normalize(&MouseWorldC);
-		//	slog("mouse coord :%f,%f,%f", MouseWorldC.x*1200/51 + gf3d_camera[3][0], MouseWorldC.y*100, MouseWorldC.z*700/51);
-		//	if (event.type == SDL_MOUSEWHEEL)
-		//	{
-		//		if (event.wheel.y > 0) // scroll up
-		//		{
-		//			
-		//			wheel -= 2.0;
-		//		}
-		//		else if (event.wheel.y < 0) // scroll down
-		//		{
-		//			wheel += 2.0;
-		//		}
-		//	}
-		//}
-		//slog("Time in millisecs: %f", (SDL_GetTicks() - startTime)/(1000.f));
-		/*float avgFPS = countedframes / (getTicks(&timer) / 1000.f);
-		slog("average frames:%f", avgFPS);
-		if (avgFPS > 2000000)
-		{
-			avgFPS = 0;
-		}*/
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
         bufferFrame = gf3d_vgraphics_render_begin();
@@ -271,28 +298,41 @@ int main(int argc,char *argv[])
             commandBuffer = gf3d_command_rendering_begin(bufferFrame);
 			commandBuffer2 = gf3d_command_rendering_begin_2d(bufferFrame);
 			countedframes++;
-			for (int p = 0; p < entity_max; p++){
-				if (ents2[p]._inuse&&ents2[p].show==true){
-					//slog("index :%i", p);
-					gf3d_model_draw(ents2[p].model, bufferFrame, commandBuffer, ents2[p].EntMatx, (Uint32)ents2[p].frame);
-					if (ents2[p].controling == 1){
-						ents2[p].get_inputs(&ents2[p], keys, deltaTime);
-						gf3d_set_camera(gf3d_camera, &ents2[p], rot,wheel);
+			if (inMenu == false){
+				for (int p = 0; p < entity_max; p++){
+					if (ents2[p]._inuse&&ents2[p].show == true){
+						//slog("index :%i", p);
+						gf3d_model_draw(ents2[p].model, bufferFrame, commandBuffer, ents2[p].EntMatx, (Uint32)ents2[p].frame);
+						if (ents2[p].controling == 1){
+							ents2[p].get_inputs(&ents2[p], keys, deltaTime);
+							gf3d_set_camera(gf3d_camera, &ents2[p], rot, wheel);
+							hud_update_target(&ents2[p]);
+							update_text_target(&ents2[p]);
+						}
+						ents2[p].update_ent(&ents2[p]);
 					}
-					ents2[p].update_ent(&ents2[p]);
 				}
+				//update_skybox(&ents2[4], ents2[0].position);
+				draw_huds(bufferFrame, commandBuffer2);
+				draw_text_boxes(bufferFrame, commandBuffer2);
+				collision_check(ents2, entity_max);
+				update_battle_manager(0, 0);
 			}
-			//gf3d_ui_draw(Ent9.model, bufferFrame, commandBuffer2, Ent9.EntMatx, (Uint32)Ent9.frame);
-			draw_huds(bufferFrame, commandBuffer2);
-			draw_text_boxes(bufferFrame, commandBuffer2);
-			collision_check(ents2, entity_max);
-			update_battle_manager(0,0);
+			else{
+				gf3d_model_draw(background.model, bufferFrame, commandBuffer, background.EntMatx, (Uint32)1);
+				gf3d_model_draw(title.model, bufferFrame, commandBuffer, title.EntMatx, (Uint32)1);
+				gf3d_model_draw(curs.model, bufferFrame, commandBuffer, curs.EntMatrix, (Uint32)0);
+				update_cursor(&curs, menuitems);
+				cursor_inputs(&curs, keys);
+				for (int i = 0; i < 3; i++){
+					gf3d_model_draw(menuitems[i].model, bufferFrame, commandBuffer, menuitems[i].EntMatrix, (Uint32)0);
+				}
+				
+			}
             gf3d_command_rendering_end(commandBuffer);
 			gf3d_command_rendering_end(commandBuffer2);
         gf3d_vgraphics_render_end(bufferFrame);
-		//SDL_Delay((1000 / 60) - SDL_GetTicks());
 		deltaTime = (SDL_GetTicks() - lastFrameTime)/1000.0f;
-		//slog("last fps :%f change:%f", lastFrameTime/1000.f,deltaTime);
         if (keys[SDL_SCANCODE_ESCAPE])done = 1; // exit condition
     }    
     

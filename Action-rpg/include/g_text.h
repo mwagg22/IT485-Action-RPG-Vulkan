@@ -25,3 +25,4 @@ text_box* create_textbox(char * text, float x, float y,float z,int endFrame,bool
 void draw_text_boxes(Uint32 bufferFrame, VkCommandBuffer commandBuffer);
 void update_text_boxes(text_box* box);
 void update_textbox_texture(text_box *box, char* string);
+void update_text_target(Entity* target);

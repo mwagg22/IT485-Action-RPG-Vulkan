@@ -111,6 +111,9 @@ void collision_check(Entity *ents,Uint32 entity_max){
 					handle_projectile_collision(&ents[p], &ents[j]);
 					handle_projectile_collision(&ents[j], &ents[p]);
 				}
+				else if (ents[p].type==ES_Projectile&&ents[p].parent->type == ES_Player&&ents[j].type == ES_Player){
+					continue;
+				}
 				else{
 					//slog("COLLISION");
 					handle_collision(&ents[p], &ents[j]);
@@ -138,7 +141,12 @@ bool check_collision(Entity *self, Entity *other){
 void handle_collision(Entity *self, Entity *other){
 	self->collision = true;
 	other->collision = true;
-	if (self->state == ES_Running){
+	if (self->type == ES_Player&&other->type == ES_Warp){
+		self->EntMatx[3][0] = other->location.x;
+		self->EntMatx[3][1] = other->location.y;
+		self->EntMatx[3][2] = other->location.z;
+	}
+	if (self->state == ES_Running&&other->type!=ES_Stage){
 		if (self->position.x >= other->position.x) { displacement(self, vector3d(self->movementspeed * 2, 0, 0)); displacement(other, vector3d(0, 0, 0)); slog("right"); }
 		if (self->position.x  < other->position.x) { displacement(self, vector3d(-self->movementspeed * 2, 0, 0)); displacement(other, vector3d(0, 0, 0)); slog("left"); }
 		if (self->position.y >= other->position.y) { displacement(self, vector3d(0, -self->movementspeed * 2, 0)); displacement(other, vector3d(0, 0, 0)); slog("up"); }
@@ -152,7 +160,10 @@ void handle_collision(Entity *self, Entity *other){
 		free_ent_manager(other->Ent_ID);
 		self->overworld = 0;
 		slog("battle time");
-		init_battle_sequence(self,1,0,0);
+		int rdm1 = (rand() % 4);
+		int rdm2 = (rand() % 4);
+		int rdm3 = (rand() % 4);
+		init_battle_sequence(self,3, 1, 2);
 	}
 }
 bool check_hitbox_collision(Entity *hitlist, Entity *other){
@@ -175,7 +186,7 @@ void handle_projectile_collision(Entity *self, Entity *other){
 		//self->ProjectileData.Hitarray[0] = *other;
 		bool found = check_hitbox_collision(self->ProjectileData.Hitarray, other);
 		//slog("found %i",found);
-		if (!found){
+		if (!found&&other->state!=ES_Dying){
 
 			//slog("hitbox COLLISION");
 			other->is_hit = true;
@@ -187,7 +198,7 @@ void handle_projectile_collision(Entity *self, Entity *other){
 			char str[10];
 			sprintf(str, "%d", i);
 			//slog("damage:%s", str);
-			create_textbox(str, other->position.x, -other->position.y, other->position.z+4, 120, false, NULL);
+			//create_textbox(str, other->position.x, -other->position.y, other->position.z+4, 20, false, NULL);
 			for (int i = 0; i < 10; i++){
 				if (!self->ProjectileData.Hitarray[i]._inuse){
 					//slog("added in:%i", i);
@@ -326,7 +337,7 @@ void init_ent(Entity *self,int cont){
 void init_global_model_pool(glob_model_pool *mod_pool){
 	mod_pool->hitbox = gf3d_model_load_animated("//other//projectiles//hitbox//hitbox", "shadow", 0, 2);
 	mod_pool->arrow = gf3d_model_load_animated("//other//projectiles//arrow//arrow", "arrow", 0, 1);
-	mod_pool->dragon = gf3d_model_load_animated("//other//projectiles//dragon//dragon", "dragon", 0, 20);
+	mod_pool->dragon = gf3d_model_load_animated("//other//projectiles//dragon//dragon", "dragon", 0, 1);
 	mod_pool->thunder = gf3d_model_load_animated("//other//projectiles//shock//lighning", "lighning", 0, 2);
 	mod_pool->blueorb = gf3d_model_load_animated("//other//projectiles//blueorb//blueorb", "blue_orb", 0, 1);
 	mod_pool->twister = gf3d_model_load_animated("//other//projectiles//twister//twister", "shadow", 0, 15);
@@ -334,26 +345,28 @@ void init_global_model_pool(glob_model_pool *mod_pool){
 	mod_pool->blastair = gf3d_model_load_animated("//other//projectiles//blastair//blast", "shadow", 0, 20);
 	mod_pool->rock = gf3d_model_load_animated("//other//projectiles//rock//rock", "rock", 0, 10);
 	mod_pool->wave = gf3d_model_load_animated("//other//projectiles//wave//wave", "wave", 0, 1);
+	mod_pool->roar = gf3d_model_load_animated("//other//projectiles//roar//roar", "shadow", 0, 14);
 }
 void update_ent(Entity *self){
 	
 	set_position(self, self->EntMatx);
 	self->frame = self->frame + 0.9;
 	if (self->type == ES_Projectile){
-		if (self->position.x > 1000 || self->position.x < -1000){
+		if (self->position.x > 60 || self->position.x < -60){
 			self->_inuse = 0;
 			free_ent_manager(self->Ent_ID);
 		}
-		if (self->position.y > 1000 || self->position.y < -1000){
+		if (self->position.y > 60 || self->position.y < -60){
 			self->_inuse = 0;
 			free_ent_manager(self->Ent_ID);
 		}
 	}
 	if (self->ProjectileData.destroyOncollision == 2){
-		if (round(self->position.z) == -1){
+		if (round(self->position.z) == 99){
 			if (self->ProjectileData.effect != 0&&self->ProjectileData.created==0){
 				self->ProjectileData.created = 1;
-				update_ent_model(self);
+				//update_ent_model(self);
+				self->_inuse = 0;
 			}
 			else{
 				//self->_inuse = 0;
@@ -470,63 +483,7 @@ void rotate_towards_target(Entity *self, Vector3D disp,Vector3D *weap_up){
 			weap_up->y = disp.y;
 			weap_up->z = disp.z;
 }
-//
-/*
-void create_projectile_e(Entity *self, Entity *other, char *model, char *texture,int startf, int endf,float dmg,float kick,bool type,int bboxframe,Vector3D up){
-	Entity projEnt = *gf3d_entity_new();
-	Model *proj = gf3d_model_new();
-	proj = gf3d_model_load_animated(model, texture, startf, endf);
-	projEnt.model = proj;
-	projEnt.up.x = self->up.x;
-	projEnt.up.y = self->up.y;
-	projEnt.up.z = self->up.z;
-	projEnt.movementspeed = 0;
-	projEnt.attackdmg = dmg;
-	projEnt.rotated = self->rotated;
-	projEnt.state = ES_Idle;
-	projEnt.update_ent = update_ent;
-	projEnt.controling = 0;
-	projEnt.parent = self;
-	projEnt.ProjectileData.Hitarray = (Entity*)gfc_allocate_array(sizeof(Entity), 10);
-	//projEnt.get_inputs = get_proj_inputs;
-	projEnt.type = ES_Effect;
-	if (type == 0){ 
-		projEnt.type = ES_Hitbox;
-		gfc_matrix_copy(projEnt.EntMatx, self->EntMatx); 
-		projEnt.EntMatx[3][0] += 5 * (projEnt.up.x);
-		projEnt.EntMatx[3][1] -= 5 * (projEnt.up.y);
-	}
-	else if(type==1){ 
-		projEnt.type = ES_Hitbox;
-		gfc_matrix_copy(projEnt.EntMatx, other->EntMatx); 
-	}	
-	else if (type == 4){
-		projEnt.type = ES_Projectile;
-		gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
-	}
-	else if (type == 6){
-		projEnt.type = ES_Effect;
-		gfc_matrix_copy(projEnt.EntMatx, self->EntMatx);
-	}
-	else{ 
-	projEnt.type = ES_Projectile;
-	projEnt.up.x = up.x;
-	projEnt.up.y = up.y;
-	projEnt.up.z = up.z;
-	gfc_matrix_copy(projEnt.EntMatx, other->EntMatx);
-	projEnt.EntMatx[3][2] = 30;
-	projEnt.ProjectileData.parenttype = self->type;
-	projEnt.ProjectileData.effect = 1;
-	projEnt.ProjectileData.destroyOncollision = 2;
-	projEnt.ProjectileData.Projectile = &projEnt;
-	}
-	gf3d_set_boundbox(&projEnt, projEnt.model->mesh[bboxframe]->minv, projEnt.model->mesh[bboxframe]->maxv);
-	//slog("min x%f y:%f z:%f max x:%f y:%f z:%f", projEnt.box.m_vecMin.x, projEnt.box.m_vecMin.y, projEnt.box.m_vecMin.z, projEnt.box.m_vecMax.x, projEnt.box.m_vecMax.y, projEnt.box.m_vecMax.z);
-	//
-	spawn_Entity2(&projEnt);
-	//free(&projEnt);
-}
-*/
+
 void create_projectile_e(Entity *self, Entity *other, Model *model, float dmg, float kick, bool type, int bboxframe, Vector3D up){
 	Entity projEnt = *gf3d_entity_new();
 	Model *proj = model;
@@ -568,7 +525,7 @@ void create_projectile_e(Entity *self, Entity *other, Model *model, float dmg, f
 		projEnt.up.y = up.y;
 		projEnt.up.z = up.z;
 		gfc_matrix_copy(projEnt.EntMatx, other->EntMatx);
-		projEnt.EntMatx[3][2] = 30;
+		projEnt.EntMatx[3][2] = other->EntMatx[3][2]+30;
 		projEnt.ProjectileData.parenttype = self->type;
 		projEnt.ProjectileData.effect = 1;
 		projEnt.ProjectileData.destroyOncollision = 2;
@@ -591,26 +548,25 @@ void init_battle_sequence(Entity *player,int x,int y,int z){
 	battle_man.enemycount = ecount;
 	battle_man.playercount = 3;
 	battle_man.exp = 20;
+	hide(&return_game_list()[6]);
+	show(&return_game_list()[10]);
+	show(&return_game_list()[11]);
+	show(&return_game_list()[12]);
 	spawn_enemy(x,vector3d(20,-20,100));
 	spawn_enemy(y, vector3d(20, 0, 100));
 	spawn_enemy(z, vector3d(20, 20, 100));
 	battle_man.inbattle = true;
 	battle_man.lastposition = player->position;
+	SDL_Delay(1000);
 	player->EntMatx[3][0] = -20;
 	player->EntMatx[3][1] = 20;
 	player->EntMatx[3][2] = 100;
-	//gfc_matrix_translate(
-	//	player->EntMatx,
-	//	vector3d(-20, 0, 100)
-	//	);
-	gfc_matrix_translate(
-		return_game_list()[1].EntMatx,
-		vector3d(-20, 20, 100)
-		);
-	gfc_matrix_translate(
-		&return_game_list()[2].EntMatx,
-		vector3d(-20, -20, 100)
-		);
+	return_game_list()[1].EntMatx[3][0] = -20;
+	return_game_list()[1].EntMatx[3][1] = -20;
+	return_game_list()[1].EntMatx[3][2] = 100;
+	return_game_list()[2].EntMatx[3][0] = -20;
+	return_game_list()[2].EntMatx[3][1] = 0;
+	return_game_list()[2].EntMatx[3][2] = 100;
 	show(&return_game_list()[1]);
 	show(&return_game_list()[2]);
 }
@@ -618,10 +574,16 @@ void init_battle_sequence(Entity *player,int x,int y,int z){
 void end_battle_sequence(Entity* player){
 	player->overworld = 1;
 	player->experience += battle_man.exp;
-	gfc_matrix_make_translation(
-		player->EntMatx,
-		battle_man.lastposition
-		);
+	player->EntMatx[3][0] = battle_man.lastposition.x;
+	player->EntMatx[3][1] = battle_man.lastposition.y;
+	player->EntMatx[3][2] = battle_man.lastposition.z;
+	player->controling = 1;
+	return_game_list()[1].controling = 0;
+	return_game_list()[2].controling = 0;
+	show(&return_game_list()[6]);
+	hide(&return_game_list()[10]);
+	hide(&return_game_list()[11]);
+	hide(&return_game_list()[12]);
 	hide(&return_game_list()[1]);
 	hide(&return_game_list()[2]);
 }
@@ -633,13 +595,15 @@ void show(Entity* toShow){
 	toShow->show = true;
 }
 void update_battle_manager(int ecount, int pcount){
+	battle_man.enemycount += ecount;
+	battle_man.playercount += pcount;
 	if (battle_man.inbattle == true){
-		if (ecount < 0){
-			battle_man.inbattle == false;
+		if (battle_man.enemycount <= 0){
+			battle_man.inbattle = false;
 			end_battle_sequence(&return_game_list()[0]);
 		}
-		if (pcount < 0){
-			battle_man.inbattle == false;
+		if (battle_man.playercount <= 0){
+			battle_man.inbattle = false;
 		}
 	}
 }
@@ -664,27 +628,18 @@ void spawn_enemy(int num,Vector3D position){
 			);
 		spawn_Entity2(&Ent);
 		return;
+	case 3:
+		init_bear_ent(&Ent, 0, return_game_list(), return_model_pool());
+		gfc_matrix_make_translation(
+			Ent.EntMatx,
+			vector3d(position.x, position.y, position.z)
+			);
+		spawn_Entity2(&Ent);
+		return;
 	default:
 		Ent._inuse = 0;
 		return;
 	}
 }
 
-//long overdue
-//void draw_entities(Uint32 bufferFrame, VkCommandBuffer commandBuffer, Matrix4 gf3d_camera, const Uint8 *keys,float deltaTime){
-//	Entity *Ent;
-//	for (int p = 0; p < gf3d_entity_manager.entity_max; p++){
-//		Ent = &gf3d_entity_manager.entity_list[p];
-//		if (Ent->_inuse){
-//			//slog("index :%i", p);
-//			gf3d_model_draw(Ent->model, bufferFrame, commandBuffer, Ent->EntMatx, (Uint32)Ent->frame);
-//			if (Ent->controling == 1){
-//				Ent->get_inputs(Ent, keys, deltaTime);
-//				gf3d_set_camera(gf3d_camera, Ent, 0, 0);
-//			}
-//			Ent->update_ent(Ent);
-//		}
-//	}
-//	collision_check(gf3d_entity_manager.entity_list, gf3d_entity_manager.entity_max);
-//}
 /*eol@eof*/

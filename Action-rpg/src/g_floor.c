@@ -43,26 +43,40 @@ void init_floor_ent(Entity *self, int ctr, Entity *ents){
 	other = ents;
 	self->show = true;
 	if (ctr == 0){
-		self->model = gf3d_model_load_animated("//other//level//grass//test", "grass", 0, 2);
-		TextLine assetname;
-		snprintf(assetname, GFCLINELEN, "../models/%s_%06i.obj", "//other//level//grass//test", 0);
-		//load_terrain_data(assetname);
+		self->model = gf3d_model_load_animated("//other//level//grass//grass//grass", "grass", 0, 1);
 
-		load_terrain_data("../models//other//level//grass//test_000000.obj");
+		load_terrain_data("../models//other//level//grass//grass//grass.obj");
 	}
 	if (ctr == 1){
-		self->model = gf3d_model_load_animated("//other//level//skybox//skybox", "sky", 0, 2);
+		self->model = gf3d_model_load_animated("//other//level//skybox//skybox", "sky", 0, 1);
 	}
 	if (ctr == 2){
-		self->model = gf3d_model_load_animated("//other//level//trees//trees", "tree", 0, 2);
+		self->model = gf3d_model_load_animated("//other//level//trees//trees", "tree", 0, 1);
 		set_position(self, self->EntMatx);
 		self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	}
 	if (ctr == 3){
-		self->model = gf3d_model_load_animated("//other//level//planes//grass", "//other//level//grass", 0, 2);
+		self->model = gf3d_model_load_animated("//other//level//planes//grass", "//other//level//grass", 0, 1);
+		self->show = false;
 	}
 	if (ctr == 4){
-		self->model = gf3d_model_load_animated("//other//level//skybox//battle//1//grass", "//other//level//bgrass", 0, 2);
+		self->model = gf3d_model_load_animated("//other//level//skybox//battle//1//grass", "//other//level//bgrass", 0, 1);
+		self->show = false;
+	}
+	if (ctr == 5){
+		self->model = gf3d_model_load_animated("//other//level//planes//water", "//other//level//water", 0, 1);
+	}
+	if (ctr == 6){
+		self->model = gf3d_model_load_animated("//other//level//cave//cave", "//other//level//cave", 0, 2);
+		self->show = false;
+		//load_terrain_data("../models//other//level//grass//grass//grass.obj");
+	}
+	if (ctr == 7){
+		self->model = gf3d_model_load_animated("//other//level//warps//cave", "//other//level//warpcave", 0, 1);
+		self->type = ES_Warp;
+		self->location = vector3d(-570, -385, 0);
+		gfc_matrix_rotate(self->EntMatx, self->EntMatx, 3.14, vector3d(0,0,1));
+		gf3d_set_boundbox(self, self->model->mesh[0]->minv, self->model->mesh[0]->maxv);
 	}
 	//quadt quad_terrain2;
 	// quad_terrain = malloc(sizeof (quadt));
@@ -75,6 +89,31 @@ void init_floor_ent(Entity *self, int ctr, Entity *ents){
 	//}
 	//Node *n = malloc(sizeof (Node));
 	//search_closest_quad(quad_terrain, &other[0], n);
+}
+void init_wall_ent(Entity *self, int ctr, Entity *ents){
+	self->state = ES_Idle;
+	self->dr = Up;
+	self->update_ent = update_ent;
+	self->can_attack = true;
+	self->can_hpskill = true;
+	self->can_special = true;
+	self->can_block = true;
+	self->is_hit = false;
+	self->action = none;
+	self->prev_action = none;
+	self->up = vector3d(0, 1, 0);
+	self->controling = 0;
+	self->movementspeed = 1.0f;
+	self->rotated = 0.0f;
+	self->type = ES_Stage;
+	other = ents;
+	self->show = true;
+	if (ctr == 0){
+		self->model = gf3d_model_load_animated("//other//level//wall//grass//grass", "//other//level//g_wall", 0, 2);
+	}
+	if (ctr == 1){
+		self->model = gf3d_model_load_animated("//other//level//skybox//skybox", "sky", 0, 2);
+	}
 }
 float barryCentric(Vector3D p1, Vector3D p2, Vector3D p3, Vector2D pos) {
 	float det = (p2.z - p3.z) * (p1.x - p3.x) + (p3.x - p2.x) * (p1.z - p3.z);
@@ -421,4 +460,8 @@ void* search(quadt *quad, Vector3D position){
 		}
 	}
 
+}
+
+void update_skybox(Entity *self, Vector3D position){
+	gfc_matrix_make_translation(self->EntMatx, vector3d(position.x,-position.y,position.z));
 }

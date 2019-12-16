@@ -255,11 +255,11 @@ void update_mage_model(Entity *self){
 			 self->model = self->mods.special2;
 			 if (self->specialnum == 1){
 				 self->target = get_nearest_target(self, other);
-				 create_projectile_e(self, self->target,pool->twister, 5.0, 20, 4, 2, vector3d(0, 0, 0));
+				 create_projectile_e(self, self->target, return_model_pool()->twister, 5.0, 20, 4, 2, vector3d(0, 0, 0));
 			 }
 			 if (self->specialnum == 2){
 				 self->target = get_nearest_target(self, other);
-				 create_projectile_e(self, self->target, pool->meteor, 5.0, 20, 3, 2, vector3d(0, 0, -.9));
+				 create_projectile_e(self, self->target, return_model_pool()->meteor, 5.0, 20, 3, 2, vector3d(0, 0, -.9));
 			 }
 			 //create_hitbox(self, other, self->Hitbox.m_vecMin, self->Hitbox.m_vecMin, self->up);
 			 //specialnum = 0;
@@ -297,6 +297,20 @@ void update_mage_ent(Entity *self){
 	//self->EntMatx[3][2] = return_terrain_height(&other[6], -self->position.x, self->position.y);
 	set_position(self, self->EntMatx);
 	gfc_matrix_copy(mtxcopy_m, self->EntMatx);
+	if (self->overworld == false){
+		if (self->position.x<-30){
+			self->EntMatx[3][0] = self->EntMatx[3][0] + 1;
+		}
+		if (self->position.x>30){
+			self->EntMatx[3][0] = self->EntMatx[3][0] - 1;
+		}
+		if (self->position.y<-30){
+			self->EntMatx[3][1] = self->EntMatx[3][1] + 1;
+		}
+		if (self->position.y>30){
+			self->EntMatx[3][1] = self->EntMatx[3][1] - 1;
+		}
+	}
 	if (self->controling == 0){
 		mage_ai_think(self);
 	}
@@ -408,11 +422,11 @@ void init_mage_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	self->show = 0;
 	self->overworld = 0;
 	self->type = ES_Player;
-	self->health_bar = create_healthbar("//other//ui//face//sword//sword_face", "//other//ui//mage_face", -4, 18, -7, &other[0]);
-	self->health_bar->box = create_textbox("400", -2, 14.5, -6, NULL, true, &other[0]);
-	self->health_bar->mp_box = create_textbox("4000", -2, 14.5, -8, NULL, true, &other[0]);
+	self->health_bar = create_healthbar("//other//ui//face//sword//sword_face", "//other//ui//mage_face", 12, 4, -7, &other[0]);
+	self->health_bar->box = create_textbox("321", 14, 1, -6, NULL, true, &other[0]);
+	self->health_bar->mp_box = create_textbox("5000", 14, 1, -8, NULL, true, &other[0]);
 	other = ents;
-	pool = pools;
+	//pool = pools;
 	self->mods.idle = gf3d_model_load_animated("//player//mage//idle//mage_idle", "mage_s1", 0, 69);
 
 	self->mods.run = gf3d_model_load_animated("//player//mage//run//mage_run", "mage_s1", 0, 16);
@@ -556,7 +570,7 @@ void mage_get_inputs(Entity *self, const Uint8 *keys, float delta){
 
 void create_mage_projectile(Entity *self, float speed, float dmg){
 	Entity projEnt = *gf3d_entity_new();
-	Model *proj = pool->blueorb;
+	Model *proj = return_model_pool()->blueorb;
 	projEnt.model = proj;
 	projEnt.up.x = upx_m; //self->up.x;
 	projEnt.up.y = upy_m;//self->up.y;
@@ -585,7 +599,7 @@ void create_mage_projectile(Entity *self, float speed, float dmg){
 void mage_ai_think(Entity *self){
 	if (self->controling != 1){
 		float attack_range = 25.00f;
-		Entity *target = get_nearest_target(self, other);
+		Entity *target = get_nearest_target(self, return_game_list());
 		self->target = target;
 		if (target){
 			//slog("distance between targets :%f", round(vector3d_magnitude_between(target->position, self->position)));

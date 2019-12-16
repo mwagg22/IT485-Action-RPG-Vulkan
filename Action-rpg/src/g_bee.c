@@ -44,7 +44,7 @@ void bee_think(Entity *self){
 			}
 			break;
 		case movement:
-			if (self->state != ES_Running&&self->is_hit==false){
+			if (self->state != ES_Running&&self->is_hit == false){
 				Vector3D d, e;
 				vector3d_sub(d, self->position, target->position);
 				d.x = -d.x;
@@ -66,7 +66,8 @@ void bee_think(Entity *self){
 			c.y = c.y;
 			c.z = -c.z;
 			vector3d_normalize(&c);
-			bee_displacement(self, vector3d(c.x*self->movementspeed, c.y*self->movementspeed,0));
+			if (self->state != ES_Hit)
+				bee_displacement(self, vector3d(c.x*self->movementspeed, c.y*self->movementspeed,0));
 			break;
 		case block:
 			if (self->can_block == true){
@@ -157,7 +158,12 @@ void update_bee_ent(Entity *self){
 		//slog("can attack again attacknum:%i",attacknum);
 
 }
-
+	if (self->health <= 0){
+		if (self->state != ES_Dying){
+			self->state = ES_Dying;
+			self->update_model(self);
+		}
+	}
 	if (self->frame >= self->model->frameCount){
 		if (self->state == ES_Attacking){
 			self->state = ES_Idle;
@@ -171,6 +177,12 @@ void update_bee_ent(Entity *self){
 			self->state = ES_Idle;
 			self->frame = 0;
 			self->update_model(self);
+		}
+		else if (self->state == ES_Dying){
+			self->frame = self->model->frameCount - 1;
+			update_battle_manager(-1, 0);
+			self->_inuse = 0;
+			free_ent_manager(self->Ent_ID);
 		}
 		else{
 			self->can_attack = true;
@@ -244,7 +256,7 @@ void init_bee_ent(Entity *self, int ctr, Entity *ents, glob_model_pool *pools){
 	pool = pools;
 	self->mods.idle = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 42);
 
-	self->mods.run = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 42);
+	self->mods.run = gf3d_model_load_animated("//enemy//bee//idle//bee_idle", "//enemy//bee", 0, 10);
 
 	self->mods.hit = gf3d_model_load_animated("//enemy//bee//hit//bee_hit", "//enemy//bee", 0, 29);
 

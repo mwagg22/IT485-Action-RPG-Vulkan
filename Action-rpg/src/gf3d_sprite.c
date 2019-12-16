@@ -109,7 +109,7 @@ void gf3d_sprite_manager_init(Uint32 max_sprites,Uint32 chain_length,VkDevice de
     memcpy(data, faces, (size_t) bufferSize);
     vkUnmapMemory(device, stagingBufferMemory);
 
-    gf3d_vgraphics_create_buffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &gf3d_sprite.faceBuffer, &gf3d_sprite.faceBufferMemory);
+    gf3d_vgraphics_create_buffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT | VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, &gf3d_sprite.faceBuffer, &gf3d_sprite.faceBufferMemory);
 
     gf3d_vgraphics_copy_buffer(stagingBuffer, gf3d_sprite.faceBuffer, bufferSize);
 
@@ -279,7 +279,7 @@ void gf3d_sprite_create_vertex_buffer(Sprite *sprite)
     memcpy(data, vertices, (size_t) bufferSize);
     vkUnmapMemory(device, stagingBufferMemory);
 
-    gf3d_vgraphics_create_buffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT|VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &sprite->buffer, &sprite->bufferMemory);
+    gf3d_vgraphics_create_buffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT|VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT | VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, &sprite->buffer, &sprite->bufferMemory);
 
     gf3d_vgraphics_copy_buffer(stagingBuffer, sprite->buffer, bufferSize);
 
@@ -389,7 +389,7 @@ void gf3d_sprite_create_uniform_buffer(Sprite *sprite)
 
     for (i = 0; i < buffercount; i++)
     {
-        gf3d_vgraphics_create_buffer(bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &sprite->uniformBuffers[i], &sprite->uniformBuffersMemory[i]);
+		gf3d_vgraphics_create_buffer(bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT|VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &sprite->uniformBuffers[i], &sprite->uniformBuffersMemory[i]);
     }
 }
 
